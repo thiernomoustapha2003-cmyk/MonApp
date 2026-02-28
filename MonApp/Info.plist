@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.1033725503718-tnae4tfgkla480gj33orufd5l86shquu</string>
+			</array>
+		</dict>
+	</array>
+	<key>INIntentsSupported</key>
+	<array>
+		<string>Intent</string>
+	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+	</array>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Nous avons besoin d&apos;accéder à votre galerie pour publier vos contenus.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Privacy - Photo Library Additions Usage Descripti.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Permet de filmer et publier du contenu.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Permet d&apos;enregistrer l&apos;audio des vidéos.</string>
+</dict>
+</plist>
