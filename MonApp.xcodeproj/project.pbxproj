@@ -82,22 +82,16 @@
 		59BBF71C2F4E7FA4007D5387 /* StatCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BBF71B2F4E7FA4007D5387 /* StatCard.swift */; };
 		59BBF71E2F4E8049007D5387 /* CreatorFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BBF71D2F4E8049007D5387 /* CreatorFeedView.swift */; };
 		59BBF72A2F4E91B4007D5387 /* PostViewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BBF7292F4E91B4007D5387 /* PostViewService.swift */; };
-		59BBF72C2F4E927E007D5387 /* PostLikeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BBF72B2F4E927E007D5387 /* PostLikeService.swift */; };
-		59BBF72E2F4E92DB007D5387 /* PostViewTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BBF72D2F4E92DA007D5387 /* PostViewTracker.swift */; };
 		59BBF7302F4E9335007D5387 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BBF72F2F4E9335007D5387 /* Post.swift */; };
 		59BBF7322F4E939E007D5387 /* UploadContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BBF7312F4E939E007D5387 /* UploadContentView.swift */; };
 		59BBF7342F4E9579007D5387 /* ExpertFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BBF7332F4E9579007D5387 /* ExpertFeedView.swift */; };
 		59BBF7362F4E95C4007D5387 /* PostCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BBF7352F4E95C4007D5387 /* PostCardView.swift */; };
-		59BBF7382F4E962A007D5387 /* LikeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BBF7372F4E962A007D5387 /* LikeButton.swift */; };
-		59BBF73A2F4E9652007D5387 /* SaveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BBF7392F4E9651007D5387 /* SaveButton.swift */; };
 		59BBF73C2F4E9683007D5387 /* CommentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BBF73B2F4E9683007D5387 /* CommentButton.swift */; };
 		59BBF73E2F4E96DA007D5387 /* PostComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BBF73D2F4E96DA007D5387 /* PostComment.swift */; };
 		59BBF7402F4E9700007D5387 /* CommentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BBF73F2F4E9700007D5387 /* CommentService.swift */; };
 		59BBF7422F4E972A007D5387 /* CommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BBF7412F4E972A007D5387 /* CommentsView.swift */; };
-		59BBF7442F4E978D007D5387 /* VideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BBF7432F4E978D007D5387 /* VideoPlayerView.swift */; };
 		59BBF7462F4E97B8007D5387 /* PostCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BBF7452F4E97B7007D5387 /* PostCellView.swift */; };
 		59BBF7482F4E9A1D007D5387 /* FeedPlaybackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BBF7472F4E9A1D007D5387 /* FeedPlaybackManager.swift */; };
-		59BBF74A2F4E9E2F007D5387 /* LikeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BBF7492F4E9E2F007D5387 /* LikeService.swift */; };
 		59BBF74C2F4EA155007D5387 /* ViewTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BBF74B2F4EA155007D5387 /* ViewTracker.swift */; };
 		59BBF74E2F4F044C007D5387 /* Services:VideoUploadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BBF74D2F4F044C007D5387 /* Services:VideoUploadService.swift */; };
 		59BBF7502F4F046F007D5387 /* Services:PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BBF74F2F4F046F007D5387 /* Services:PostService.swift */; };
@@ -245,22 +239,16 @@
 		59BBF71B2F4E7FA4007D5387 /* StatCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StatCard.swift; path = Calendar/StatCard.swift; sourceTree = SOURCE_ROOT; };
 		59BBF71D2F4E8049007D5387 /* CreatorFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreatorFeedView.swift; path = Calendar/CreatorFeedView.swift; sourceTree = SOURCE_ROOT; };
 		59BBF7292F4E91B4007D5387 /* PostViewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostViewService.swift; path = Calendar/PostViewService.swift; sourceTree = SOURCE_ROOT; };
-		59BBF72B2F4E927E007D5387 /* PostLikeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostLikeService.swift; path = Calendar/PostLikeService.swift; sourceTree = SOURCE_ROOT; };
-		59BBF72D2F4E92DA007D5387 /* PostViewTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostViewTracker.swift; path = Calendar/PostViewTracker.swift; sourceTree = SOURCE_ROOT; };
 		59BBF72F2F4E9335007D5387 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Post.swift; path = Calendar/Post.swift; sourceTree = SOURCE_ROOT; };
 		59BBF7312F4E939E007D5387 /* UploadContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UploadContentView.swift; path = Calendar/UploadContentView.swift; sourceTree = SOURCE_ROOT; };
 		59BBF7332F4E9579007D5387 /* ExpertFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExpertFeedView.swift; path = Calendar/ExpertFeedView.swift; sourceTree = SOURCE_ROOT; };
 		59BBF7352F4E95C4007D5387 /* PostCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostCardView.swift; path = Calendar/PostCardView.swift; sourceTree = SOURCE_ROOT; };
-		59BBF7372F4E962A007D5387 /* LikeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LikeButton.swift; path = Calendar/LikeButton.swift; sourceTree = SOURCE_ROOT; };
-		59BBF7392F4E9651007D5387 /* SaveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SaveButton.swift; path = Calendar/SaveButton.swift; sourceTree = SOURCE_ROOT; };
 		59BBF73B2F4E9683007D5387 /* CommentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CommentButton.swift; path = Calendar/CommentButton.swift; sourceTree = SOURCE_ROOT; };
 		59BBF73D2F4E96DA007D5387 /* PostComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostComment.swift; path = Calendar/PostComment.swift; sourceTree = SOURCE_ROOT; };
 		59BBF73F2F4E9700007D5387 /* CommentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CommentService.swift; path = Calendar/CommentService.swift; sourceTree = SOURCE_ROOT; };
 		59BBF7412F4E972A007D5387 /* CommentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CommentsView.swift; path = Calendar/CommentsView.swift; sourceTree = SOURCE_ROOT; };
-		59BBF7432F4E978D007D5387 /* VideoPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VideoPlayerView.swift; path = Calendar/VideoPlayerView.swift; sourceTree = SOURCE_ROOT; };
 		59BBF7452F4E97B7007D5387 /* PostCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostCellView.swift; path = Calendar/PostCellView.swift; sourceTree = SOURCE_ROOT; };
 		59BBF7472F4E9A1D007D5387 /* FeedPlaybackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FeedPlaybackManager.swift; path = Calendar/FeedPlaybackManager.swift; sourceTree = SOURCE_ROOT; };
-		59BBF7492F4E9E2F007D5387 /* LikeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LikeService.swift; path = Calendar/LikeService.swift; sourceTree = SOURCE_ROOT; };
 		59BBF74B2F4EA155007D5387 /* ViewTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewTracker.swift; path = Calendar/ViewTracker.swift; sourceTree = SOURCE_ROOT; };
 		59BBF74D2F4F044C007D5387 /* Services:VideoUploadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Services:VideoUploadService.swift"; path = "Calendar/Services:VideoUploadService.swift"; sourceTree = SOURCE_ROOT; };
 		59BBF74F2F4F046F007D5387 /* Services:PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Services:PostService.swift"; path = "Calendar/Services:PostService.swift"; sourceTree = SOURCE_ROOT; };
@@ -362,6 +350,21 @@
 			path = LiveCenter;
 			sourceTree = "<group>";
 		};
+		598F4E1D2F538E63004C10A2 /* FollowButton */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = FollowButton;
+			sourceTree = "<group>";
+		};
+		598F4E2A2F53A48D004C10A2 /* LiveBadge */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = LiveBadge;
+			sourceTree = "<group>";
+		};
+		598F4E312F53C8BD004C10A2 /* Sound */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Sound;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -391,6 +394,9 @@
 		590903A62F24211C001E5ADD = {
 			isa = PBXGroup;
 			children = (
+				598F4E312F53C8BD004C10A2 /* Sound */,
+				598F4E2A2F53A48D004C10A2 /* LiveBadge */,
+				598F4E1D2F538E63004C10A2 /* FollowButton */,
 				598F4DFF2F526E74004C10A2 /* LiveCenter */,
 				598F4DFE2F526E42004C10A2 /* ChopManager */,
 				598F4DFD2F526E11004C10A2 /* Monetization */,
@@ -614,22 +620,16 @@
 				59BBF71B2F4E7FA4007D5387 /* StatCard.swift */,
 				59BBF71D2F4E8049007D5387 /* CreatorFeedView.swift */,
 				59BBF7292F4E91B4007D5387 /* PostViewService.swift */,
-				59BBF72B2F4E927E007D5387 /* PostLikeService.swift */,
-				59BBF72D2F4E92DA007D5387 /* PostViewTracker.swift */,
 				59BBF72F2F4E9335007D5387 /* Post.swift */,
 				59BBF7312F4E939E007D5387 /* UploadContentView.swift */,
 				59BBF7332F4E9579007D5387 /* ExpertFeedView.swift */,
 				59BBF7352F4E95C4007D5387 /* PostCardView.swift */,
-				59BBF7372F4E962A007D5387 /* LikeButton.swift */,
-				59BBF7392F4E9651007D5387 /* SaveButton.swift */,
 				59BBF73B2F4E9683007D5387 /* CommentButton.swift */,
 				59BBF73D2F4E96DA007D5387 /* PostComment.swift */,
 				59BBF73F2F4E9700007D5387 /* CommentService.swift */,
 				59BBF7412F4E972A007D5387 /* CommentsView.swift */,
-				59BBF7432F4E978D007D5387 /* VideoPlayerView.swift */,
 				59BBF7452F4E97B7007D5387 /* PostCellView.swift */,
 				59BBF7472F4E9A1D007D5387 /* FeedPlaybackManager.swift */,
-				59BBF7492F4E9E2F007D5387 /* LikeService.swift */,
 				59BBF74B2F4EA155007D5387 /* ViewTracker.swift */,
 				59BBF74D2F4F044C007D5387 /* Services:VideoUploadService.swift */,
 				59BBF74F2F4F046F007D5387 /* Services:PostService.swift */,
@@ -660,6 +660,9 @@
 				598F4DFD2F526E11004C10A2 /* Monetization */,
 				598F4DFE2F526E42004C10A2 /* ChopManager */,
 				598F4DFF2F526E74004C10A2 /* LiveCenter */,
+				598F4E1D2F538E63004C10A2 /* FollowButton */,
+				598F4E2A2F53A48D004C10A2 /* LiveBadge */,
+				598F4E312F53C8BD004C10A2 /* Sound */,
 			);
 			name = MonApp;
 			packageProductDependencies = (
@@ -749,7 +752,6 @@
 				59F61AA02F4079B9003999DD /* ClientDetailView.swift in Sources */,
 				59EC25592F3291A3003E976C /* AvailabilitySlot.swift in Sources */,
 				59BBF7362F4E95C4007D5387 /* PostCardView.swift in Sources */,
-				59BBF72C2F4E927E007D5387 /* PostLikeService.swift in Sources */,
 				59EC255A2F3291A3003E976C /* BarberDetailView.swift .swift in Sources */,
 				59BBF7462F4E97B8007D5387 /* PostCellView.swift in Sources */,
 				59ED2C282F46497B00AD68E8 /* ChangePasswordView.swift in Sources */,
@@ -768,7 +770,6 @@
 				59EC25612F3291A3003E976C /* BarberRegistrationView.swift in Sources */,
 				59EC25652F3291A3003E976C /* BarberViewModel.swift .swift in Sources */,
 				59B131D02F48E11A0092C62B /* InvoicesView.swift in Sources */,
-				59BBF7442F4E978D007D5387 /* VideoPlayerView.swift in Sources */,
 				59EC25672F3291A3003E976C /* BarberProfileView.swift in Sources */,
 				59BBF74C2F4EA155007D5387 /* ViewTracker.swift in Sources */,
 				59F61AA42F4079EC003999DD /* Client.swift in Sources */,
@@ -802,12 +803,10 @@
 				59ED2C322F467BF400AD68E8 /* ChooseRoleView.swift in Sources */,
 				59F61AB42F410400003999DD /* ChatListView.swift in Sources */,
 				59EC25702F3291A3003E976C /* Booking.swift in Sources */,
-				59BBF72E2F4E92DB007D5387 /* PostViewTracker.swift in Sources */,
 				59BBF7422F4E972A007D5387 /* CommentsView.swift in Sources */,
 				59B569112F4A57C9005345C3 /* AutoReminderView.swift in Sources */,
 				59EC25CF2F32A1F4003E976C /* SplashView.swift in Sources */,
 				59BBF7482F4E9A1D007D5387 /* FeedPlaybackManager.swift in Sources */,
-				59BBF73A2F4E9652007D5387 /* SaveButton.swift in Sources */,
 				59ED2C222F46426000AD68E8 /* LoginHistoryView.swift in Sources */,
 				59BBF70F2F4DCD38007D5387 /* NoShowProtectionView.swift in Sources */,
 				59BBF7402F4E9700007D5387 /* CommentService.swift in Sources */,
@@ -867,11 +866,9 @@
 				59F61AB22F4103D4003999DD /* ChatView.swift in Sources */,
 				59A223FB2F4BB2B900D89777 /* QRScannerView.swift in Sources */,
 				59EC25742F3291A3003E976C /* BarberAvailabilityView.swift in Sources */,
-				59BBF7382F4E962A007D5387 /* LikeButton.swift in Sources */,
 				59ED2C1C2F463F7200AD68E8 /* ClientsCSVExporter.swift in Sources */,
 				5994BA2F2F476ECC009CA70D /* ConnectedDevicesView.swift in Sources */,
 				59ED2C202F46421B00AD68E8 /* SecurityAccessView.swift in Sources */,
-				59BBF74A2F4E9E2F007D5387 /* LikeService.swift in Sources */,
 				59B131D62F4909F30092C62B /* PayoutService.swift in Sources */,
 				59EC25752F3291A3003E976C /* BookingService.swift in Sources */,
 				59A223E92F4B19D500D89777 /* ReminderScheduler.swift in Sources */,

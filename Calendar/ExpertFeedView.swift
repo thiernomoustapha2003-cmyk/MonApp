@@ -7,28 +7,57 @@ struct ExpertFeedView: View {
     @State private var posts: [Post] = []
     @State private var loading = true
     @State private var currentPostId: String?
-
+    @State private var showUpload = false
+    
+    
     var body: some View {
         ZStack {
             Color.black.ignoresSafeArea()
-
+            
             if loading {
                 ProgressView()
                     .tint(.white)
             } else {
-                TabView(selection: $currentPostId) {
-                    ForEach(posts) { post in
-                        PostCardView(post: post)
-                            .tag(post.id)
-                            .onAppear {
-                                if let id = post.id { trackView(postId: id) }
+                
+                GeometryReader { geo in
+                    
+                    ScrollView(.vertical, showsIndicators: false) {
+                        
+                        LazyVStack(spacing: 0) {
+                            
+                            ForEach(posts) { post in
+                                
+                                PostCardView(post: post)
+                                    .frame(width: geo.size.width,
+                                           height: geo.size.height)
+                                    .background(Color.black)
+                                    .ignoresSafeArea()
+                                    .id(post.id)
+                                    .onAppear {
+                                        if let id = post.id {
+                                            currentPostId = id
+                                            trackView(postId: id)
+                                            FeedPlaybackManager.shared.setCurrent(postId: id)
+                                        }
+                                    }
                             }
+                        }
                     }
+                    .scrollTargetBehavior(.paging)
+                    .frame(width: geo.size.width,
+                           height: geo.size.height)
                 }
-                .tabViewStyle(.page(indexDisplayMode: .never))
             }
         }
+        .ignoresSafeArea()
         .onAppear { fetchPosts() }
+        
+        .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("OpenUpload"))) { _ in
+            showUpload = true
+        }
+        .sheet(isPresented: $showUpload) {
+            UploadContentView()
+        }
     }
 
     // MARK: FETCH POSTS
@@ -44,7 +73,7 @@ struct ExpertFeedView: View {
                     return
                 }
 
-                print("📦 POSTS COUNT:", documents.count) // 👈 ICI
+                print("📦 POSTS COUNT:", documents.count)
 
                 self.posts = documents.compactMap { doc in
                     do {
@@ -54,6 +83,7 @@ struct ExpertFeedView: View {
                         return nil
                     }
                 }
+
                 print("POSTS ARRAY:", self.posts.count)
                 self.loading = false
             }

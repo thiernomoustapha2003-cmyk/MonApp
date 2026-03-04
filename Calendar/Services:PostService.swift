@@ -7,14 +7,17 @@ final class PostService {
     static let shared = PostService()
     private let db = Firestore.firestore()
 
-    func createPost(videoURL: String, caption: String) {
+    // MARK: - CREATE POST
+
+    func createPost(videoURL: String, caption: String, soundId: String? = nil) {
 
         guard let user = Auth.auth().currentUser else { return }
 
         let post = Post(
             creatorId: user.uid,
-            creatorName: "Creator",
-            creatorAvatar: "",
+            creatorName: user.displayName ?? "Creator",
+            creatorAvatar: user.photoURL?.absoluteString ?? "",
+            soundId: soundId,   // 🔥 AJOUT IMPORTANT
             mediaURL: videoURL,
             thumbnailURL: nil,
             caption: caption,
@@ -23,15 +26,28 @@ final class PostService {
             commentsCount: 0,
             viewsCount: 0,
             savesCount: 0,
+            sharesCount: 0,
             earnings: 0,
             isMonetized: false,
-            createdAt: Date()
+            createdAt: Date(),
+            totalViews: 0,
+            countryStats: [:],
+           
         )
 
         do {
-            _ = try db.collection("posts").addDocument(from: post)
+            let docRef = try db.collection("posts").addDocument(from: post)
+
+            // ============================
+            // 🔥 SI UN SON EST UTILISÉ
+            // ============================
+
+            if let soundId = soundId {
+                SoundService.shared.incrementUsage(soundId: soundId)
+            }
+
         } catch {
-            print("POST ERROR", error)
+            print("POST ERROR:", error)
         }
     }
 }

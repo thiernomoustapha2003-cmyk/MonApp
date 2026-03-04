@@ -9,7 +9,10 @@ final class ViewTracker {
 
     private init() {}
 
-    func track(postId: String, watchDuration: Int, completed: Bool) {
+    func track(postId: String,
+               soundId: String?,
+               watchDuration: Int,
+               completed: Bool) {
 
         guard let uid = Auth.auth().currentUser?.uid else { return }
 
@@ -23,6 +26,7 @@ final class ViewTracker {
             let gender = data["gender"] as? String ?? "Unknown"
             let birthYear = data["birthYear"] as? Int ?? 2000
 
+            // 1️⃣ Save detailed view
             self.db.collection("postViews").addDocument(data: [
                 "postId": postId,
                 "viewerId": uid,
@@ -33,6 +37,17 @@ final class ViewTracker {
                 "completed": completed,
                 "createdAt": Timestamp()
             ])
+
+            // 2️⃣ Increment post view counter
+            let postRef = self.db.collection("posts").document(postId)
+            postRef.updateData([
+                "viewsCount": FieldValue.increment(Int64(1))
+            ])
+
+            // 3️⃣ If post has sound → increment sound stats
+            if let soundId = soundId {
+                SoundService.shared.addViews(soundId: soundId, views: 1)
+            }
         }
     }
 }

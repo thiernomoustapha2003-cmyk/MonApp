@@ -10,7 +10,8 @@ import UniformTypeIdentifiers
 struct UploadContentView: View {
 
     @Environment(\.dismiss) private var dismiss
-
+    
+    @ObservedObject private var soundManager = FeedSoundManager.shared
     @State private var selectedItem: PhotosPickerItem?
     @State private var mediaData: Data?
     @State private var videoURL: URL?
@@ -75,10 +76,27 @@ struct UploadContentView: View {
                         .background(Color(.systemBackground))
                         .cornerRadius(10)
                 }
-                .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.gray.opacity(0.2)))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.gray.opacity(0.2))
+                )
+
+                // =====================
+                // 🎵 SON SÉLECTIONNÉ
+                // =====================
+                if let sound = soundManager.selectedSound {
+                    HStack {
+                        Image(systemName: "music.note")
+                        Text(sound.title)
+                            .fontWeight(.semibold)
+                        Spacer()
+                    }
+                    .padding()
+                    .background(Color.black.opacity(0.05))
+                    .cornerRadius(10)
+                }
 
                 Spacer()
-
                 // UPLOAD BUTTON
                 Button {
                     Task { await uploadPost() }
@@ -203,7 +221,8 @@ struct UploadContentView: View {
             let avatar = userDoc.data()?["avatar"] as? String ?? ""
 
             // save post
-            try await db.collection("posts").document(postId).setData([
+            let selectedSoundId = FeedSoundManager.shared.selectedSound?.id
+            var postData: [String: Any] = [
                 "creatorId": uid,
                 "creatorName": creatorName,
                 "creatorAvatar": avatar,
@@ -214,8 +233,22 @@ struct UploadContentView: View {
                 "commentsCount": 0,
                 "viewsCount": 0,
                 "savesCount": 0,
+                "sharesCount": 0,
                 "createdAt": Timestamp()
-            ])
+            ]
+
+            // 🔥 Ajouter soundId UNIQUEMENT si il existe
+            if let selectedSoundId = selectedSoundId {
+                postData["soundId"] = selectedSoundId
+            }
+
+            try await db.collection("posts").document(postId).setData(postData)
+            // 🔥 Incrément usage du son si utilisé
+            if let soundId = selectedSoundId {
+                SoundService.shared.incrementUsage(soundId: soundId)
+            }
+
+            soundManager.selectedSound = nil   // 🔥 reset son
 
             await MainActor.run { progress = 1 }
             try? await Task.sleep(nanoseconds: 500_000_000)
