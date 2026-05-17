@@ -23,7 +23,7 @@ struct PostCellView: View {
             VStack(alignment: .trailing, spacing: 22) {
 
                 Button {
-                    LikeService.shared.toggleLike(postId: post.id!) { isLiked in
+                    LikeService.shared.toggleLike(post: post) { isLiked in
                         liked = isLiked
                     }
                 } label: {

@@ -34,7 +34,7 @@ struct PostCardView: View {
             VStack(spacing: 26) {
                 Spacer()
                 
-                LikeButton(postId: post.id ?? "")
+                LikeButton(post: post)
                 CommentButton(postId: post.id ?? "")
                 SaveButton(postId: post.id ?? "")
             }

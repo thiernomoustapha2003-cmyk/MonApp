@@ -12,9 +12,71 @@
 		590B1C8F2F432D8B0023B554 /* ClientExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590B1C8E2F432D8B0023B554 /* ClientExporter.swift */; };
 		590B1C912F450ED30023B554 /* BookingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590B1C902F450ED30023B554 /* BookingView.swift */; };
 		59227FD22F3A6DEA00065C35 /* PaymentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59227FD12F3A6DEA00065C35 /* PaymentService.swift */; };
+		5925C5612FA558F000A05B3B /* LiveEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925C55A2FA558F000A05B3B /* LiveEventsView.swift */; };
+		5925C5622FA558F000A05B3B /* LiveReplaysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925C55C2FA558F000A05B3B /* LiveReplaysView.swift */; };
+		5925C5632FA558F000A05B3B /* LiveTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925C55F2FA558F000A05B3B /* LiveTab.swift */; };
+		5925C5642FA558F000A05B3B /* LiveChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925C5582FA558F000A05B3B /* LiveChatView.swift */; };
+		5925C5652FA558F000A05B3B /* CameraPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925C5532FA558F000A05B3B /* CameraPreview.swift */; };
+		5925C5662FA558F000A05B3B /* FilterOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925C5542FA558F000A05B3B /* FilterOverlayView.swift */; };
+		5925C5672FA558F000A05B3B /* LiveChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925C5572FA558F000A05B3B /* LiveChatService.swift */; };
+		5925C5682FA558F000A05B3B /* LiveAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925C5552FA558F000A05B3B /* LiveAction.swift */; };
+		5925C56A2FA558F000A05B3B /* LiveEffect.swift .swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925C5592FA558F000A05B3B /* LiveEffect.swift .swift */; };
+		5925C56B2FA558F000A05B3B /* LiveStreamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925C55E2FA558F000A05B3B /* LiveStreamView.swift */; };
+		5925C56C2FA558F000A05B3B /* LiveReplayDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925C55B2FA558F000A05B3B /* LiveReplayDetailView.swift */; };
+		5925C56D2FA558F000A05B3B /* LiveAnalyticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925C5562FA558F000A05B3B /* LiveAnalyticsViewModel.swift */; };
+		5925C56F2FA55DA400A05B3B /* CreateLiveEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925C56E2FA55DA400A05B3B /* CreateLiveEventView.swift */; };
+		5925C5E52FA56D0A00A05B3B /* TrafficRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925C5E02FA56D0A00A05B3B /* TrafficRow.swift */; };
+		5925C5E62FA56D0A00A05B3B /* SpectatorsAnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925C5DF2FA56D0A00A05B3B /* SpectatorsAnalyticsView.swift */; };
+		5925C5E72FA56D0A00A05B3B /* TrafficSourceBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925C5E22FA56D0A00A05B3B /* TrafficSourceBar.swift */; };
+		5925C5E82FA56D0A00A05B3B /* VideoAnalyticsDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925C5E32FA56D0A00A05B3B /* VideoAnalyticsDetailView.swift */; };
+		5925C5E92FA56D0A00A05B3B /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925C5DA2FA56D0A00A05B3B /* Sound.swift */; };
+		5925C5EA2FA56D0A00A05B3B /* TrafficSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925C5E12FA56D0A00A05B3B /* TrafficSource.swift */; };
+		5925C5EB2FA56D0A00A05B3B /* SoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925C5DC2FA56D0A00A05B3B /* SoundView.swift */; };
+		5925C5EC2FA56D0A00A05B3B /* SoundService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925C5DB2FA56D0A00A05B3B /* SoundService.swift */; };
+		5925C5ED2FA56D0A00A05B3B /* SpectatorMetricCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925C5DE2FA56D0A00A05B3B /* SpectatorMetricCard.swift */; };
+		5925C5EE2FA56D0A00A05B3B /* SpectatorDonutChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925C5DD2FA56D0A00A05B3B /* SpectatorDonutChart.swift */; };
+		5925C5F52FA56D2B00A05B3B /* LiveBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925C5F22FA56D2B00A05B3B /* LiveBadgeView.swift */; };
+		5925C5F72FA56D2B00A05B3B /* LiveAnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925C5F12FA56D2B00A05B3B /* LiveAnalyticsView.swift */; };
+		5925C60F2FA56D3E00A05B3B /* FeedSoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925C6012FA56D3E00A05B3B /* FeedSoundManager.swift */; };
+		5925C6122FA56D3E00A05B3B /* FollowersPeriodSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925C60B2FA56D3E00A05B3B /* FollowersPeriodSelector.swift */; };
+		5925C6132FA56D3E00A05B3B /* FollowersGrowthChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925C6072FA56D3E00A05B3B /* FollowersGrowthChart.swift */; };
+		5925C6142FA56D3E00A05B3B /* FollowersAnalyticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925C6052FA56D3E00A05B3B /* FollowersAnalyticsViewModel.swift */; };
+		5925C6152FA56D3E00A05B3B /* CityListView.swift .swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925C5F92FA56D3E00A05B3B /* CityListView.swift .swift */; };
+		5925C6162FA56D3E00A05B3B /* FollowService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925C60C2FA56D3E00A05B3B /* FollowService.swift */; };
+		5925C6172FA56D3E00A05B3B /* FollowersModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925C60A2FA56D3E00A05B3B /* FollowersModels.swift */; };
+		5925C6182FA56D3E00A05B3B /* FeedRankingEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925C6002FA56D3E00A05B3B /* FeedRankingEngine.swift */; };
+		5925C6192FA56D3E00A05B3B /* CityFollowersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925C5F82FA56D3E00A05B3B /* CityFollowersView.swift */; };
+		5925C61A2FA56D3E00A05B3B /* FollowersActivityHours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925C6032FA56D3E00A05B3B /* FollowersActivityHours.swift */; };
+		5925C61C2FA56D3E00A05B3B /* FollowersAudienceSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925C6062FA56D3E00A05B3B /* FollowersAudienceSection.swift */; };
+		5925C61D2FA56D3E00A05B3B /* FollowersGrowthData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925C6082FA56D3E00A05B3B /* FollowersGrowthData.swift */; };
+		5925C61E2FA56D3E00A05B3B /* FollowersMetricsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925C6092FA56D3E00A05B3B /* FollowersMetricsSection.swift */; };
+		5925C61F2FA56D3E00A05B3B /* FollowersAnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925C6042FA56D3E00A05B3B /* FollowersAnalyticsView.swift */; };
+		5925C6202FA56D3E00A05B3B /* ForYouFeedEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925C60D2FA56D3E00A05B3B /* ForYouFeedEngine.swift */; };
+		5925C6242FA56D3E00A05B3B /* FollowersActivityHeatmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925C6022FA56D3E00A05B3B /* FollowersActivityHeatmap.swift */; };
+		5925C6262FA56D7B00A05B3B /* ViewTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925C6252FA56D7B00A05B3B /* ViewTracker.swift */; };
+		5925C62C2FA5751F00A05B3B /* Services:VideoUploadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925C62B2FA5751F00A05B3B /* Services:VideoUploadService.swift */; };
+		5925C62E2FA5753D00A05B3B /* VideoViewPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925C62D2FA5753D00A05B3B /* VideoViewPoint.swift */; };
 		592FFEFE2F2E50C500A52F82 /* AvailabilityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592FFEFD2F2E50C500A52F82 /* AvailabilityService.swift */; };
 		594EA6832F427E4D004FBF11 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 594EA6822F427E4D004FBF11 /* FirebaseMessaging */; };
 		594EA6852F429174004FBF11 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594EA6842F429174004FBF11 /* ChatMessage.swift */; };
+		597156842FA6526900F575FF /* CommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925C5FC2FA56D3E00A05B3B /* CommentsView.swift */; };
+		597156852FA6528B00F575FF /* ExpertStudioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925C5FE2FA56D3E00A05B3B /* ExpertStudioView.swift */; };
+		597156862FA6533A00F575FF /* CommentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925C5FB2FA56D3E00A05B3B /* CommentService.swift */; };
+		597156892FA654A900F575FF /* AgeChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597156882FA654A900F575FF /* AgeChartView.swift */; };
+		5971568B2FA654E900F575FF /* InfoRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5971568A2FA654E900F575FF /* InfoRow.swift */; };
+		597156922FA656C800F575FF /* LikeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925C5EF2FA56D2B00A05B3B /* LikeButton.swift */; };
+		597156932FA772B600F575FF /* LikeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925C5F02FA56D2B00A05B3B /* LikeService.swift */; };
+		597156942FA77E8800F575FF /* ExpertFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925C5FD2FA56D3E00A05B3B /* ExpertFeedView.swift */; };
+		597156972FAB7C2300F575FF /* LiveChatInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597156962FAB7C2300F575FF /* LiveChatInputView.swift */; };
+		597156992FABA94E00F575FF /* LiveHeartsOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597156982FABA94E00F575FF /* LiveHeartsOverlay.swift */; };
+		5971569B2FB0E4EA00F575FF /* GiftModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5971569A2FB0E4EA00F575FF /* GiftModels.swift */; };
+		5971569D2FB0EAEA00F575FF /* GiftCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5971569C2FB0EAEA00F575FF /* GiftCatalog.swift */; };
+		5971569F2FB0EB3F00F575FF /* GiftSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5971569E2FB0EB3F00F575FF /* GiftSelectionView.swift */; };
+		597156A12FB0FFBA00F575FF /* StripeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597156A02FB0FFBA00F575FF /* StripeService.swift */; };
+		597156A32FB1022800F575FF /* CoinModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597156A22FB1022800F575FF /* CoinModel.swift */; };
+		597156A52FB1024200F575FF /* CoinPack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597156A42FB1024200F575FF /* CoinPack.swift */; };
+		597156A72FB1027000F575FF /* WalletService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597156A62FB1027000F575FF /* WalletService.swift */; };
+		597156A92FB102BB00F575FF /* CoinShopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597156A82FB102BB00F575FF /* CoinShopView.swift */; };
 		5994017D2F2CD935005ED7A4 /* StripePayments in Frameworks */ = {isa = PBXBuildFile; productRef = 5994017C2F2CD935005ED7A4 /* StripePayments */; };
 		5994017F2F2CD944005ED7A4 /* StripeApplePay in Frameworks */ = {isa = PBXBuildFile; productRef = 5994017E2F2CD944005ED7A4 /* StripeApplePay */; };
 		599401812F2CD96E005ED7A4 /* StripePaymentsUI in Frameworks */ = {isa = PBXBuildFile; productRef = 599401802F2CD96E005ED7A4 /* StripePaymentsUI */; };
@@ -60,6 +122,11 @@
 		59B131D22F4903860092C62B /* BarberPayoutsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B131D12F4903860092C62B /* BarberPayoutsView.swift */; };
 		59B131D42F4909BB0092C62B /* PayoutModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B131D32F4909BB0092C62B /* PayoutModels.swift */; };
 		59B131D62F4909F30092C62B /* PayoutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B131D52F4909F30092C62B /* PayoutService.swift */; };
+		59B512EB2FB90FA000829D52 /* LiveDiscoveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B512EA2FB90FA000829D52 /* LiveDiscoveryView.swift */; };
+		59B512ED2FB914B800829D52 /* LiveViewerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B512EC2FB914B800829D52 /* LiveViewerView.swift */; };
+		59B512EF2FB9165E00829D52 /* GiftAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B512EE2FB9165E00829D52 /* GiftAnimationView.swift */; };
+		59B512F12FB916BC00829D52 /* LiveAdOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B512F02FB916BC00829D52 /* LiveAdOverlay.swift */; };
+		59B512F32FB92EF800829D52 /* LiveJoinRequestsSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B512F22FB92EF800829D52 /* LiveJoinRequestsSheet.swift */; };
 		59B568FF2F49E402005345C3 /* NextPayouteRsponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B568FE2F49E402005345C3 /* NextPayouteRsponse.swift */; };
 		59B569012F4A465F005345C3 /* CommissionSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B569002F4A465F005345C3 /* CommissionSettingsView.swift */; };
 		59B569032F4A46DF005345C3 /* CommissionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B569022F4A46DF005345C3 /* CommissionViewModel.swift */; };
@@ -77,7 +144,6 @@
 		59BBF70F2F4DCD38007D5387 /* NoShowProtectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BBF70E2F4DCD38007D5387 /* NoShowProtectionView.swift */; };
 		59BBF7112F4DCD57007D5387 /* SmartRebookingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BBF7102F4DCD57007D5387 /* SmartRebookingView.swift */; };
 		59BBF7132F4E6DE6007D5387 /* PaymentFlowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BBF7122F4E6DE6007D5387 /* PaymentFlowManager.swift */; };
-		59BBF7182F4E7F4B007D5387 /* ExpertStudioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BBF7172F4E7F4B007D5387 /* ExpertStudioView.swift */; };
 		59BBF71A2F4E7F7A007D5387 /* StudioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BBF7192F4E7F7A007D5387 /* StudioButton.swift */; };
 		59BBF71C2F4E7FA4007D5387 /* StatCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BBF71B2F4E7FA4007D5387 /* StatCard.swift */; };
 		59BBF71E2F4E8049007D5387 /* CreatorFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BBF71D2F4E8049007D5387 /* CreatorFeedView.swift */; };
@@ -86,23 +152,34 @@
 		59BBF72E2F4E92DB007D5387 /* PostViewTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BBF72D2F4E92DA007D5387 /* PostViewTracker.swift */; };
 		59BBF7302F4E9335007D5387 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BBF72F2F4E9335007D5387 /* Post.swift */; };
 		59BBF7322F4E939E007D5387 /* UploadContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BBF7312F4E939E007D5387 /* UploadContentView.swift */; };
-		59BBF7342F4E9579007D5387 /* ExpertFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BBF7332F4E9579007D5387 /* ExpertFeedView.swift */; };
 		59BBF7362F4E95C4007D5387 /* PostCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BBF7352F4E95C4007D5387 /* PostCardView.swift */; };
-		59BBF7382F4E962A007D5387 /* LikeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BBF7372F4E962A007D5387 /* LikeButton.swift */; };
 		59BBF73A2F4E9652007D5387 /* SaveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BBF7392F4E9651007D5387 /* SaveButton.swift */; };
 		59BBF73C2F4E9683007D5387 /* CommentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BBF73B2F4E9683007D5387 /* CommentButton.swift */; };
-		59BBF73E2F4E96DA007D5387 /* PostComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BBF73D2F4E96DA007D5387 /* PostComment.swift */; };
-		59BBF7402F4E9700007D5387 /* CommentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BBF73F2F4E9700007D5387 /* CommentService.swift */; };
-		59BBF7422F4E972A007D5387 /* CommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BBF7412F4E972A007D5387 /* CommentsView.swift */; };
 		59BBF7442F4E978D007D5387 /* VideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BBF7432F4E978D007D5387 /* VideoPlayerView.swift */; };
 		59BBF7462F4E97B8007D5387 /* PostCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BBF7452F4E97B7007D5387 /* PostCellView.swift */; };
 		59BBF7482F4E9A1D007D5387 /* FeedPlaybackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BBF7472F4E9A1D007D5387 /* FeedPlaybackManager.swift */; };
-		59BBF74A2F4E9E2F007D5387 /* LikeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BBF7492F4E9E2F007D5387 /* LikeService.swift */; };
-		59BBF74C2F4EA155007D5387 /* ViewTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BBF74B2F4EA155007D5387 /* ViewTracker.swift */; };
-		59BBF74E2F4F044C007D5387 /* Services:VideoUploadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BBF74D2F4F044C007D5387 /* Services:VideoUploadService.swift */; };
 		59BBF7502F4F046F007D5387 /* Services:PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BBF74F2F4F046F007D5387 /* Services:PostService.swift */; };
 		59BBF7542F4F3E19007D5387 /* MovieTransferable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BBF7532F4F3E19007D5387 /* MovieTransferable.swift */; };
 		59BBF7562F4F4921007D5387 /* UploadButtonUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BBF7552F4F4921007D5387 /* UploadButtonUI.swift */; };
+		59BF45B82FB9DF4C0008498F /* PaymentMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF45B72FB9DF4C0008498F /* PaymentMethod.swift */; };
+		59BF45BA2FB9DFC80008498F /* PaymentMethodCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF45B92FB9DFC80008498F /* PaymentMethodCard.swift */; };
+		59BF45BC2FB9E03C0008498F /* MobileMoneyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF45BB2FB9E03C0008498F /* MobileMoneyService.swift */; };
+		59BF45BE2FB9E09A0008498F /* CurrencyConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF45BD2FB9E09A0008498F /* CurrencyConverter.swift */; };
+		59BF45C02FB9E1700008498F /* AfricanPaymentSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF45BF2FB9E1700008498F /* AfricanPaymentSheet.swift */; };
+		59BF45C22FB9E2AB0008498F /* PremiumCoinShopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF45C12FB9E2AB0008498F /* PremiumCoinShopView.swift */; };
+		59BF45C42FB9F0420008498F /* LiveCoHostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF45C32FB9F0420008498F /* LiveCoHostModel.swift */; };
+		59BF45C62FB9F1300008498F /* LiveCoHostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF45C52FB9F1300008498F /* LiveCoHostService.swift */; };
+		59BF45C82FB9F1B70008498F /* LiveCoHostGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF45C72FB9F1B70008498F /* LiveCoHostGridView.swift */; };
+		59BF45CA2FB9F21C0008498F /* LiveCoHostTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF45C92FB9F21C0008498F /* LiveCoHostTileView.swift */; };
+		59BF45CC2FB9F67C0008498F /* LiveSpeakingTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF45CB2FB9F67C0008498F /* LiveSpeakingTimerView.swift */; };
+		59BF45CE2FB9F7310008498F /* LiveHostControlPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF45CD2FB9F7310008498F /* LiveHostControlPanel.swift */; };
+		59BF45D02FB9F83A0008498F /* LiveGuestControlPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF45CF2FB9F83A0008498F /* LiveGuestControlPanel.swift */; };
+		59BF45D22FB9F8C70008498F /* LiveModerationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF45D12FB9F8C70008498F /* LiveModerationService.swift */; };
+		59BF45D42FB9F9830008498F /* LiveGuestRequestStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF45D32FB9F9830008498F /* LiveGuestRequestStatusView.swift */; };
+		59BF45D62FBA19BD0008498F /* LiveAgoraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF45D52FBA19BD0008498F /* LiveAgoraManager.swift */; };
+		59BF45D92FBA1C8A0008498F /* RtcBasic in Frameworks */ = {isa = PBXBuildFile; productRef = 59BF45D82FBA1C8A0008498F /* RtcBasic */; };
+		59BF45DB2FBA22260008498F /* AgoraVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF45DA2FBA22260008498F /* AgoraVideoView.swift */; };
+		59BF45DD2FBA22CB0008498F /* LiveVideoTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF45DC2FBA22CB0008498F /* LiveVideoTileView.swift */; };
 		59C639832F31656F00916B73 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 59C639822F31656F00916B73 /* GoogleSignIn */; };
 		59C639852F31656F00916B73 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 59C639842F31656F00916B73 /* GoogleSignInSwift */; };
 		59D4B2A42F33591200D9D2FB /* StripePayoutConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D4B2A32F33591200D9D2FB /* StripePayoutConfigView.swift */; };
@@ -178,9 +255,77 @@
 		590B1C8E2F432D8B0023B554 /* ClientExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientExporter.swift; sourceTree = "<group>"; };
 		590B1C902F450ED30023B554 /* BookingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingView.swift; sourceTree = "<group>"; };
 		59227FD12F3A6DEA00065C35 /* PaymentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentService.swift; sourceTree = "<group>"; };
+		5925C5532FA558F000A05B3B /* CameraPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreview.swift; sourceTree = "<group>"; };
+		5925C5542FA558F000A05B3B /* FilterOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterOverlayView.swift; sourceTree = "<group>"; };
+		5925C5552FA558F000A05B3B /* LiveAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveAction.swift; sourceTree = "<group>"; };
+		5925C5562FA558F000A05B3B /* LiveAnalyticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveAnalyticsViewModel.swift; sourceTree = "<group>"; };
+		5925C5572FA558F000A05B3B /* LiveChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveChatService.swift; sourceTree = "<group>"; };
+		5925C5582FA558F000A05B3B /* LiveChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveChatView.swift; sourceTree = "<group>"; };
+		5925C5592FA558F000A05B3B /* LiveEffect.swift .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LiveEffect.swift .swift"; sourceTree = "<group>"; };
+		5925C55A2FA558F000A05B3B /* LiveEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveEventsView.swift; sourceTree = "<group>"; };
+		5925C55B2FA558F000A05B3B /* LiveReplayDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveReplayDetailView.swift; sourceTree = "<group>"; };
+		5925C55C2FA558F000A05B3B /* LiveReplaysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveReplaysView.swift; sourceTree = "<group>"; };
+		5925C55E2FA558F000A05B3B /* LiveStreamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveStreamView.swift; sourceTree = "<group>"; };
+		5925C55F2FA558F000A05B3B /* LiveTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveTab.swift; sourceTree = "<group>"; };
+		5925C56E2FA55DA400A05B3B /* CreateLiveEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateLiveEventView.swift; sourceTree = "<group>"; };
+		5925C5D32FA569B300A05B3B /* ChatListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListView.swift; sourceTree = "<group>"; };
+		5925C5D42FA569B300A05B3B /* ChatUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUserService.swift; sourceTree = "<group>"; };
+		5925C5D52FA569B300A05B3B /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		5925C5DA2FA56D0A00A05B3B /* Sound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
+		5925C5DB2FA56D0A00A05B3B /* SoundService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundService.swift; sourceTree = "<group>"; };
+		5925C5DC2FA56D0A00A05B3B /* SoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundView.swift; sourceTree = "<group>"; };
+		5925C5DD2FA56D0A00A05B3B /* SpectatorDonutChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectatorDonutChart.swift; sourceTree = "<group>"; };
+		5925C5DE2FA56D0A00A05B3B /* SpectatorMetricCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectatorMetricCard.swift; sourceTree = "<group>"; };
+		5925C5DF2FA56D0A00A05B3B /* SpectatorsAnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectatorsAnalyticsView.swift; sourceTree = "<group>"; };
+		5925C5E02FA56D0A00A05B3B /* TrafficRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficRow.swift; sourceTree = "<group>"; };
+		5925C5E12FA56D0A00A05B3B /* TrafficSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficSource.swift; sourceTree = "<group>"; };
+		5925C5E22FA56D0A00A05B3B /* TrafficSourceBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficSourceBar.swift; sourceTree = "<group>"; };
+		5925C5E32FA56D0A00A05B3B /* VideoAnalyticsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoAnalyticsDetailView.swift; sourceTree = "<group>"; };
+		5925C5EF2FA56D2B00A05B3B /* LikeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButton.swift; sourceTree = "<group>"; };
+		5925C5F02FA56D2B00A05B3B /* LikeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeService.swift; sourceTree = "<group>"; };
+		5925C5F12FA56D2B00A05B3B /* LiveAnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveAnalyticsView.swift; sourceTree = "<group>"; };
+		5925C5F22FA56D2B00A05B3B /* LiveBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveBadgeView.swift; sourceTree = "<group>"; };
+		5925C5F82FA56D3E00A05B3B /* CityFollowersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityFollowersView.swift; sourceTree = "<group>"; };
+		5925C5F92FA56D3E00A05B3B /* CityListView.swift .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CityListView.swift .swift"; sourceTree = "<group>"; };
+		5925C5FA2FA56D3E00A05B3B /* CommentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentButton.swift; sourceTree = "<group>"; };
+		5925C5FB2FA56D3E00A05B3B /* CommentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentService.swift; sourceTree = "<group>"; };
+		5925C5FC2FA56D3E00A05B3B /* CommentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsView.swift; sourceTree = "<group>"; };
+		5925C5FD2FA56D3E00A05B3B /* ExpertFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertFeedView.swift; sourceTree = "<group>"; };
+		5925C5FE2FA56D3E00A05B3B /* ExpertStudioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertStudioView.swift; sourceTree = "<group>"; };
+		5925C5FF2FA56D3E00A05B3B /* FeedPlaybackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPlaybackManager.swift; sourceTree = "<group>"; };
+		5925C6002FA56D3E00A05B3B /* FeedRankingEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedRankingEngine.swift; sourceTree = "<group>"; };
+		5925C6012FA56D3E00A05B3B /* FeedSoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedSoundManager.swift; sourceTree = "<group>"; };
+		5925C6022FA56D3E00A05B3B /* FollowersActivityHeatmap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersActivityHeatmap.swift; sourceTree = "<group>"; };
+		5925C6032FA56D3E00A05B3B /* FollowersActivityHours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersActivityHours.swift; sourceTree = "<group>"; };
+		5925C6042FA56D3E00A05B3B /* FollowersAnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersAnalyticsView.swift; sourceTree = "<group>"; };
+		5925C6052FA56D3E00A05B3B /* FollowersAnalyticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersAnalyticsViewModel.swift; sourceTree = "<group>"; };
+		5925C6062FA56D3E00A05B3B /* FollowersAudienceSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersAudienceSection.swift; sourceTree = "<group>"; };
+		5925C6072FA56D3E00A05B3B /* FollowersGrowthChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersGrowthChart.swift; sourceTree = "<group>"; };
+		5925C6082FA56D3E00A05B3B /* FollowersGrowthData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersGrowthData.swift; sourceTree = "<group>"; };
+		5925C6092FA56D3E00A05B3B /* FollowersMetricsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersMetricsSection.swift; sourceTree = "<group>"; };
+		5925C60A2FA56D3E00A05B3B /* FollowersModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersModels.swift; sourceTree = "<group>"; };
+		5925C60B2FA56D3E00A05B3B /* FollowersPeriodSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersPeriodSelector.swift; sourceTree = "<group>"; };
+		5925C60C2FA56D3E00A05B3B /* FollowService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowService.swift; sourceTree = "<group>"; };
+		5925C60D2FA56D3E00A05B3B /* ForYouFeedEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForYouFeedEngine.swift; sourceTree = "<group>"; };
+		5925C6252FA56D7B00A05B3B /* ViewTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTracker.swift; sourceTree = "<group>"; };
+		5925C6272FA56E5D00A05B3B /* ViewTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewTracker.swift; path = Sound/ViewTracker.swift; sourceTree = "<group>"; };
+		5925C62B2FA5751F00A05B3B /* Services:VideoUploadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Services:VideoUploadService.swift"; sourceTree = "<group>"; };
+		5925C62D2FA5753D00A05B3B /* VideoViewPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewPoint.swift; sourceTree = "<group>"; };
 		592FFEFD2F2E50C500A52F82 /* AvailabilityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailabilityService.swift; sourceTree = "<group>"; };
 		5944F41E2F41145F00CD9DC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		594EA6842F429174004FBF11 /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
+		597156882FA654A900F575FF /* AgeChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeChartView.swift; sourceTree = "<group>"; };
+		5971568A2FA654E900F575FF /* InfoRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoRow.swift; sourceTree = "<group>"; };
+		597156962FAB7C2300F575FF /* LiveChatInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveChatInputView.swift; sourceTree = "<group>"; };
+		597156982FABA94E00F575FF /* LiveHeartsOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveHeartsOverlay.swift; sourceTree = "<group>"; };
+		5971569A2FB0E4EA00F575FF /* GiftModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftModels.swift; sourceTree = "<group>"; };
+		5971569C2FB0EAEA00F575FF /* GiftCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftCatalog.swift; sourceTree = "<group>"; };
+		5971569E2FB0EB3F00F575FF /* GiftSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftSelectionView.swift; sourceTree = "<group>"; };
+		597156A02FB0FFBA00F575FF /* StripeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeService.swift; sourceTree = "<group>"; };
+		597156A22FB1022800F575FF /* CoinModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinModel.swift; sourceTree = "<group>"; };
+		597156A42FB1024200F575FF /* CoinPack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinPack.swift; sourceTree = "<group>"; };
+		597156A62FB1027000F575FF /* WalletService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletService.swift; sourceTree = "<group>"; };
+		597156A82FB102BB00F575FF /* CoinShopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinShopView.swift; sourceTree = "<group>"; };
 		599401842F2CDDC1005ED7A4 /* StripeConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeConfig.swift; sourceTree = "<group>"; };
 		5994BA242F473CC1009CA70D /* SecurityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityService.swift; sourceTree = "<group>"; };
 		5994BA262F4748B0009CA70D /* ClientBookingDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientBookingDisplay.swift; sourceTree = "<group>"; };
@@ -222,6 +367,11 @@
 		59B131D12F4903860092C62B /* BarberPayoutsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarberPayoutsView.swift; sourceTree = "<group>"; };
 		59B131D32F4909BB0092C62B /* PayoutModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayoutModels.swift; sourceTree = "<group>"; };
 		59B131D52F4909F30092C62B /* PayoutService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayoutService.swift; sourceTree = "<group>"; };
+		59B512EA2FB90FA000829D52 /* LiveDiscoveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveDiscoveryView.swift; sourceTree = "<group>"; };
+		59B512EC2FB914B800829D52 /* LiveViewerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveViewerView.swift; sourceTree = "<group>"; };
+		59B512EE2FB9165E00829D52 /* GiftAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftAnimationView.swift; sourceTree = "<group>"; };
+		59B512F02FB916BC00829D52 /* LiveAdOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveAdOverlay.swift; sourceTree = "<group>"; };
+		59B512F22FB92EF800829D52 /* LiveJoinRequestsSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveJoinRequestsSheet.swift; sourceTree = "<group>"; };
 		59B568FE2F49E402005345C3 /* NextPayouteRsponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextPayouteRsponse.swift; sourceTree = "<group>"; };
 		59B569002F4A465F005345C3 /* CommissionSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommissionSettingsView.swift; sourceTree = "<group>"; };
 		59B569022F4A46DF005345C3 /* CommissionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommissionViewModel.swift; sourceTree = "<group>"; };
@@ -240,7 +390,6 @@
 		59BBF7102F4DCD57007D5387 /* SmartRebookingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartRebookingView.swift; sourceTree = "<group>"; };
 		59BBF7122F4E6DE6007D5387 /* PaymentFlowManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentFlowManager.swift; sourceTree = "<group>"; };
 		59BBF7142F4E7C95007D5387 /* BarberDashboardView.swift .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "BarberDashboardView.swift .swift"; path = "MonApp/ViewModels/Views/BarberDashboardView.swift .swift"; sourceTree = "<group>"; };
-		59BBF7172F4E7F4B007D5387 /* ExpertStudioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExpertStudioView.swift; path = Calendar/ExpertStudioView.swift; sourceTree = SOURCE_ROOT; };
 		59BBF7192F4E7F7A007D5387 /* StudioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StudioButton.swift; path = Calendar/StudioButton.swift; sourceTree = SOURCE_ROOT; };
 		59BBF71B2F4E7FA4007D5387 /* StatCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StatCard.swift; path = Calendar/StatCard.swift; sourceTree = SOURCE_ROOT; };
 		59BBF71D2F4E8049007D5387 /* CreatorFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreatorFeedView.swift; path = Calendar/CreatorFeedView.swift; sourceTree = SOURCE_ROOT; };
@@ -249,7 +398,6 @@
 		59BBF72D2F4E92DA007D5387 /* PostViewTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostViewTracker.swift; path = Calendar/PostViewTracker.swift; sourceTree = SOURCE_ROOT; };
 		59BBF72F2F4E9335007D5387 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Post.swift; path = Calendar/Post.swift; sourceTree = SOURCE_ROOT; };
 		59BBF7312F4E939E007D5387 /* UploadContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UploadContentView.swift; path = Calendar/UploadContentView.swift; sourceTree = SOURCE_ROOT; };
-		59BBF7332F4E9579007D5387 /* ExpertFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExpertFeedView.swift; path = Calendar/ExpertFeedView.swift; sourceTree = SOURCE_ROOT; };
 		59BBF7352F4E95C4007D5387 /* PostCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostCardView.swift; path = Calendar/PostCardView.swift; sourceTree = SOURCE_ROOT; };
 		59BBF7372F4E962A007D5387 /* LikeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LikeButton.swift; path = Calendar/LikeButton.swift; sourceTree = SOURCE_ROOT; };
 		59BBF7392F4E9651007D5387 /* SaveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SaveButton.swift; path = Calendar/SaveButton.swift; sourceTree = SOURCE_ROOT; };
@@ -261,11 +409,28 @@
 		59BBF7452F4E97B7007D5387 /* PostCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostCellView.swift; path = Calendar/PostCellView.swift; sourceTree = SOURCE_ROOT; };
 		59BBF7472F4E9A1D007D5387 /* FeedPlaybackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FeedPlaybackManager.swift; path = Calendar/FeedPlaybackManager.swift; sourceTree = SOURCE_ROOT; };
 		59BBF7492F4E9E2F007D5387 /* LikeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LikeService.swift; path = Calendar/LikeService.swift; sourceTree = SOURCE_ROOT; };
-		59BBF74B2F4EA155007D5387 /* ViewTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewTracker.swift; path = Calendar/ViewTracker.swift; sourceTree = SOURCE_ROOT; };
 		59BBF74D2F4F044C007D5387 /* Services:VideoUploadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Services:VideoUploadService.swift"; path = "Calendar/Services:VideoUploadService.swift"; sourceTree = SOURCE_ROOT; };
 		59BBF74F2F4F046F007D5387 /* Services:PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Services:PostService.swift"; path = "Calendar/Services:PostService.swift"; sourceTree = SOURCE_ROOT; };
 		59BBF7532F4F3E19007D5387 /* MovieTransferable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MovieTransferable.swift; path = Calendar/MovieTransferable.swift; sourceTree = SOURCE_ROOT; };
 		59BBF7552F4F4921007D5387 /* UploadButtonUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UploadButtonUI.swift; path = Calendar/UploadButtonUI.swift; sourceTree = SOURCE_ROOT; };
+		59BF45B72FB9DF4C0008498F /* PaymentMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethod.swift; sourceTree = "<group>"; };
+		59BF45B92FB9DFC80008498F /* PaymentMethodCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodCard.swift; sourceTree = "<group>"; };
+		59BF45BB2FB9E03C0008498F /* MobileMoneyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileMoneyService.swift; sourceTree = "<group>"; };
+		59BF45BD2FB9E09A0008498F /* CurrencyConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverter.swift; sourceTree = "<group>"; };
+		59BF45BF2FB9E1700008498F /* AfricanPaymentSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfricanPaymentSheet.swift; sourceTree = "<group>"; };
+		59BF45C12FB9E2AB0008498F /* PremiumCoinShopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumCoinShopView.swift; sourceTree = "<group>"; };
+		59BF45C32FB9F0420008498F /* LiveCoHostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveCoHostModel.swift; sourceTree = "<group>"; };
+		59BF45C52FB9F1300008498F /* LiveCoHostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveCoHostService.swift; sourceTree = "<group>"; };
+		59BF45C72FB9F1B70008498F /* LiveCoHostGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveCoHostGridView.swift; sourceTree = "<group>"; };
+		59BF45C92FB9F21C0008498F /* LiveCoHostTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveCoHostTileView.swift; sourceTree = "<group>"; };
+		59BF45CB2FB9F67C0008498F /* LiveSpeakingTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveSpeakingTimerView.swift; sourceTree = "<group>"; };
+		59BF45CD2FB9F7310008498F /* LiveHostControlPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveHostControlPanel.swift; sourceTree = "<group>"; };
+		59BF45CF2FB9F83A0008498F /* LiveGuestControlPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveGuestControlPanel.swift; sourceTree = "<group>"; };
+		59BF45D12FB9F8C70008498F /* LiveModerationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveModerationService.swift; sourceTree = "<group>"; };
+		59BF45D32FB9F9830008498F /* LiveGuestRequestStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveGuestRequestStatusView.swift; sourceTree = "<group>"; };
+		59BF45D52FBA19BD0008498F /* LiveAgoraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveAgoraManager.swift; sourceTree = "<group>"; };
+		59BF45DA2FBA22260008498F /* AgoraVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgoraVideoView.swift; sourceTree = "<group>"; };
+		59BF45DC2FBA22CB0008498F /* LiveVideoTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveVideoTileView.swift; sourceTree = "<group>"; };
 		59C6398A2F3191E900916B73 /* MonApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MonApp.entitlements; sourceTree = "<group>"; };
 		59D4B2A32F33591200D9D2FB /* StripePayoutConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripePayoutConfigView.swift; sourceTree = "<group>"; };
 		59EC252C2F3291A3003E976C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -329,10 +494,17 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		598F4E1C2F529B15004C10A2 /* Exceptions for "Analytics" folder in "MonApp" target */ = {
+		5971567A2FA62DEB00F575FF /* Exceptions for "Analytics" folder in "MonApp" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				PieChartView.Swift,
+				AnalyticsModels.swift,
+				CreatorFeedView.swift,
+				DeviceSession.swift,
+				"EngagementService 2.swift",
+				PostCardView.swift,
+				PostCellView.swift,
+				PostViewService.swift,
+				"Services:VideoUploadService.swift",
 			);
 			target = 590903AE2F24211C001E5ADD /* MonApp */;
 		};
@@ -342,7 +514,7 @@
 		598F4DFC2F526DDB004C10A2 /* Analytics */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				598F4E1C2F529B15004C10A2 /* Exceptions for "Analytics" folder in "MonApp" target */,
+				5971567A2FA62DEB00F575FF /* Exceptions for "Analytics" folder in "MonApp" target */,
 			);
 			path = Analytics;
 			sourceTree = "<group>";
@@ -372,6 +544,7 @@
 				59EC24C62F324AA1003E976C /* Stripe in Frameworks */,
 				5994017D2F2CD935005ED7A4 /* StripePayments in Frameworks */,
 				59C639832F31656F00916B73 /* GoogleSignIn in Frameworks */,
+				59BF45D92FBA1C8A0008498F /* RtcBasic in Frameworks */,
 				59E7E8E62F426A6700F095E2 /* FirebaseFirestore in Frameworks */,
 				599401812F2CD96E005ED7A4 /* StripePaymentsUI in Frameworks */,
 				59E7E8EA2F426A6700F095E2 /* FirebaseStorage in Frameworks */,
@@ -391,6 +564,11 @@
 		590903A62F24211C001E5ADD = {
 			isa = PBXGroup;
 			children = (
+				5925C60E2FA56D3E00A05B3B /* FollowButton */,
+				5925C5F32FA56D2B00A05B3B /* LiveBadge */,
+				5925C5E42FA56D0A00A05B3B /* Sound */,
+				5925C5D62FA569B300A05B3B /* Charts */,
+				5925C5522FA5522E00A05B3B /* LiveStream */,
 				598F4DFF2F526E74004C10A2 /* LiveCenter */,
 				598F4DFE2F526E42004C10A2 /* ChopManager */,
 				598F4DFD2F526E11004C10A2 /* Monetization */,
@@ -411,6 +589,139 @@
 				590903AF2F24211C001E5ADD /* MonApp.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		5925C5522FA5522E00A05B3B /* LiveStream */ = {
+			isa = PBXGroup;
+			children = (
+				5925C5602FA558F000A05B3B /* LiveStream */,
+			);
+			path = LiveStream;
+			sourceTree = "<group>";
+		};
+		5925C5602FA558F000A05B3B /* LiveStream */ = {
+			isa = PBXGroup;
+			children = (
+				597156A42FB1024200F575FF /* CoinPack.swift */,
+				5925C5532FA558F000A05B3B /* CameraPreview.swift */,
+				5925C5542FA558F000A05B3B /* FilterOverlayView.swift */,
+				5925C5552FA558F000A05B3B /* LiveAction.swift */,
+				5925C5562FA558F000A05B3B /* LiveAnalyticsViewModel.swift */,
+				5925C5572FA558F000A05B3B /* LiveChatService.swift */,
+				5925C5582FA558F000A05B3B /* LiveChatView.swift */,
+				5925C5592FA558F000A05B3B /* LiveEffect.swift .swift */,
+				5925C55A2FA558F000A05B3B /* LiveEventsView.swift */,
+				5925C55B2FA558F000A05B3B /* LiveReplayDetailView.swift */,
+				5925C55C2FA558F000A05B3B /* LiveReplaysView.swift */,
+				5925C55E2FA558F000A05B3B /* LiveStreamView.swift */,
+				5925C55F2FA558F000A05B3B /* LiveTab.swift */,
+				5925C56E2FA55DA400A05B3B /* CreateLiveEventView.swift */,
+				597156962FAB7C2300F575FF /* LiveChatInputView.swift */,
+				597156982FABA94E00F575FF /* LiveHeartsOverlay.swift */,
+				5971569A2FB0E4EA00F575FF /* GiftModels.swift */,
+				5971569C2FB0EAEA00F575FF /* GiftCatalog.swift */,
+				5971569E2FB0EB3F00F575FF /* GiftSelectionView.swift */,
+				597156A02FB0FFBA00F575FF /* StripeService.swift */,
+				597156A22FB1022800F575FF /* CoinModel.swift */,
+				597156A62FB1027000F575FF /* WalletService.swift */,
+				597156A82FB102BB00F575FF /* CoinShopView.swift */,
+				59B512EA2FB90FA000829D52 /* LiveDiscoveryView.swift */,
+				59B512EC2FB914B800829D52 /* LiveViewerView.swift */,
+				59B512EE2FB9165E00829D52 /* GiftAnimationView.swift */,
+				59B512F02FB916BC00829D52 /* LiveAdOverlay.swift */,
+				59B512F22FB92EF800829D52 /* LiveJoinRequestsSheet.swift */,
+				59BF45B72FB9DF4C0008498F /* PaymentMethod.swift */,
+				59BF45B92FB9DFC80008498F /* PaymentMethodCard.swift */,
+				59BF45BB2FB9E03C0008498F /* MobileMoneyService.swift */,
+				59BF45BD2FB9E09A0008498F /* CurrencyConverter.swift */,
+				59BF45BF2FB9E1700008498F /* AfricanPaymentSheet.swift */,
+				59BF45C12FB9E2AB0008498F /* PremiumCoinShopView.swift */,
+				59BF45C32FB9F0420008498F /* LiveCoHostModel.swift */,
+				59BF45C52FB9F1300008498F /* LiveCoHostService.swift */,
+				59BF45C72FB9F1B70008498F /* LiveCoHostGridView.swift */,
+				59BF45C92FB9F21C0008498F /* LiveCoHostTileView.swift */,
+				59BF45CB2FB9F67C0008498F /* LiveSpeakingTimerView.swift */,
+				59BF45CD2FB9F7310008498F /* LiveHostControlPanel.swift */,
+				59BF45CF2FB9F83A0008498F /* LiveGuestControlPanel.swift */,
+				59BF45D12FB9F8C70008498F /* LiveModerationService.swift */,
+				59BF45D32FB9F9830008498F /* LiveGuestRequestStatusView.swift */,
+				59BF45D52FBA19BD0008498F /* LiveAgoraManager.swift */,
+				59BF45DA2FBA22260008498F /* AgoraVideoView.swift */,
+				59BF45DC2FBA22CB0008498F /* LiveVideoTileView.swift */,
+			);
+			path = LiveStream;
+			sourceTree = "<group>";
+		};
+		5925C5D62FA569B300A05B3B /* Charts */ = {
+			isa = PBXGroup;
+			children = (
+				5925C5D32FA569B300A05B3B /* ChatListView.swift */,
+				5925C5D42FA569B300A05B3B /* ChatUserService.swift */,
+				5925C5D52FA569B300A05B3B /* ChatView.swift */,
+			);
+			path = Charts;
+			sourceTree = "<group>";
+		};
+		5925C5E42FA56D0A00A05B3B /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				5925C62B2FA5751F00A05B3B /* Services:VideoUploadService.swift */,
+				5925C6252FA56D7B00A05B3B /* ViewTracker.swift */,
+				5925C5DA2FA56D0A00A05B3B /* Sound.swift */,
+				5925C5DB2FA56D0A00A05B3B /* SoundService.swift */,
+				5925C5DC2FA56D0A00A05B3B /* SoundView.swift */,
+				5925C5DD2FA56D0A00A05B3B /* SpectatorDonutChart.swift */,
+				5925C5DE2FA56D0A00A05B3B /* SpectatorMetricCard.swift */,
+				5925C5DF2FA56D0A00A05B3B /* SpectatorsAnalyticsView.swift */,
+				5925C5E02FA56D0A00A05B3B /* TrafficRow.swift */,
+				5925C5E12FA56D0A00A05B3B /* TrafficSource.swift */,
+				5925C62D2FA5753D00A05B3B /* VideoViewPoint.swift */,
+				5925C5E22FA56D0A00A05B3B /* TrafficSourceBar.swift */,
+				5925C5E32FA56D0A00A05B3B /* VideoAnalyticsDetailView.swift */,
+			);
+			path = Sound;
+			sourceTree = "<group>";
+		};
+		5925C5F32FA56D2B00A05B3B /* LiveBadge */ = {
+			isa = PBXGroup;
+			children = (
+				5925C5EF2FA56D2B00A05B3B /* LikeButton.swift */,
+				5925C5F02FA56D2B00A05B3B /* LikeService.swift */,
+				5925C5F12FA56D2B00A05B3B /* LiveAnalyticsView.swift */,
+				5971568A2FA654E900F575FF /* InfoRow.swift */,
+				5925C5F22FA56D2B00A05B3B /* LiveBadgeView.swift */,
+			);
+			path = LiveBadge;
+			sourceTree = "<group>";
+		};
+		5925C60E2FA56D3E00A05B3B /* FollowButton */ = {
+			isa = PBXGroup;
+			children = (
+				597156882FA654A900F575FF /* AgeChartView.swift */,
+				5925C5F82FA56D3E00A05B3B /* CityFollowersView.swift */,
+				5925C5F92FA56D3E00A05B3B /* CityListView.swift .swift */,
+				5925C5FA2FA56D3E00A05B3B /* CommentButton.swift */,
+				5925C5FB2FA56D3E00A05B3B /* CommentService.swift */,
+				5925C5FC2FA56D3E00A05B3B /* CommentsView.swift */,
+				5925C5FD2FA56D3E00A05B3B /* ExpertFeedView.swift */,
+				5925C5FE2FA56D3E00A05B3B /* ExpertStudioView.swift */,
+				5925C5FF2FA56D3E00A05B3B /* FeedPlaybackManager.swift */,
+				5925C6002FA56D3E00A05B3B /* FeedRankingEngine.swift */,
+				5925C6012FA56D3E00A05B3B /* FeedSoundManager.swift */,
+				5925C6022FA56D3E00A05B3B /* FollowersActivityHeatmap.swift */,
+				5925C6032FA56D3E00A05B3B /* FollowersActivityHours.swift */,
+				5925C6042FA56D3E00A05B3B /* FollowersAnalyticsView.swift */,
+				5925C6052FA56D3E00A05B3B /* FollowersAnalyticsViewModel.swift */,
+				5925C6062FA56D3E00A05B3B /* FollowersAudienceSection.swift */,
+				5925C6072FA56D3E00A05B3B /* FollowersGrowthChart.swift */,
+				5925C6082FA56D3E00A05B3B /* FollowersGrowthData.swift */,
+				5925C6092FA56D3E00A05B3B /* FollowersMetricsSection.swift */,
+				5925C60A2FA56D3E00A05B3B /* FollowersModels.swift */,
+				5925C60B2FA56D3E00A05B3B /* FollowersPeriodSelector.swift */,
+				5925C60C2FA56D3E00A05B3B /* FollowService.swift */,
+				5925C60D2FA56D3E00A05B3B /* ForYouFeedEngine.swift */,
+			);
+			path = FollowButton;
 			sourceTree = "<group>";
 		};
 		592FFEF82F2E4FFD00A52F82 /* Calendar */ = {
@@ -609,7 +920,6 @@
 		59EC25D02F32A54C003E976C /* Availability  */ = {
 			isa = PBXGroup;
 			children = (
-				59BBF7172F4E7F4B007D5387 /* ExpertStudioView.swift */,
 				59BBF7192F4E7F7A007D5387 /* StudioButton.swift */,
 				59BBF71B2F4E7FA4007D5387 /* StatCard.swift */,
 				59BBF71D2F4E8049007D5387 /* CreatorFeedView.swift */,
@@ -618,7 +928,6 @@
 				59BBF72D2F4E92DA007D5387 /* PostViewTracker.swift */,
 				59BBF72F2F4E9335007D5387 /* Post.swift */,
 				59BBF7312F4E939E007D5387 /* UploadContentView.swift */,
-				59BBF7332F4E9579007D5387 /* ExpertFeedView.swift */,
 				59BBF7352F4E95C4007D5387 /* PostCardView.swift */,
 				59BBF7372F4E962A007D5387 /* LikeButton.swift */,
 				59BBF7392F4E9651007D5387 /* SaveButton.swift */,
@@ -630,7 +939,7 @@
 				59BBF7452F4E97B7007D5387 /* PostCellView.swift */,
 				59BBF7472F4E9A1D007D5387 /* FeedPlaybackManager.swift */,
 				59BBF7492F4E9E2F007D5387 /* LikeService.swift */,
-				59BBF74B2F4EA155007D5387 /* ViewTracker.swift */,
+				5925C6272FA56E5D00A05B3B /* ViewTracker.swift */,
 				59BBF74D2F4F044C007D5387 /* Services:VideoUploadService.swift */,
 				59BBF74F2F4F046F007D5387 /* Services:PostService.swift */,
 				59BBF7532F4F3E19007D5387 /* MovieTransferable.swift */,
@@ -676,6 +985,7 @@
 				59E7E8E72F426A6700F095E2 /* FirebaseFunctions */,
 				59E7E8E92F426A6700F095E2 /* FirebaseStorage */,
 				594EA6822F427E4D004FBF11 /* FirebaseMessaging */,
+				59BF45D82FBA1C8A0008498F /* RtcBasic */,
 			);
 			productName = MonApp;
 			productReference = 590903AF2F24211C001E5ADD /* MonApp.app */;
@@ -709,6 +1019,7 @@
 				5994017B2F2CD8AB005ED7A4 /* XCRemoteSwiftPackageReference "stripe-ios" */,
 				59C639812F31656F00916B73 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				59E7E8E02F426A6700F095E2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				59BF45D72FBA1C8A0008498F /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 590903B02F24211C001E5ADD /* Products */;
@@ -738,29 +1049,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5925C62E2FA5753D00A05B3B /* VideoViewPoint.swift in Sources */,
 				59B131D22F4903860092C62B /* BarberPayoutsView.swift in Sources */,
 				59B131CC2F48985D0092C62B /* BarberBookingsView.swift in Sources */,
 				594EA6852F429174004FBF11 /* ChatMessage.swift in Sources */,
 				59227FD22F3A6DEA00065C35 /* PaymentService.swift in Sources */,
 				59ACE2992F42576E00FACD11 /* Message.swift in Sources */,
-				59BBF73E2F4E96DA007D5387 /* PostComment.swift in Sources */,
 				59A223EF2F4B1F1A00D89777 /* AutoConfirmBookingViewModel.swift in Sources */,
 				599401852F2CDDC1005ED7A4 /* StripeConfig.swift in Sources */,
 				59F61AA02F4079B9003999DD /* ClientDetailView.swift in Sources */,
 				59EC25592F3291A3003E976C /* AvailabilitySlot.swift in Sources */,
+				59BF45DD2FBA22CB0008498F /* LiveVideoTileView.swift in Sources */,
 				59BBF7362F4E95C4007D5387 /* PostCardView.swift in Sources */,
+				597156842FA6526900F575FF /* CommentsView.swift in Sources */,
+				5971568B2FA654E900F575FF /* InfoRow.swift in Sources */,
 				59BBF72C2F4E927E007D5387 /* PostLikeService.swift in Sources */,
 				59EC255A2F3291A3003E976C /* BarberDetailView.swift .swift in Sources */,
 				59BBF7462F4E97B8007D5387 /* PostCellView.swift in Sources */,
 				59ED2C282F46497B00AD68E8 /* ChangePasswordView.swift in Sources */,
+				59BF45C22FB9E2AB0008498F /* PremiumCoinShopView.swift in Sources */,
+				597156942FA77E8800F575FF /* ExpertFeedView.swift in Sources */,
 				599768E12F50BBEC0020457C /* ActionButton.swift in Sources */,
 				59F61AAC2F40811E003999DD /* MesClientsView.swift in Sources */,
 				5994BA312F476EF1009CA70D /* DeviceSession.swift in Sources */,
+				59BF45BE2FB9E09A0008498F /* CurrencyConverter.swift in Sources */,
 				5994BA272F4748B0009CA70D /* ClientBookingDisplay.swift in Sources */,
 				59AE98FA2F3FB846009C9A24 /* FavoritesView.swift in Sources */,
+				597156852FA6528B00F575FF /* ExpertStudioView.swift in Sources */,
 				59F61AAE2F40815E003999DD /* AppUser.swift in Sources */,
 				59EC255E2F3291A3003E976C /* BarberRegisterView .swift in Sources */,
 				59AE98F62F3F44C5009C9A24 /* BusinessSheet.swift in Sources */,
+				59BF45C82FB9F1B70008498F /* LiveCoHostGridView.swift in Sources */,
 				5994BA2D2F4763D5009CA70D /* LoginEvent.swift in Sources */,
 				59EC255F2F3291A3003E976C /* BarberSlotsListView.swift in Sources */,
 				59B131CE2F48B27F0092C62B /* PaymentsHistoryView.swift in Sources */,
@@ -770,7 +1089,6 @@
 				59B131D02F48E11A0092C62B /* InvoicesView.swift in Sources */,
 				59BBF7442F4E978D007D5387 /* VideoPlayerView.swift in Sources */,
 				59EC25672F3291A3003E976C /* BarberProfileView.swift in Sources */,
-				59BBF74C2F4EA155007D5387 /* ViewTracker.swift in Sources */,
 				59F61AA42F4079EC003999DD /* Client.swift in Sources */,
 				59F61AAA2F407BAE003999DD /* ClientManagementView.swift in Sources */,
 				59BBF7542F4F3E19007D5387 /* MovieTransferable.swift in Sources */,
@@ -778,6 +1096,7 @@
 				59ACE2952F42458600FACD11 /* EscrowInfoView.swift in Sources */,
 				59EC256B2F3291A3003E976C /* BarberDashboardView.swift .swift in Sources */,
 				59B569052F4A4720005345C3 /* CommissionService.swift in Sources */,
+				5925C6262FA56D7B00A05B3B /* ViewTracker.swift in Sources */,
 				59B569132F4A582E005345C3 /* AutoReminderViewModel.swift in Sources */,
 				59A223F52F4B6DF900D89777 /* SimpleActionSheet.swift in Sources */,
 				59BBF71E2F4E8049007D5387 /* CreatorFeedView.swift in Sources */,
@@ -791,31 +1110,49 @@
 				59A223F12F4B6B5C00D89777 /* AutomationSettings.swift in Sources */,
 				59BBF70B2F4DBCEE007D5387 /* StripeConnectService.swift in Sources */,
 				59F61AA62F407A20003999DD /* ClientNote.swift in Sources */,
+				597156892FA654A900F575FF /* AgeChartView.swift in Sources */,
 				59D4B2A42F33591200D9D2FB /* StripePayoutConfigView.swift in Sources */,
 				59A223ED2F4B1EB800D89777 /* AutoConfirmBookingView.swift in Sources */,
 				590B1C8F2F432D8B0023B554 /* ClientExporter.swift in Sources */,
+				5971569D2FB0EAEA00F575FF /* GiftCatalog.swift in Sources */,
 				59BBF7322F4E939E007D5387 /* UploadContentView.swift in Sources */,
 				59EC256D2F3291A3003E976C /* AvailabilityView.swift in Sources */,
 				59EC256F2F3291A3003E976C /* Barber .swift in Sources */,
+				59BF45CE2FB9F7310008498F /* LiveHostControlPanel.swift in Sources */,
+				597156972FAB7C2300F575FF /* LiveChatInputView.swift in Sources */,
 				5994BA252F473CC1009CA70D /* SecurityService.swift in Sources */,
 				59A223EB2F4B1D1000D89777 /* LocalNotificationManager.swift in Sources */,
 				59ED2C322F467BF400AD68E8 /* ChooseRoleView.swift in Sources */,
+				59BF45D22FB9F8C70008498F /* LiveModerationService.swift in Sources */,
+				59BF45CA2FB9F21C0008498F /* LiveCoHostTileView.swift in Sources */,
 				59F61AB42F410400003999DD /* ChatListView.swift in Sources */,
 				59EC25702F3291A3003E976C /* Booking.swift in Sources */,
 				59BBF72E2F4E92DB007D5387 /* PostViewTracker.swift in Sources */,
-				59BBF7422F4E972A007D5387 /* CommentsView.swift in Sources */,
 				59B569112F4A57C9005345C3 /* AutoReminderView.swift in Sources */,
 				59EC25CF2F32A1F4003E976C /* SplashView.swift in Sources */,
 				59BBF7482F4E9A1D007D5387 /* FeedPlaybackManager.swift in Sources */,
 				59BBF73A2F4E9652007D5387 /* SaveButton.swift in Sources */,
 				59ED2C222F46426000AD68E8 /* LoginHistoryView.swift in Sources */,
+				5925C5E52FA56D0A00A05B3B /* TrafficRow.swift in Sources */,
+				5925C5E62FA56D0A00A05B3B /* SpectatorsAnalyticsView.swift in Sources */,
+				5925C5E72FA56D0A00A05B3B /* TrafficSourceBar.swift in Sources */,
+				5925C5E82FA56D0A00A05B3B /* VideoAnalyticsDetailView.swift in Sources */,
+				597156862FA6533A00F575FF /* CommentService.swift in Sources */,
+				5925C5E92FA56D0A00A05B3B /* Sound.swift in Sources */,
+				59BF45C62FB9F1300008498F /* LiveCoHostService.swift in Sources */,
+				5925C5EA2FA56D0A00A05B3B /* TrafficSource.swift in Sources */,
+				5925C5EB2FA56D0A00A05B3B /* SoundView.swift in Sources */,
+				5925C5EC2FA56D0A00A05B3B /* SoundService.swift in Sources */,
+				597156A12FB0FFBA00F575FF /* StripeService.swift in Sources */,
+				5925C5ED2FA56D0A00A05B3B /* SpectatorMetricCard.swift in Sources */,
+				5925C5EE2FA56D0A00A05B3B /* SpectatorDonutChart.swift in Sources */,
 				59BBF70F2F4DCD38007D5387 /* NoShowProtectionView.swift in Sources */,
-				59BBF7402F4E9700007D5387 /* CommentService.swift in Sources */,
 				59F61A9E2F40799F003999DD /* ClientListView .swift in Sources */,
 				59B5690B2F4A4BF6005345C3 /* PayoutScheduleViewModel.swift in Sources */,
 				59A97B782F3CF8E2003E2FFC /*  SlotStatus.swift in Sources */,
 				590B1C8D2F432CCA0023B554 /* ShareSheet.swift in Sources */,
 				59AE98FD2F3FCDF7009C9A24 /* ServiceCardView.swift in Sources */,
+				59B512EF2FB9165E00829D52 /* GiftAnimationView.swift in Sources */,
 				59AE98F82F3F4F00009C9A24 /* Service.swift in Sources */,
 				59ED2C2C2F46503100AD68E8 /* TwoFactorSetupView.swift in Sources */,
 				59BBF70D2F4DCC7C007D5387 /* AfterAppointmentMessageView.swift in Sources */,
@@ -825,24 +1162,26 @@
 				590B1C8B2F4327D80023B554 /* PaymentSheetView.swift in Sources */,
 				59EC25B42F32931F003E976C /* ContentView.swift in Sources */,
 				59ED2C262F4646FF00AD68E8 /* BlockedClientsView.swift in Sources */,
+				59BF45C02FB9E1700008498F /* AfricanPaymentSheet.swift in Sources */,
 				59ACE28F2F41EB5100FACD11 /* ConversationService.swift in Sources */,
 				59EC25B72F32931F003E976C /* Review.swift in Sources */,
 				59A223E72F4B196000D89777 /* ReminderEngine.swift in Sources */,
 				59EC25B82F32931F003E976C /* PaymentBlockedView.swift in Sources */,
 				59A223FD2F4BB61C00D89777 /* ScanClientButton.swift in Sources */,
 				590B1C912F450ED30023B554 /* BookingView.swift in Sources */,
-				59BBF74E2F4F044C007D5387 /* Services:VideoUploadService.swift in Sources */,
 				59BBF7132F4E6DE6007D5387 /* PaymentFlowManager.swift in Sources */,
 				59A223F92F4B6F3E00D89777 /* BlockDaysSheetPro.swift in Sources */,
+				59B512F32FB92EF800829D52 /* LiveJoinRequestsSheet.swift in Sources */,
 				59EC25B92F32931F003E976C /* RegisterView.swift in Sources */,
 				59EC25BB2F32931F003E976C /* ClientAuthView.swift in Sources */,
 				59EC25BD2F32931F003E976C /* ClientHomeView .swift in Sources */,
 				59BBF72A2F4E91B4007D5387 /* PostViewService.swift in Sources */,
 				59BBF7502F4F046F007D5387 /* Services:PostService.swift in Sources */,
-				59BBF7342F4E9579007D5387 /* ExpertFeedView.swift in Sources */,
 				59ED2C182F4628CE00AD68E8 /* ClientExportView.swift in Sources */,
 				59B569032F4A46DF005345C3 /* CommissionViewModel.swift in Sources */,
+				5925C56F2FA55DA400A05B3B /* CreateLiveEventView.swift in Sources */,
 				59A223F72F4B6F1B00D89777 /* OpeningHoursSheet.swift in Sources */,
+				597156922FA656C800F575FF /* LikeButton.swift in Sources */,
 				59ACE28D2F41EA4400FACD11 /* Conversation.swift in Sources */,
 				59EC25BF2F32931F003E976C /* LoginView.swift in Sources */,
 				59ACE29B2F425E7900FACD11 /* ChatUserService.swift in Sources */,
@@ -851,36 +1190,84 @@
 				59EC25C22F32931F003E976C /* MonAppApp.swift in Sources */,
 				59BBF71A2F4E7F7A007D5387 /* StudioButton.swift in Sources */,
 				59ED2C1A2F463D5500AD68E8 /* ShareableFile.swift in Sources */,
+				59BF45D42FB9F9830008498F /* LiveGuestRequestStatusView.swift in Sources */,
+				59BF45B82FB9DF4C0008498F /* PaymentMethod.swift in Sources */,
+				59BF45BA2FB9DFC80008498F /* PaymentMethodCard.swift in Sources */,
 				59EC25C32F32931F003E976C /* LocationManager.swift .swift in Sources */,
 				59A223FF2F4BB66100D89777 /* ScanPressEffect.swift in Sources */,
 				59EC25C42F32931F003E976C /* FavoriteBarbersView.swift .swift in Sources */,
+				5971569B2FB0E4EA00F575FF /* GiftModels.swift in Sources */,
+				597156A32FB1022800F575FF /* CoinModel.swift in Sources */,
+				59BF45BC2FB9E03C0008498F /* MobileMoneyService.swift in Sources */,
 				59ED2C2A2F464C7D00AD68E8 /* AuthSecurityService.swift in Sources */,
 				59F33DE12F3E87E600B1EA12 /* BarberAccessGateView.swift in Sources */,
 				59A223F32F4B6B8000D89777 /* AutomationService.swift in Sources */,
+				59BF45DB2FBA22260008498F /* AgoraVideoView.swift in Sources */,
 				59ACE2932F4240FE00FACD11 /* ServiceImageUploader.swift in Sources */,
+				597156A52FB1024200F575FF /* CoinPack.swift in Sources */,
 				59B5690D2F4A4C73005345C3 /* PayoutScheduleService.swift in Sources */,
+				59BF45C42FB9F0420008498F /* LiveCoHostModel.swift in Sources */,
+				597156992FABA94E00F575FF /* LiveHeartsOverlay.swift in Sources */,
+				5925C5612FA558F000A05B3B /* LiveEventsView.swift in Sources */,
+				5925C5622FA558F000A05B3B /* LiveReplaysView.swift in Sources */,
+				5925C5632FA558F000A05B3B /* LiveTab.swift in Sources */,
+				5925C5642FA558F000A05B3B /* LiveChatView.swift in Sources */,
+				5925C5652FA558F000A05B3B /* CameraPreview.swift in Sources */,
+				59B512ED2FB914B800829D52 /* LiveViewerView.swift in Sources */,
+				5925C5662FA558F000A05B3B /* FilterOverlayView.swift in Sources */,
+				5925C5672FA558F000A05B3B /* LiveChatService.swift in Sources */,
+				5925C5682FA558F000A05B3B /* LiveAction.swift in Sources */,
+				5925C56A2FA558F000A05B3B /* LiveEffect.swift .swift in Sources */,
+				597156932FA772B600F575FF /* LikeService.swift in Sources */,
+				5925C56B2FA558F000A05B3B /* LiveStreamView.swift in Sources */,
+				5925C56C2FA558F000A05B3B /* LiveReplayDetailView.swift in Sources */,
+				5925C56D2FA558F000A05B3B /* LiveAnalyticsViewModel.swift in Sources */,
 				59BBF7562F4F4921007D5387 /* UploadButtonUI.swift in Sources */,
 				59ACE2972F424D4900FACD11 /* MessageDetailView.swift in Sources */,
 				59B5690F2F4A4CD7005345C3 /* PayoutScheduleModel.swift in Sources */,
+				5925C60F2FA56D3E00A05B3B /* FeedSoundManager.swift in Sources */,
+				5925C6122FA56D3E00A05B3B /* FollowersPeriodSelector.swift in Sources */,
+				5925C6132FA56D3E00A05B3B /* FollowersGrowthChart.swift in Sources */,
+				5925C6142FA56D3E00A05B3B /* FollowersAnalyticsViewModel.swift in Sources */,
+				59BF45D62FBA19BD0008498F /* LiveAgoraManager.swift in Sources */,
+				5925C6152FA56D3E00A05B3B /* CityListView.swift .swift in Sources */,
+				5925C6162FA56D3E00A05B3B /* FollowService.swift in Sources */,
+				5925C6172FA56D3E00A05B3B /* FollowersModels.swift in Sources */,
+				5925C6182FA56D3E00A05B3B /* FeedRankingEngine.swift in Sources */,
+				5925C6192FA56D3E00A05B3B /* CityFollowersView.swift in Sources */,
+				59BF45CC2FB9F67C0008498F /* LiveSpeakingTimerView.swift in Sources */,
+				5925C61A2FA56D3E00A05B3B /* FollowersActivityHours.swift in Sources */,
+				5925C61C2FA56D3E00A05B3B /* FollowersAudienceSection.swift in Sources */,
+				5925C61D2FA56D3E00A05B3B /* FollowersGrowthData.swift in Sources */,
+				5925C61E2FA56D3E00A05B3B /* FollowersMetricsSection.swift in Sources */,
+				5925C61F2FA56D3E00A05B3B /* FollowersAnalyticsView.swift in Sources */,
+				5925C6202FA56D3E00A05B3B /* ForYouFeedEngine.swift in Sources */,
+				5925C6242FA56D3E00A05B3B /* FollowersActivityHeatmap.swift in Sources */,
+				5925C5F52FA56D2B00A05B3B /* LiveBadgeView.swift in Sources */,
+				5925C5F72FA56D2B00A05B3B /* LiveAnalyticsView.swift in Sources */,
 				59EC25732F3291A3003E976C /* BarberListView.swift .swift in Sources */,
 				59BBF7302F4E9335007D5387 /* Post.swift in Sources */,
+				5971569F2FB0EB3F00F575FF /* GiftSelectionView.swift in Sources */,
 				59F61AB22F4103D4003999DD /* ChatView.swift in Sources */,
 				59A223FB2F4BB2B900D89777 /* QRScannerView.swift in Sources */,
+				5925C62C2FA5751F00A05B3B /* Services:VideoUploadService.swift in Sources */,
 				59EC25742F3291A3003E976C /* BarberAvailabilityView.swift in Sources */,
-				59BBF7382F4E962A007D5387 /* LikeButton.swift in Sources */,
 				59ED2C1C2F463F7200AD68E8 /* ClientsCSVExporter.swift in Sources */,
 				5994BA2F2F476ECC009CA70D /* ConnectedDevicesView.swift in Sources */,
+				59B512EB2FB90FA000829D52 /* LiveDiscoveryView.swift in Sources */,
 				59ED2C202F46421B00AD68E8 /* SecurityAccessView.swift in Sources */,
-				59BBF74A2F4E9E2F007D5387 /* LikeService.swift in Sources */,
+				59BF45D02FB9F83A0008498F /* LiveGuestControlPanel.swift in Sources */,
 				59B131D62F4909F30092C62B /* PayoutService.swift in Sources */,
+				59B512F12FB916BC00829D52 /* LiveAdOverlay.swift in Sources */,
 				59EC25752F3291A3003E976C /* BookingService.swift in Sources */,
 				59A223E92F4B19D500D89777 /* ReminderScheduler.swift in Sources */,
 				59ED2C2E2F46603F00AD68E8 /* PushNotificationManager.swift in Sources */,
 				59EC25762F3291A3003E976C /* AppDelegate.swift in Sources */,
 				59F61AA22F4079CF003999DD /* AddClientNoteView.swift in Sources */,
+				597156A92FB102BB00F575FF /* CoinShopView.swift in Sources */,
 				59EC25772F3291A3003E976C /* AuthView .swift in Sources */,
 				59EC25782F3291A3003E976C /* BarberService.swift  .swift in Sources */,
-				59BBF7182F4E7F4B007D5387 /* ExpertStudioView.swift in Sources */,
+				597156A72FB1027000F575FF /* WalletService.swift in Sources */,
 				59B568FF2F49E402005345C3 /* NextPayouteRsponse.swift in Sources */,
 				5994BA2B2F475CBE009CA70D /* SessionManager.swift in Sources */,
 				592FFEFE2F2E50C500A52F82 /* AvailabilityService.swift in Sources */,
@@ -1125,6 +1512,14 @@
 				minimumVersion = 25.6.0;
 			};
 		};
+		59BF45D72FBA1C8A0008498F /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AgoraIO/AgoraRtcEngine_iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.6.2;
+			};
+		};
 		59C639812F31656F00916B73 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
@@ -1168,6 +1563,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5994017B2F2CD8AB005ED7A4 /* XCRemoteSwiftPackageReference "stripe-ios" */;
 			productName = StripePaymentSheet;
+		};
+		59BF45D82FBA1C8A0008498F /* RtcBasic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 59BF45D72FBA1C8A0008498F /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */;
+			productName = RtcBasic;
 		};
 		59C639822F31656F00916B73 /* GoogleSignIn */ = {
 			isa = XCSwiftPackageProductDependency;

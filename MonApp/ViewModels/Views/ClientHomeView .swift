@@ -44,6 +44,15 @@ struct ClientHomeView: View {
                 NavigationLink("📅 Mes réservations") {
                     ClientBookingsView()
                 }
+                
+                NavigationLink {
+                    LiveDiscoveryView()
+                } label: {
+                    CutlyLiveCard()
+                }
+                .buttonStyle(PlainButtonStyle())
+                
+                
                 TextField("Rechercher un coiffeur...", text: $searchText)
                     .textFieldStyle(.roundedBorder)
                     .padding(.horizontal)
@@ -221,5 +230,63 @@ struct ClientHomeView: View {
         case .book:
             print("👉 Réserver avec \(barber.name)")
         }
+    }
+}
+struct CutlyLiveCard: View {
+    var body: some View {
+        HStack(spacing: 14) {
+            
+            ZStack {
+                Circle()
+                    .fill(Color.red.opacity(0.25))
+                    .frame(width: 54, height: 54)
+                
+                Image(systemName: "dot.radiowaves.left.and.right")
+                    .font(.system(size: 26, weight: .bold))
+                    .foregroundColor(.red)
+            }
+            
+            VStack(alignment: .leading, spacing: 4) {
+                HStack {
+                    Text("CUTLY LIVE")
+                        .font(.headline)
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
+                    
+                    Text("LIVE")
+                        .font(.caption2)
+                        .fontWeight(.bold)
+                        .padding(.horizontal, 6)
+                        .padding(.vertical, 3)
+                        .background(Color.red)
+                        .foregroundColor(.white)
+                        .cornerRadius(6)
+                }
+                
+                Text("Découvre les coiffeurs en direct")
+                    .font(.caption)
+                    .foregroundColor(.white.opacity(0.8))
+            }
+            
+            Spacer()
+            
+            Image(systemName: "chevron.right")
+                .foregroundColor(.white.opacity(0.8))
+        }
+        .padding()
+        .background(
+            LinearGradient(
+                colors: [
+                    Color.black,
+                    Color.red.opacity(0.85),
+                    Color.purple.opacity(0.75)
+                ],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+        )
+        .cornerRadius(20)
+        .shadow(color: .red.opacity(0.35), radius: 12, x: 0, y: 6)
+        .padding(.horizontal)
     }
 }
