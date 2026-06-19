@@ -10,9 +10,11 @@ struct LiveViewerView: View {
     @StateObject private var chatService = LiveChatService()
     @StateObject private var walletService = WalletService.shared
     
+    @StateObject private var agoraManager = LiveAgoraManager.shared
+    
     @State private var showGifts = false
     @State private var showShop = false
-    @State private var showAd = true
+    @State private var showAd = false
     
     @State private var activeGifts: [GiftItem] = []
     @State private var totalGiftsCount = 0
@@ -23,29 +25,67 @@ struct LiveViewerView: View {
         
         ZStack {
             
-            LinearGradient(
-                colors: [
-                    Color.black,
-                    Color.red.opacity(0.4),
-                    Color.black
-                ],
-                startPoint: .top,
-                endPoint: .bottom
-            )
+            // 1️⃣ VIDEO / FOND — derrière tout
+            GeometryReader { geo in
+                ZStack {
+                    if let firstRemote = agoraManager.remoteUsers.first {
+                        AgoraVideoView(videoType: .remote(uid: firstRemote))
+                            .frame(width: geo.size.width, height: geo.size.height)
+                            .clipped()
+                            .ignoresSafeArea()
+                            .allowsHitTesting(false)
+                            .zIndex(0)
+                    } else {
+                        Color.black.ignoresSafeArea()
+
+                        VStack(spacing: 16) {
+                            ProgressView()
+                                .scaleEffect(1.4)
+                                .tint(.white)
+
+                            Text("Connexion au LIVE...")
+                                .foregroundColor(.white)
+                                .font(.headline)
+                        }
+                    }
+                }
+            }
             .ignoresSafeArea()
+            .allowsHitTesting(false)
+            .zIndex(0)
             
+            // 2️⃣ DÉGRADÉ — ne bloque rien
             Color.clear
-                .contentShape(Rectangle())
-                .gesture(
-                    DragGesture(minimumDistance: 0)
-                        .onChanged { value in
-                            tapLocation = value.location
-                        }
-                        .onEnded { _ in
-                            handleScreenTap()
-                        }
-                )
+                .ignoresSafeArea()
+                .allowsHitTesting(false)
+                .zIndex(1)
             
+            // 3️⃣ ZONE LIKE — seulement au centre, ne bloque pas boutons / input
+            GeometryReader { geo in
+                Color.clear
+                    .contentShape(Rectangle())
+                    .frame(
+                        width: geo.size.width - 105,
+                        height: geo.size.height - 230
+                    )
+                    .position(
+                        x: (geo.size.width - 105) / 2,
+                        y: geo.size.height / 2
+                    )
+                    .gesture(
+                        TapGesture(count: 2)
+                            .onEnded {
+                                tapLocation = CGPoint(
+                                    x: geo.size.width / 2,
+                                    y: geo.size.height / 2
+                                )
+                                handleScreenTap()
+                            }
+                    )
+            }
+            .zIndex(5)
+            
+            // 4️⃣ HEADER HAUT
             VStack {
                 HStack {
                     Button {
@@ -53,63 +93,47 @@ struct LiveViewerView: View {
                     } label: {
                         Image(systemName: "chevron.left")
                             .foregroundColor(.white)
+                            .font(.title2.bold())
                             .padding(10)
-                            .background(Color.black.opacity(0.5))
+                            .background(Color.black.opacity(0.35))
                             .clipShape(Circle())
                     }
                     
-                    VStack(alignment: .leading) {
+                    VStack(alignment: .leading, spacing: 3) {
                         Text(live.creatorName)
                             .foregroundColor(.white)
-                            .bold()
+                            .font(.headline.bold())
                         
                         Text("LIVE ❤️ \(formatNumber(chatService.likeCount))")
                             .foregroundColor(.red)
-                            .font(.caption)
+                            .font(.caption.bold())
                     }
                     
                     Spacer()
                     
-                    HStack(spacing: 4) {
+                    HStack(spacing: 6) {
                         Image(systemName: "eye.fill")
                         Text(formatNumber(chatService.viewerCount))
                     }
                     .foregroundColor(.white)
-                    .padding(8)
-                    .background(Color.black.opacity(0.5))
-                    .cornerRadius(12)
+                    .font(.headline.bold())
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 8)
+                    .background(Color.black.opacity(0.35))
+                    .clipShape(Capsule())
                 }
-                .padding()
+                .padding(.horizontal, 16)
+                .padding(.top, 55)
                 
                 Spacer()
             }
+            .zIndex(50)
             
-            VStack(spacing: 16) {
-                Spacer()
-                
-                VStack(spacing: 16) {
-                    
-                    Spacer()
-                    
-                    LiveCoHostGridView(
-                        liveId: live.id,
-                        isHostView: false,
-                        hostSession: nil,
-                        selectedFilter: "",
-                        currentPosition: .front
-                    )
-                    .frame(height: 360)
-                    .padding(.horizontal, 8)
-                    
-                    Spacer()
-                }
-            }
-            
+            // 5️⃣ BOUTONS DROITE
             HStack {
                 Spacer()
                 
                 VStack(spacing: 22) {
-                    
                     Button {
                         showGifts = true
                     } label: {
@@ -117,7 +141,6 @@ struct LiveViewerView: View {
                             Image(systemName: "gift.fill")
                                 .foregroundColor(.yellow)
                                 .font(.title2)
-                            
                             Text("\(totalGiftsCount)")
                                 .foregroundColor(.white)
                                 .font(.caption2)
@@ -130,7 +153,6 @@ struct LiveViewerView: View {
                         VStack {
                             Text("🪙")
                                 .font(.title2)
-                            
                             Text("\(walletService.coins)")
                                 .foregroundColor(.yellow)
                                 .font(.caption2)
@@ -144,7 +166,6 @@ struct LiveViewerView: View {
                             Image(systemName: "arrowshape.turn.up.right.fill")
                                 .foregroundColor(.white)
                                 .font(.title2)
-                            
                             Text(formatNumber(chatService.shareCount))
                                 .foregroundColor(.white)
                                 .font(.caption2)
@@ -158,7 +179,6 @@ struct LiveViewerView: View {
                             Image(systemName: "person.badge.plus")
                                 .foregroundColor(.cyan)
                                 .font(.title2)
-                            
                             Text("Monter \(formatNumber(chatService.joinRequestCount))")
                                 .foregroundColor(.white)
                                 .font(.caption2)
@@ -167,19 +187,27 @@ struct LiveViewerView: View {
                 }
                 .padding(.trailing, 14)
             }
+            .zIndex(55)
             
+            // 6️⃣ CHAT
             VStack {
                 Spacer()
                 
                 HStack {
                     LiveChatView(liveId: live.id)
-                        .frame(width: UIScreen.main.bounds.width * 0.65)
+                        .frame(
+                            width: UIScreen.main.bounds.width * 0.62,
+                            height: 260
+                        )
+                        .padding(.leading, 10)
                     
                     Spacer()
                 }
-                .padding(.bottom, 90)
+                .padding(.bottom, 95)
             }
+            .zIndex(45)
             
+            // 7️⃣ INPUT
             VStack {
                 Spacer()
                 
@@ -187,13 +215,18 @@ struct LiveViewerView: View {
                     liveId: live.id,
                     chatService: chatService
                 )
+                .padding(.horizontal, 12)
                 .padding(.bottom, 35)
             }
+            .zIndex(70)
             
+            // 8️⃣ CADEAUX
             ForEach(activeGifts) { gift in
                 GiftAnimationView(gift: gift.type)
             }
+            .zIndex(80)
             
+            // 9️⃣ CŒURS QUI MONTENT
             ForEach(floatingHearts) { heart in
                 Text("❤️")
                     .font(.system(size: 34))
@@ -202,10 +235,11 @@ struct LiveViewerView: View {
                     .opacity(heart.opacity)
                     .onAppear {
                         animateHeart(heart.id)
-                        
                     }
             }
+            .zIndex(90)
             
+            // 🔟 SHEETS
             if showGifts {
                 GiftSelectionView(
                     onSelect: { gift in
@@ -234,12 +268,14 @@ struct LiveViewerView: View {
             chatService.joinViewer(liveId: live.id)
             chatService.sendJoin(liveId: live.id)
             LiveCoHostService.shared.startListening(liveId: live.id)
-            LiveAgoraManager.shared.joinAsViewer(channelName: live.id)
+            agoraManager.joinAsViewer(channelName: live.id)
+        
+            
         }
         .onDisappear {
             chatService.leaveViewer(liveId: live.id)
             chatService.stopAll()
-            LiveAgoraManager.shared.leaveChannel()
+            agoraManager.leaveChannel()
         }
     }
 }

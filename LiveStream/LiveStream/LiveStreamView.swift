@@ -7,6 +7,10 @@ struct LiveStreamView: View {
     
     
     
+    @State private var isWithdrawRequestLoading = false
+    @State private var withdrawRequestSent = false
+    
+    
     @State private var showJoinRequests = false
     @State private var spotlightUserId: String? = nil
     @State private var showLiveSummary = false
@@ -731,6 +735,14 @@ extension LiveStreamView {
                             print("🔴 POWER CLICKED")
                             
                             Firestore.firestore()
+                                .collection("lives")
+                                .document(liveId)
+                                .setData([
+                                    "isLive": false,
+                                    "endedAt": Timestamp()
+                                ], merge: true)
+                            
+                            Firestore.firestore()
                                 .collection("liveAnalytics")
                                 .document(liveId)
                                 .setData([
@@ -1178,25 +1190,38 @@ extension LiveStreamView {
                                 
                                 Button {
                                     
-                                    print("💸 Retrait demandé")
+                                    guard !isWithdrawRequestLoading && !withdrawRequestSent else { return }
+                                    
+                                    createLiveWithdrawRequest()
                                     
                                 } label: {
                                     
                                     HStack {
                                         
-                                        Image(systemName: "arrow.up.circle.fill")
+                                        if isWithdrawRequestLoading {
+                                            ProgressView()
+                                                .tint(.black)
+                                        } else {
+                                            Image(systemName: withdrawRequestSent ? "checkmark.circle.fill" : "arrow.up.circle.fill")
+                                        }
                                         
-                                        Text("Retirer maintenant")
-                                            .fontWeight(.bold)
+                                        Text(
+                                            isWithdrawRequestLoading
+                                            ? "Envoi en cours..."
+                                            : withdrawRequestSent
+                                            ? "Demande envoyée"
+                                            : "Retirer maintenant"
+                                        )
+                                        .fontWeight(.bold)
                                     }
                                     .foregroundColor(.black)
                                     .frame(maxWidth: .infinity)
                                     .padding()
-                                    .background(Color.green)
+                                    .background(withdrawRequestSent ? Color.gray : Color.green)
                                     .cornerRadius(18)
                                 }
+                                .disabled(isWithdrawRequestLoading || withdrawRequestSent)
                             }
-                            .frame(maxWidth: .infinity, alignment: .leading)
                             
                             //////////////////////////////////////////////////////
                             // REPLAY
@@ -1417,6 +1442,47 @@ extension LiveStreamView {
                     }
             }
             
+    func createLiveWithdrawRequest() {
+        isWithdrawRequestLoading = true
+        
+        guard let user = Auth.auth().currentUser else {
+            print("❌ Aucun utilisateur connecté")
+            return
+        }
+        
+        let db = Firestore.firestore()
+        
+        let data: [String: Any] = [
+            "liveId": liveId,
+            "creatorId": user.uid,
+            "creatorName": user.displayName ?? "Créateur",
+            "coins": liveEarnedCoins,
+            "estimatedRevenue": estimatedRevenue,
+            "withdrawMethod": selectedWithdrawMethod,
+            "autoWithdrawEnabled": autoWithdrawEnabled,
+            "scheduledWithdrawDate": Timestamp(date: scheduledWithdrawDate),
+            "status": "pending",
+            "createdAt": Timestamp()
+        ]
+        
+        db.collection("lives")
+            .document(liveId)
+            .collection("withdrawRequests")
+            .addDocument(data: data) { error in
+                
+                if let error = error {
+                    print("❌ Erreur demande retrait:", error.localizedDescription)
+                } else {
+                    print("✅ Demande retrait enregistrée Firestore")
+                    
+                    DispatchQueue.main.async {
+                        self.isWithdrawRequestLoading = false
+                        self.withdrawRequestSent = true
+                        self.isWithdrawRequestLoading = false
+                    }
+                }
+            }
+    }
     
     struct FloatingHeart: Identifiable {
         let id: UUID

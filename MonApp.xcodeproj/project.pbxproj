@@ -180,6 +180,7 @@
 		59BF45D92FBA1C8A0008498F /* RtcBasic in Frameworks */ = {isa = PBXBuildFile; productRef = 59BF45D82FBA1C8A0008498F /* RtcBasic */; };
 		59BF45DB2FBA22260008498F /* AgoraVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF45DA2FBA22260008498F /* AgoraVideoView.swift */; };
 		59BF45DD2FBA22CB0008498F /* LiveVideoTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF45DC2FBA22CB0008498F /* LiveVideoTileView.swift */; };
+		59BF45DF2FBB62960008498F /* AgoraViewerContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF45DE2FBB62960008498F /* AgoraViewerContainer.swift */; };
 		59C639832F31656F00916B73 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 59C639822F31656F00916B73 /* GoogleSignIn */; };
 		59C639852F31656F00916B73 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 59C639842F31656F00916B73 /* GoogleSignInSwift */; };
 		59D4B2A42F33591200D9D2FB /* StripePayoutConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D4B2A32F33591200D9D2FB /* StripePayoutConfigView.swift */; };
@@ -431,6 +432,7 @@
 		59BF45D52FBA19BD0008498F /* LiveAgoraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveAgoraManager.swift; sourceTree = "<group>"; };
 		59BF45DA2FBA22260008498F /* AgoraVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgoraVideoView.swift; sourceTree = "<group>"; };
 		59BF45DC2FBA22CB0008498F /* LiveVideoTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveVideoTileView.swift; sourceTree = "<group>"; };
+		59BF45DE2FBB62960008498F /* AgoraViewerContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgoraViewerContainer.swift; sourceTree = "<group>"; };
 		59C6398A2F3191E900916B73 /* MonApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MonApp.entitlements; sourceTree = "<group>"; };
 		59D4B2A32F33591200D9D2FB /* StripePayoutConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripePayoutConfigView.swift; sourceTree = "<group>"; };
 		59EC252C2F3291A3003E976C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -648,6 +650,7 @@
 				59BF45D52FBA19BD0008498F /* LiveAgoraManager.swift */,
 				59BF45DA2FBA22260008498F /* AgoraVideoView.swift */,
 				59BF45DC2FBA22CB0008498F /* LiveVideoTileView.swift */,
+				59BF45DE2FBB62960008498F /* AgoraViewerContainer.swift */,
 			);
 			path = LiveStream;
 			sourceTree = "<group>";
@@ -1239,6 +1242,7 @@
 				5925C61A2FA56D3E00A05B3B /* FollowersActivityHours.swift in Sources */,
 				5925C61C2FA56D3E00A05B3B /* FollowersAudienceSection.swift in Sources */,
 				5925C61D2FA56D3E00A05B3B /* FollowersGrowthData.swift in Sources */,
+				59BF45DF2FBB62960008498F /* AgoraViewerContainer.swift in Sources */,
 				5925C61E2FA56D3E00A05B3B /* FollowersMetricsSection.swift in Sources */,
 				5925C61F2FA56D3E00A05B3B /* FollowersAnalyticsView.swift in Sources */,
 				5925C6202FA56D3E00A05B3B /* ForYouFeedEngine.swift in Sources */,
@@ -1404,7 +1408,7 @@
 				CODE_SIGN_ENTITLEMENTS = MonApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 9229UT9ZQN;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1420,6 +1424,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1446,7 +1451,7 @@
 				CODE_SIGN_ENTITLEMENTS = MonApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 9229UT9ZQN;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1462,6 +1467,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

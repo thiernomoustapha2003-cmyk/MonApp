@@ -14,7 +14,7 @@ struct AgoraVideoView: UIViewRepresentable {
     
     func makeUIView(context: Context) -> AgoraRenderContainer {
         let view = AgoraRenderContainer()
-        view.backgroundColor = .black
+        view.backgroundColor = .clear
         view.clipsToBounds = true
         view.layer.cornerRadius = cornerRadius
         view.videoType = videoType
@@ -24,29 +24,32 @@ struct AgoraVideoView: UIViewRepresentable {
     func updateUIView(_ uiView: AgoraRenderContainer, context: Context) {
         uiView.layer.cornerRadius = cornerRadius
         uiView.videoType = videoType
-        uiView.setNeedsLayout()
+        uiView.attachVideoIfNeeded(force: true)
     }
 }
 
 final class AgoraRenderContainer: UIView {
     
     var videoType: AgoraVideoView.VideoType?
-    private var lastSize: CGSize = .zero
+    private var lastAttachedType: AgoraVideoView.VideoType?
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
+        attachVideoIfNeeded(force: false)
+    }
+    
+    func attachVideoIfNeeded(force: Bool) {
         guard bounds.width > 10, bounds.height > 10 else {
             print("⚠️ Agora attach ignoré car taille 0:", bounds)
             return
         }
         
-        guard bounds.size != lastSize else { return }
-        lastSize = bounds.size
-        
         guard let videoType = videoType else { return }
         
-        print("🎥 Agora attach FINAL =", bounds)
+        if !force && lastAttachedType == videoType { return }
+        lastAttachedType = videoType
+        
+        print("🎥 Agora attach FINAL =", bounds, "type =", videoType)
         
         switch videoType {
         case .local:

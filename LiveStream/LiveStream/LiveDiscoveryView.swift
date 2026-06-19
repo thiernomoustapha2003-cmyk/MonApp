@@ -102,17 +102,8 @@ struct LivePreviewPage: View {
     var body: some View {
         ZStack {
             
-            LinearGradient(
-                colors: [
-                    Color.black,
-                    Color.red.opacity(0.65),
-                    Color.purple.opacity(0.55),
-                    Color.black
-                ],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-            .ignoresSafeArea()
+            Color.black
+                .ignoresSafeArea()
             
             VStack(spacing: 18) {
                 Spacer()
@@ -168,6 +159,7 @@ struct LivePreviewPage: View {
                     .padding(.horizontal, 28)
                 
                 Button {
+                    print("👀 OUVERTURE LIVE VIEWER id =", live.id)
                     goToLive = true
                 } label: {
                     HStack {
@@ -260,6 +252,7 @@ final class LiveDiscoveryViewModel: ObservableObject {
         
         listener = db.collection("lives")
             .whereField("isLive", isEqualTo: true)
+            .order(by: "startedAt", descending: true)
             .addSnapshotListener { snapshot, error in
                 
                 DispatchQueue.main.async {
@@ -286,7 +279,9 @@ final class LiveDiscoveryViewModel: ObservableObject {
                 } ?? []
                 
                 DispatchQueue.main.async {
-                    self.lives = items
+                    self.lives = Array(items.prefix(1))
+
+                    print("🔥 LIVE AFFICHÉ DISCOVERY =", self.lives.first?.id ?? "aucun")
                 }
             }
     }

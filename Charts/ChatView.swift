@@ -111,7 +111,7 @@ extension ChatView {
 
         let db = Firestore.firestore()
 
-        db.collection("conversations")
+        db.collection("conversations") 
             .document(conversationId)
             .collection("messages")
             .addDocument(data: [
