@@ -19,33 +19,58 @@ struct ChatView: View {
                     VStack(spacing: 10) {
 
                         ForEach(messages) { message in
-                            HStack {
-
-                                // 🔵 MESSAGE MOI (droite)
-                                if message.senderId == Auth.auth().currentUser?.uid {
-
-                                    Spacer()
-
-                                    Text(message.text)
-                                        .padding(12)
-                                        .background(Color.blue)
-                                        .foregroundColor(.white)
-                                        .cornerRadius(14)
+                            
+                            if message.type == .system || message.senderId == "system" {
+                                Text(message.text)
+                                    .font(.caption)
+                                    .foregroundColor(.gray)
+                                    .padding(8)
+                                    .background(Color.gray.opacity(0.12))
+                                    .cornerRadius(10)
+                                    .frame(maxWidth: .infinity)
+                                    .multilineTextAlignment(.center)
+                                    .id(message.id)
+                            } else {
+                                HStack {
+                                    if message.isMine {
+                                        Spacer()
+                                        
+                                        VStack(alignment: .trailing, spacing: 4) {
+                                            Text(message.text)
+                                                .padding(12)
+                                                .background(Color.blue)
+                                                .foregroundColor(.white)
+                                                .cornerRadius(14)
+                                            
+                                            Text(formatMessageTime(message.createdAt))
+                                                .font(.caption2)
+                                                .foregroundColor(.gray)
+                                        }
+                                    } else {
+                                        VStack(alignment: .leading, spacing: 4) {
+                                            Text(message.senderName)
+                                                .font(.caption2)
+                                                .foregroundColor(.gray)
+                                            
+                                            Text(message.text)
+                                                .padding(12)
+                                                .background(Color.gray.opacity(0.25))
+                                                .foregroundColor(.primary)
+                                                .cornerRadius(14)
+                                            
+                                            Text(formatMessageTime(message.createdAt))
+                                                .font(.caption2)
+                                                .foregroundColor(.gray)
+                                        }
+                                        
+                                        Spacer()
+                                    }
                                 }
-
-                                // ⚪️ MESSAGE AUTRE (gauche)
-                                else {
-                                    Text(message.text)
-                                        .padding(12)
-                                        .background(Color.gray.opacity(0.25))
-                                        .cornerRadius(14)
-
-                                    Spacer()
-                                }
+                                .padding(.horizontal)
+                                .id(message.id)
                             }
-                            .padding(.horizontal)
-                            .id(message.id)
                         }
+                           
 
                     }
                 }
@@ -81,7 +106,7 @@ struct ChatView: View {
 
 // MARK: - FIRESTORE
 extension ChatView {
-
+    
     func listenMessages() {
         Firestore.firestore()
             .collection("conversations")
@@ -89,9 +114,9 @@ extension ChatView {
             .collection("messages")
             .order(by: "createdAt")
             .addSnapshotListener { snapshot, _ in
-
+                
                 guard let documents = snapshot?.documents else { return }
-
+                
                 self.messages = documents.compactMap { doc in
                     ChatMessage.fromFirestore(
                         id: doc.documentID,
@@ -100,17 +125,17 @@ extension ChatView {
                 }
             }
     }
-
+    
     func sendMessage() {
         guard let user = Auth.auth().currentUser,
               !messageText.trimmingCharacters(in: .whitespaces).isEmpty
         else { return }
-
+        
         let text = messageText
         messageText = ""
-
+        
         let db = Firestore.firestore()
-
+        
         db.collection("conversations")
             .document(conversationId)
             .collection("messages")
@@ -119,14 +144,30 @@ extension ChatView {
                 "senderId": user.uid,
                 "createdAt": Timestamp(date: Date())
             ])
-
+        
         // mise à jour aperçu conversation
         db.collection("conversations")
             .document(conversationId)
             .updateData([
                 "lastMessage": text,
                 "lastSenderId": user.uid,
-                "updatedAt": Timestamp(date: Date())
+                "lastMessageDate": Timestamp(date: Date()),
+                "updatedAt": Timestamp(date: Date()),
+                "unreadFor": FieldValue.arrayUnion(
+                    messages.first?.senderId == user.uid ? [] : []
+                )
             ])
+    }
+    func formatMessageTime(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "fr_FR")
+        
+        if Calendar.current.isDateInToday(date) {
+            formatter.dateFormat = "HH:mm"
+        } else {
+            formatter.dateFormat = "dd/MM HH:mm"
+        }
+        
+        return formatter.string(from: date)
     }
 }

@@ -11,7 +11,7 @@ struct Booking: Identifiable {
     var date: String
     var time: String
     var status: String
-    
+    var slotId: String
     // ================= UI CLIENT =================
 
     /// Nom du service réservé (ex: Dégradé + Barbe)
@@ -71,6 +71,7 @@ struct Booking: Identifiable {
         date: String,
         time: String,
         status: String,
+        slotId: String = "",
         serviceName: String? = nil,
         price: Double? = nil,
         barberImage: String? = nil,
@@ -94,6 +95,7 @@ struct Booking: Identifiable {
         self.date = date
         self.time = time
         self.status = status
+        self.slotId = slotId
         self.serviceName = serviceName
         self.price = price
         self.barberImage = barberImage

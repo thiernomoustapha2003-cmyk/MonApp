@@ -7,6 +7,15 @@ struct LiveStreamView: View {
     
     
     
+    @State private var giftsListener: ListenerRegistration?
+    @State private var seenGiftIds: Set<String> = []
+    
+    
+    @State private var cohostAutoGridEnabled = false
+    
+    @State private var showHostControls = false
+    @State private var showModeration = false
+    
     @State private var isWithdrawRequestLoading = false
     @State private var withdrawRequestSent = false
     
@@ -57,19 +66,78 @@ struct LiveStreamView: View {
     
     @State private var session = AVCaptureSession()
     let effectsList = [
-        LiveEffect(name: "Normal", filterName: "", icon: "camera"),
-        LiveEffect(name: "Noir & Blanc", filterName: "CIPhotoEffectMono", icon: "circle.lefthalf.fill"),
-        LiveEffect(name: "Sepia", filterName: "CISepiaTone", icon: "sun.max"),
-        LiveEffect(name: "Vintage", filterName: "CIPhotoEffectProcess", icon: "clock"),
-        LiveEffect(name: "Instant", filterName: "CIPhotoEffectInstant", icon: "bolt"),
-        LiveEffect(name: "Fade", filterName: "CIPhotoEffectFade", icon: "moon"),
-        LiveEffect(name: "Chrome", filterName: "CIPhotoEffectChrome", icon: "sparkles"),
-        LiveEffect(name: "Tonal", filterName: "CIPhotoEffectTonal", icon: "circle"),
-        LiveEffect(name: "Transfer", filterName: "CIPhotoEffectTransfer", icon: "arrow.right"),
-        LiveEffect(name: "Poster", filterName: "CIColorPosterize", icon: "paintpalette"),
-        LiveEffect(name: "Invert", filterName: "CIColorInvert", icon: "arrow.2.circlepath"),
-        LiveEffect(name: "Bloom", filterName: "CIBloom", icon: "lightbulb"),
-        LiveEffect(name: "Vignette", filterName: "CIVignette", icon: "circle.dashed"),
+
+        LiveEffect(
+            name: "Normal",
+            filterName: "none",
+            icon: "camera"
+        ),
+
+        LiveEffect(
+            name: "Beauté",
+            filterName: "beauty",
+            icon: "sparkles"
+        ),
+
+        LiveEffect(
+            name: "Peau Lisse",
+            filterName: "smooth",
+            icon: "face.smiling"
+        ),
+
+        LiveEffect(
+            name: "Teint Clair",
+            filterName: "bright",
+            icon: "sun.max.fill"
+        ),
+
+        LiveEffect(
+            name: "Dents Blanches",
+            filterName: "white_teeth",
+            icon: "mouth"
+        ),
+
+        LiveEffect(
+            name: "Cute",
+            filterName: "cute",
+            icon: "heart.fill"
+        ),
+
+        LiveEffect(
+            name: "Glamour",
+            filterName: "glamour",
+            icon: "star.fill"
+        ),
+
+        LiveEffect(
+            name: "Snap",
+            filterName: "snap",
+            icon: "camera.filters"
+        ),
+
+        LiveEffect(
+            name: "TikTok",
+            filterName: "tiktok",
+            icon: "music.note"
+        ),
+
+        LiveEffect(
+            name: "Makeup",
+            filterName: "makeup",
+            icon: "paintbrush.fill"
+        ),
+
+        LiveEffect(
+            name: "Big Eyes",
+            filterName: "big_eyes",
+            icon: "eye.fill"
+        ),
+
+        LiveEffect(
+            name: "Face Slim",
+            filterName: "face_slim",
+            icon: "person.crop.circle"
+        )
     ]
     
     
@@ -250,15 +318,27 @@ struct LiveStreamView: View {
             chatService.startListening(liveId: liveId)
             chatService.sendJoin(liveId: liveId)
             walletService.loadCoins()
+            listenLiveGifts()
             
             LiveCoHostService.shared.registerHost(liveId: liveId)
             LiveCoHostService.shared.startListening(liveId: liveId)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                if !LiveCoHostService.shared.activeGuests.isEmpty {
+                    showCoHostGrid = true
+                    cohostAutoGridEnabled = true
+                    print("🔥 Grille cohost activée automatiquement")
+                }
+            }
         }
         .onDisappear {
             session.stopRunning()
+            giftsListener?.remove()
         }
         .sheet(isPresented: $showJoinRequests) {
             LiveJoinRequestsSheet(liveId: liveId)
+           
+            
         }
         
     }
@@ -280,7 +360,13 @@ struct LiveStreamView: View {
     }
     
     func sendGift(type: GiftType) {
-        activeGifts.append(GiftItem(type: type))
+        activeGifts.append(
+            GiftItem(
+                type: type,
+                senderName: Auth.auth().currentUser?.displayName ?? "Créateur",
+                senderAvatar: Auth.auth().currentUser?.photoURL?.absoluteString ?? ""
+            )
+        )
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             if !activeGifts.isEmpty {
@@ -386,37 +472,100 @@ struct LiveStreamView: View {
     }
     func handleGiftPurchase(gift: Gift) {
         
-        guard let creatorId = Auth.auth().currentUser?.uid else {
-            print("❌ creatorId introuvable")
+        guard let user = Auth.auth().currentUser else {
+            print("❌ utilisateur introuvable")
             return
         }
         
+        let creatorId = user.uid
+        let senderName = user.displayName?.isEmpty == false ? user.displayName! : "Créateur"
+        let senderAvatar = user.photoURL?.absoluteString ?? ""
+        
         totalGiftsCount += 1
-        
-        let giftType = GiftType.fromGiftName(gift.name)
-        
-        let item = GiftItem(type: giftType)
-        activeGifts.append(item)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-            activeGifts.removeAll { $0.id == item.id }
-        }
         
         WalletService.shared.recordGiftTransaction(
             liveId: liveId,
             creatorId: creatorId,
             gift: gift
         ) { success in
+            
             if success {
+                
                 chatService.sendSystemMessage(
                     liveId: liveId,
-                    text: "🎁 \(gift.name) envoyé"
+                    text: "🎁 \(senderName) a envoyé \(gift.name)"
                 )
+                
+                Firestore.firestore()
+                    .collection("lives")
+                    .document(liveId)
+                    .collection("gifts")
+                    .addDocument(data: [
+                        "senderId": user.uid,
+                        "senderName": senderName,
+                        "senderAvatar": senderAvatar,
+                        "giftName": gift.name,
+                        "giftCoins": gift.coins,
+                        "createdAt": Timestamp()
+                    ])
+                
             } else {
                 print("❌ Erreur enregistrement cadeau")
             }
         }
     }
+    func listenLiveGifts() {
+        
+        giftsListener?.remove()
+        
+        giftsListener = Firestore.firestore()
+            .collection("lives")
+            .document(liveId)
+            .collection("gifts")
+            .order(by: "createdAt", descending: false)
+            .addSnapshotListener { snapshot, error in
+                
+                if let error = error {
+                    print("❌ Erreur écoute cadeaux créateur:", error.localizedDescription)
+                    return
+                }
+                
+                guard let changes = snapshot?.documentChanges else { return }
+                
+                for change in changes {
+                    guard change.type == .added else { continue }
+                    
+                    let docId = change.document.documentID
+                    
+                    if seenGiftIds.contains(docId) { continue }
+                    seenGiftIds.insert(docId)
+                    
+                    let data = change.document.data()
+                    let giftName = data["giftName"] as? String ?? "Cadeau"
+                    print("🎁 Cadeau reçu :", giftName)
+                    
+                    let giftType = GiftType.fromGiftName(giftName)
+                    let senderName = data["senderName"] as? String ?? "Utilisateur"
+                    let senderAvatar = data["senderAvatar"] as? String ?? ""
+
+                    let item = GiftItem(
+                        type: giftType,
+                        senderName: senderName,
+                        senderAvatar: senderAvatar
+                    )
+                    
+                    DispatchQueue.main.async {
+                        totalGiftsCount += 1
+                        activeGifts.append(item)
+                        
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                            activeGifts.removeAll { $0.id == item.id }
+                        }
+                    }
+                }
+            }
+    }
+    
 }
 
 // MARK: - CAMERA VIEW
@@ -608,16 +757,46 @@ extension LiveStreamView {
 
             if !showCoHostGrid {
                 
-                AgoraVideoView(videoType: .local, cornerRadius: 0)
-                    .id("main-agora-video-fullscreen")
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .ignoresSafeArea()
-                    .background(Color.black)
+                ZStack {
+                    AgoraVideoView(videoType: .local, cornerRadius: 0)
+                        .id("main-agora-video-fullscreen")
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .ignoresSafeArea()
+                        .background(Color.black)
+                    
+                    if !LiveAgoraManager.shared.remoteUsers.isEmpty {
+                        VStack {
+                            Spacer()
+                            
+                            HStack {
+                                Spacer()
+                                
+                                ForEach(LiveAgoraManager.shared.remoteUsers, id: \.self) { uid in
+                                    AgoraVideoView(videoType: .remote(uid: uid), cornerRadius: 16)
+                                        .frame(width: 110, height: 150)
+                                        .clipped()
+                                        .background(Color.black)
+                                        .cornerRadius(16)
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 16)
+                                                .stroke(Color.white.opacity(0.7), lineWidth: 1)
+                                        )
+                                }
+                                .padding(.trailing, 14)
+                                .padding(.bottom, 210)
+                            }
+                        }
+                    }
+                }
                 
             } else {
                 
-                Color.black
-                    .ignoresSafeArea()
+                LiveVideoGridView(
+                    videos: [.local] + LiveAgoraManager.shared.remoteUsers.map {
+                        .remote(uid: $0)
+                    }
+                )
+                .ignoresSafeArea()
             }
             //////////////////////////////////////////////////////////
             // 🎥 COHOST GRID TIKTOK STYLE
@@ -904,7 +1083,13 @@ extension LiveStreamView {
                 
                 HStack(spacing: 25) {
                     
-                    LiveBottomButton(icon: "person.2.fill", title: "+ Hôtes")
+                    Button {
+                        withAnimation {
+                            showHostControls.toggle()
+                        }
+                    } label: {
+                        LiveBottomButton(icon: "slider.horizontal.3", title: "Contrôles")
+                    }
                     Button {
                         showJoinRequests = true
                     } label: {
@@ -974,6 +1159,7 @@ extension LiveStreamView {
                 .padding(.bottom, 10)
             }
             
+            
             if showGifts {
                 ZStack {
                     
@@ -990,7 +1176,25 @@ extension LiveStreamView {
                 }
                 .transition(.move(edge: .bottom))
                 .zIndex(999)
+                }
+            
+            if showHostControls {
+                
+                VStack {
+                    Spacer()
+                    
+                    LiveHostControlPanel(
+                        liveId: liveId,
+                        spotlightUserId: $spotlightUserId,
+                        showJoinRequests: $showJoinRequests,
+                        showModeration: $showModeration
+                    )
+                    .padding(.bottom, 90)
+                }
+                .transition(.move(edge: .bottom))
+                .zIndex(2000)
             }
+            
             ////////////////////////////////////////////////////////////
             // 🪙 COIN SHOP (AFFICHAGE PROPRE)
             ////////////////////////////////////////////////////////////
@@ -1283,6 +1487,10 @@ extension LiveStreamView {
             }
         }
     }
+    
+    
+    
+    
     
     func summaryRow(
         icon: String,

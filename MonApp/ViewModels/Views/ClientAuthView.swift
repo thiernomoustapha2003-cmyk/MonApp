@@ -46,43 +46,135 @@ struct ClientAuthView: View {
     }
 
     func login() {
-        Auth.auth().signIn(withEmail: email, password: password) { _, error in
-            if let error = error {
-                errorMessage = error.localizedDescription
-            } else {
-                onSuccess()
-                dismiss()
+        
+        errorMessage = ""
+        
+        Auth.auth().signIn(withEmail: email, password: password) { result, error in
+            
+            if let error = error as NSError? {
+
+                switch error.code {
+
+                case AuthErrorCode.emailAlreadyInUse.rawValue:
+                    errorMessage = "❌ Cette adresse e-mail est déjà utilisée."
+
+                case AuthErrorCode.invalidEmail.rawValue:
+                    errorMessage = "❌ Adresse e-mail invalide."
+
+                case AuthErrorCode.weakPassword.rawValue:
+                    errorMessage = "❌ Mot de passe trop faible."
+
+                default:
+                    errorMessage = "❌ Une erreur est survenue."
+                }
+            }
+            
+            guard let user = result?.user else { return }
+            
+            user.reload { error in
+                
+                if let error = error as NSError? {
+
+                    switch error.code {
+
+                    case AuthErrorCode.emailAlreadyInUse.rawValue:
+                        errorMessage = "❌ Cette adresse e-mail est déjà utilisée."
+
+                    case AuthErrorCode.invalidEmail.rawValue:
+                        errorMessage = "❌ Adresse e-mail invalide."
+
+                    case AuthErrorCode.weakPassword.rawValue:
+                        errorMessage = "❌ Mot de passe trop faible."
+
+                    default:
+                        errorMessage = "❌ Une erreur est survenue."
+                    }
+                }
+                
+                if Auth.auth().currentUser?.isEmailVerified == true {
+                    onSuccess()
+                    dismiss()
+                } else {
+                    errorMessage = "⚠️ Tu dois confirmer ton adresse e-mail avant de continuer."
+                    try? Auth.auth().signOut()
+                }
             }
         }
     }
 
     func register() {
         
+        errorMessage = ""
+        
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
             
-            if let error = error {
-                errorMessage = error.localizedDescription
-                return
+            if let error = error as NSError? {
+
+                switch error.code {
+
+                case AuthErrorCode.emailAlreadyInUse.rawValue:
+                    errorMessage = "❌ Cette adresse e-mail est déjà utilisée."
+
+                case AuthErrorCode.invalidEmail.rawValue:
+                    errorMessage = "❌ Adresse e-mail invalide."
+
+                case AuthErrorCode.weakPassword.rawValue:
+                    errorMessage = "❌ Mot de passe trop faible."
+
+                default:
+                    errorMessage = "❌ Une erreur est survenue."
+                }
             }
             
             guard let user = result?.user else { return }
             
-            user.sendEmailVerification()
-            // 🔥 Création automatique du displayName
             let changeRequest = user.createProfileChangeRequest()
-            
             let username = email.components(separatedBy: "@").first ?? "Client"
-            
             changeRequest.displayName = username
             
             changeRequest.commitChanges { error in
-                if let error = error {
-                    errorMessage = error.localizedDescription
-                    return
+                if let error = error as NSError? {
+
+                    switch error.code {
+
+                    case AuthErrorCode.emailAlreadyInUse.rawValue:
+                        errorMessage = "❌ Cette adresse e-mail est déjà utilisée."
+
+                    case AuthErrorCode.invalidEmail.rawValue:
+                        errorMessage = "❌ Adresse e-mail invalide."
+
+                    case AuthErrorCode.weakPassword.rawValue:
+                        errorMessage = "❌ Mot de passe trop faible."
+
+                    default:
+                        errorMessage = "❌ Une erreur est survenue."
+                    }
                 }
                 
-                onSuccess()
-                dismiss()
+                user.sendEmailVerification { error in
+                    if let error = error as NSError? {
+
+                        switch error.code {
+
+                        case AuthErrorCode.emailAlreadyInUse.rawValue:
+                            errorMessage = "❌ Cette adresse e-mail est déjà utilisée."
+
+                        case AuthErrorCode.invalidEmail.rawValue:
+                            errorMessage = "❌ Adresse e-mail invalide."
+
+                        case AuthErrorCode.weakPassword.rawValue:
+                            errorMessage = "❌ Mot de passe trop faible."
+
+                        default:
+                            errorMessage = "❌ Une erreur est survenue."
+                        }
+                    }
+                    
+                    errorMessage = "✅ Compte créé. Vérifie ton adresse e-mail avant de te connecter."
+                    isRegistering = false
+                    
+                    try? Auth.auth().signOut()
+                }
             }
         }
     }

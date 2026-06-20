@@ -16,12 +16,6 @@ Nous avons besoin d’accéder à votre galerie pour votre photo de profil.
 Nous avons besoin d’accéder à votre galerie pour votre photo de profil.
 Nous avons besoin d’accéder à votre galerie pour votre photo de profil.
 Nous utilisons votre position pour calculer la distance avec le coiffeur.</string>
-	<key>NSLocationWhenInUseUsageDescription
-NSLocationWhenInUseUsageDescription
-LSApplicationQueriesSchemes
-LSApplicationQuerisesS chemes</key>
-	<string>Nous utilisons votre position pour calculer la distance avec le coiffeur.
-</string>
 	<key>LSApplicationQueriesSchemes
 LSApplicationQueriesSchemes
 LSApplicationQueriesSchemes
@@ -30,5 +24,7 @@ LSApplicationQueriesSchemes
 		<string>stripe</string>
 		<string>stripe-redirect</string>
 	</array>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Cette application utilise le micro pour envoyer des messages vocaux.</string>
 </dict>
 </plist>

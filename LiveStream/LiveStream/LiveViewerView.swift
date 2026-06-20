@@ -1,6 +1,7 @@
 import SwiftUI
 import FirebaseAuth
 import AVFoundation
+import FirebaseFirestore
 
 struct LiveViewerView: View {
     
@@ -9,6 +10,13 @@ struct LiveViewerView: View {
     @Environment(\.dismiss) private var dismiss
     @StateObject private var chatService = LiveChatService()
     @StateObject private var walletService = WalletService.shared
+    
+    @State private var giftsListener: ListenerRegistration?
+    @State private var seenGiftIds: Set<String> = []
+    
+    
+    @State private var myJoinRequestListener: ListenerRegistration?
+    
     
     @StateObject private var agoraManager = LiveAgoraManager.shared
     
@@ -28,14 +36,7 @@ struct LiveViewerView: View {
             // 1️⃣ VIDEO / FOND — derrière tout
             GeometryReader { geo in
                 ZStack {
-                    if let firstRemote = agoraManager.remoteUsers.first {
-                        AgoraVideoView(videoType: .remote(uid: firstRemote))
-                            .frame(width: geo.size.width, height: geo.size.height)
-                            .clipped()
-                            .ignoresSafeArea()
-                            .allowsHitTesting(false)
-                            .zIndex(0)
-                    } else {
+                    if agoraManager.remoteUsers.isEmpty {
                         Color.black.ignoresSafeArea()
 
                         VStack(spacing: 16) {
@@ -47,6 +48,17 @@ struct LiveViewerView: View {
                                 .foregroundColor(.white)
                                 .font(.headline)
                         }
+                    } else {
+                        LiveVideoGridView(
+                            videos: agoraManager.remoteUsers.map {
+                                .remote(uid: $0)
+                            }
+                        )
+                            .frame(width: geo.size.width, height: geo.size.height)
+                            .clipped()
+                            .ignoresSafeArea()
+                            .allowsHitTesting(false)
+                            .zIndex(0)
                     }
                 }
             }
@@ -269,6 +281,8 @@ struct LiveViewerView: View {
             chatService.sendJoin(liveId: live.id)
             LiveCoHostService.shared.startListening(liveId: live.id)
             agoraManager.joinAsViewer(channelName: live.id)
+            listenLiveGifts()
+            listenMyJoinRequestStatus()
         
             
         }
@@ -276,6 +290,8 @@ struct LiveViewerView: View {
             chatService.leaveViewer(liveId: live.id)
             chatService.stopAll()
             agoraManager.leaveChannel()
+            giftsListener?.remove()
+            myJoinRequestListener?.remove()
         }
     }
 }
@@ -311,30 +327,151 @@ extension LiveViewerView {
     }
     
     func handleGiftPurchase(_ gift: Gift) {
+        
+        guard let user = Auth.auth().currentUser else {
+            print("❌ Aucun utilisateur connecté")
+            return
+        }
+        
+        let senderName = user.displayName?.isEmpty == false ? user.displayName! : "Utilisateur"
+        let senderAvatar = user.photoURL?.absoluteString ?? ""
+        
         totalGiftsCount += 1
         
         let giftType = GiftType.fromGiftName(gift.name)
-        let item = GiftItem(type: giftType)
+        let item = GiftItem(
+            type: giftType,
+            senderName: senderName,
+            senderAvatar: senderAvatar
+        )
         
+        // Animation locale immédiate côté spectateur
         activeGifts.append(item)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             activeGifts.removeAll { $0.id == item.id }
         }
         
+        // Enregistre transaction cadeau
         WalletService.shared.recordGiftTransaction(
             liveId: live.id,
             creatorId: live.creatorId,
             gift: gift
         ) { success in
+            
             if success {
+                
+                // Message TikTok-style dans le chat
                 chatService.sendSystemMessage(
                     liveId: live.id,
-                    text: "🎁 \(gift.name) envoyé à \(live.creatorName)"
+                    text: "🎁 \(senderName) a envoyé \(gift.name)"
                 )
+                
+                // Préparation pour animation synchronisée plus tard
+                Firestore.firestore()
+                    .collection("lives")
+                    .document(live.id)
+                    .collection("gifts")
+                    .addDocument(data: [
+                        "senderId": user.uid,
+                        "senderName": senderName,
+                        "senderAvatar": senderAvatar,
+                        "giftName": gift.name,
+                        "giftCoins": gift.coins,
+                        "createdAt": Timestamp()
+                    ])
+            } else {
+                print("❌ Erreur enregistrement cadeau")
             }
         }
     }
+    
+    
+    func listenMyJoinRequestStatus() {
+        
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        myJoinRequestListener?.remove()
+        
+        myJoinRequestListener = Firestore.firestore()
+            .collection("lives")
+            .document(live.id)
+            .collection("joinRequests")
+            .document(uid)
+            .addSnapshotListener { snapshot, error in
+                
+                if let error = error {
+                    print("❌ Erreur écoute acceptation:", error.localizedDescription)
+                    return
+                }
+                
+                let status = snapshot?.data()?["status"] as? String ?? ""
+                print("🙋 Statut demande spectateur =", status)
+                
+                if status == "accepted" {
+                    LiveAgoraManager.shared.becomeCoHost()
+                    
+                    LiveCoHostService.shared.toggleMyCamera(liveId: live.id)
+                    
+                    print("🎤 ACCEPTÉ → spectateur monte dans le live")
+                }
+            }
+    }
+    
+    
+    
+    func listenLiveGifts() {
+        
+        giftsListener?.remove()
+        
+        giftsListener = Firestore.firestore()
+            .collection("lives")
+            .document(live.id)
+            .collection("gifts")
+            .order(by: "createdAt", descending: false)
+            .addSnapshotListener { snapshot, error in
+                
+                if let error = error {
+                    print("❌ Erreur écoute cadeaux:", error.localizedDescription)
+                    return
+                }
+                
+                guard let changes = snapshot?.documentChanges else { return }
+                
+                for change in changes {
+                    guard change.type == .added else { continue }
+                    
+                    let docId = change.document.documentID
+                    
+                    if seenGiftIds.contains(docId) { continue }
+                    seenGiftIds.insert(docId)
+                    
+                    let data = change.document.data()
+                    let giftName = data["giftName"] as? String ?? "Cadeau"
+                    print("🎁 Cadeau reçu :", giftName)
+                    
+                    let giftType = GiftType.fromGiftName(giftName)
+                    let senderName = data["senderName"] as? String ?? "Utilisateur"
+                    let senderAvatar = data["senderAvatar"] as? String ?? ""
+
+                    let item = GiftItem(
+                        type: giftType,
+                        senderName: senderName,
+                        senderAvatar: senderAvatar
+                    )
+                    
+                    DispatchQueue.main.async {
+                        activeGifts.append(item)
+                        
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                            activeGifts.removeAll { $0.id == item.id }
+                        }
+                    }
+                }
+            }
+    }
+    
+    
     
     func shareLive() {
         

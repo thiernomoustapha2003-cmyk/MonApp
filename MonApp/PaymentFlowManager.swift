@@ -24,9 +24,10 @@ final class PaymentFlowManager {
             return
         }
 
-        let barberId = barber.authId
+        let barberId = barber.authId.isEmpty ? (barber.id ?? "") : barber.authId
+
         if barberId.isEmpty {
-            print("❌ barber.authId vide")
+            print("❌ barberId vide : authId et id sont vides")
             completion(nil, nil)
             return
         }

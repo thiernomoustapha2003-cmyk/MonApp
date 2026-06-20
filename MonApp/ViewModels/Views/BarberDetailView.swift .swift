@@ -204,8 +204,14 @@ struct BarberDetailView: View {
             geocodeBarberAddress()
             checkFavorite()
             loadBarberSlots()
-            loadServices()   // 🔥 AJOUTE CETTE LIGNE
+            loadServices()
         }
+        .onChange(of: showBookingSheet) { isOpen in
+            if !isOpen {
+                loadBarberSlots()
+            }
+        }   // 🔥 AJOUTE CETTE LIGNE
+        
         .sheet(isPresented: $showBookingSheet) {
             bookingView
         }
@@ -214,6 +220,11 @@ struct BarberDetailView: View {
         }
         .sheet(isPresented: $showDaySlotsSheet) {
             daySlotsSelectionView
+        }
+        .onChange(of: showDaySlotsSheet) { isOpen in
+            if !isOpen {
+                loadBarberSlots()
+            }
         }
         .sheet(isPresented: $showLoginSheet, onDismiss: {
             if Auth.auth().currentUser != nil {
@@ -576,7 +587,9 @@ extension BarberDetailView {
                     if hasAcceptedEscrow {
                         showEscrowInfoSheet = false
                         // 👉 MAINTENANT on lance vraiment le paiement
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                         startBookingThenPayment()
+                    }
                     }
                 }) {
                     Text("Continuer vers le paiement")
@@ -633,7 +646,11 @@ extension BarberDetailView {
         VStack(spacing: 12) {
 
             mainButton("✨ Partager ce coiffeur", color: .blue) {
-                let text = "Découvre ce coiffeur : \(barber.name)"
+                let text = """
+                Découvre \(barber.name), coiffeur sur Cutly ✂️
+                Ville : \(barber.city)
+                Prix moyen : \(Int(barber.price)) €
+                """
                 let av = UIActivityViewController(activityItems: [text], applicationActivities: nil)
                 UIApplication.shared.windows.first?.rootViewController?.present(av, animated: true)
             }
@@ -642,9 +659,7 @@ extension BarberDetailView {
                 toggleFavorite()
             }
 
-            mainButton("📍 Voir sur Maps", color: .teal) {
-                startNavigation()
-            }
+           
         }
         .padding(.horizontal)
     }
@@ -691,111 +706,99 @@ extension BarberDetailView {
             return
         }
         
-        guard let user = Auth.auth().currentUser else {
+        guard Auth.auth().currentUser != nil else {
             showLoginAlert = true
             return
         }
         
         isPreparingPayment = true
         
-        bookingService.addBooking(
+        PaymentFlowManager.shared.startPayment(
             barber: barber,
-            date: slot.startTime,
-            clientName: user.displayName ?? "Client"
-        ) { success in
+            slot: slot
+        ) { clientSecret, bookingId in
             
-            if !success {
-                DispatchQueue.main.async {
-                    self.isPreparingPayment = false
-                }
+            DispatchQueue.main.async {
+                self.isPreparingPayment = false
+            }
+            
+            guard let clientSecret = clientSecret,
+                  let bookingId = bookingId else {
+                print("❌ Impossible d’obtenir clientSecret")
                 return
             }
             
-            // 1️⃣ Récupérer la réservation qu’on vient de créer
-            self.db.collection("bookings")
-                .whereField("barberId", isEqualTo: barber.id ?? "")
-                .whereField("clientName", isEqualTo: user.displayName ?? "Client")
-                .order(by: "createdAt", descending: true)
-                .limit(to: 1)
-                .getDocuments { snapshot, _ in
-                    
-                    guard let doc = snapshot?.documents.first else {
-                        DispatchQueue.main.async {
-                            self.isPreparingPayment = false
-                        }
-                        print("❌ Impossible de récupérer la réservation")
-                        return
-                    }
-                    
-                    let bookingId = doc.documentID
-                    self.currentBookingId = bookingId
-                    
-                    print("🔥 barber.id RAW =", barber.id ?? "nil")
-                    print("🔥 barber.id =", barber.id)
-                    print("🔥 barber.authId =", barber.authId)
-                    print("🆔 barber.id envoyé:", barber.id ?? "nil")
-                    
-                    // 2️⃣ Demander à Stripe le clientSecret
-                    guard let slot = selectedSlot, 
-                          let slotId = slot.id else {
-                        print("❌ Slot introuvable")
-                        return
-                    }
-
-                    self.bookingService.createPaymentIntent(
-                        bookingId: bookingId,
-                        amount: barber.price,
-                        barberId: barber.id ?? "",
-                        slotId: slotId
-                    ) { clientSecret in
-                        DispatchQueue.main.async {
-                            self.isPreparingPayment = false
-                        }
-                        
-                        guard let clientSecret = clientSecret else {
-                            print("❌ Impossible d’obtenir clientSecret")
-                            return
-                        }
-                        
-                        // 3️⃣ Préparer PaymentSheet Stripe
-                        DispatchQueue.main.async {
-                            self.paymentIntentClientSecret = clientSecret
-                            
-                            var config = PaymentSheet.Configuration()
-                            config.merchantDisplayName = "Cutly"
-                            config.applePay = .init(
-                                merchantId: "merchant.com.cutly",
-                                merchantCountryCode: "FR"
-                            )
-                            
-                            self.paymentSheet = PaymentSheet(
-                                paymentIntentClientSecret: clientSecret,
-                                configuration: config
-                            )
-                            
-                            // 4️⃣ Ouvrir l’écran de paiement Stripe
-                            self.presentPaymentSheet()
-                        }
-                    }
-                }
+            DispatchQueue.main.async {
+                self.currentBookingId = bookingId
+                self.paymentIntentClientSecret = clientSecret
+                
+                var config = PaymentSheet.Configuration()
+                config.merchantDisplayName = "Cutly"
+                config.applePay = .init(
+                    merchantId: "merchant.com.cutly",
+                    merchantCountryCode: "FR"
+                )
+                
+                self.paymentSheet = PaymentSheet(
+                    paymentIntentClientSecret: clientSecret,
+                    configuration: config
+                )
+                
+                self.presentPaymentSheet()
+            }
         }
     }
     func presentPaymentSheet() {
         guard let paymentSheet = paymentSheet else { return }
-        
-        paymentSheet.present(from: UIApplication.shared.windows.first!.rootViewController!) { result in
-            switch result {
-            case .completed:
-                self.lockPayment()
-                self.markSlotAsBooked()
-                
-            case .failed(let error):
-                print("❌ Paiement échoué:", error.localizedDescription)
-                
-            case .canceled:
-                print("⚠️ Paiement annulé")
+
+        showBookingSheet = false
+        showEscrowInfoSheet = false
+        showDaySlotsSheet = false
+        showLoginSheet = false
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+
+            guard let rootVC = UIApplication.shared.connectedScenes
+                .compactMap({ $0 as? UIWindowScene })
+                .flatMap({ $0.windows })
+                .first(where: { $0.isKeyWindow })?
+                .rootViewController else {
+                print("❌ Impossible de trouver rootViewController")
+                return
+            }
+
+            let presenter = self.topViewController(from: rootVC)
+
+            paymentSheet.present(from: presenter) { result in
+                switch result {
+                case .completed:
+                    self.lockPayment()
+                    print("✅ Paiement terminé côté client. Le slot sera confirmé par le webhook.")
+
+                case .failed(let error):
+                    print("❌ Paiement échoué:", error.localizedDescription)
+
+                case .canceled:
+                    print("⚠️ Paiement annulé")
+                }
             }
         }
+    }
+
+    func topViewController(from root: UIViewController) -> UIViewController {
+        if let presented = root.presentedViewController {
+            return topViewController(from: presented)
+        }
+
+        if let nav = root as? UINavigationController {
+            return topViewController(from: nav.visibleViewController ?? nav)
+        }
+
+        if let tab = root as? UITabBarController {
+            return topViewController(from: tab.selectedViewController ?? tab)
+        }
+
+        return root
     }
     
     func lockPayment() {
@@ -974,20 +977,36 @@ extension BarberDetailView {
     func toggleFavorite() {
         guard let userId = Auth.auth().currentUser?.uid else { return }
         guard let barberId = barber.id else { return }
-        
-        let ref = db.collection("favorites")
-            .whereField("userId", isEqualTo: userId)
-            .whereField("barberId", isEqualTo: barberId)
-        
-        ref.getDocuments { snapshot, _ in
-            if let doc = snapshot?.documents.first {
-                doc.reference.delete()
+
+        let clientFavRef = db.collection("users")
+            .document(userId)
+            .collection("favoriteBarbers")
+            .document(barberId)
+
+        let barberFavRef = db.collection("users")
+            .document(barberId)
+            .collection("favoritedBy")
+            .document(userId)
+
+        clientFavRef.getDocument { snapshot, _ in
+            if snapshot?.exists == true {
+                clientFavRef.delete()
+                barberFavRef.delete()
                 isFavorite = false
             } else {
-                db.collection("favorites").addDocument(data: [
-                    "userId": userId,
-                    "barberId": barberId
+                clientFavRef.setData([
+                    "barberId": barberId,
+                    "barberName": barber.name,
+                    "barberCity": barber.city,
+                    "barberImageUrl": barber.imageUrl ?? "",
+                    "createdAt": Timestamp()
                 ])
+
+                barberFavRef.setData([
+                    "clientId": userId,
+                    "createdAt": Timestamp()
+                ])
+
                 isFavorite = true
             }
         }
@@ -995,12 +1014,14 @@ extension BarberDetailView {
     
     func checkFavorite() {
         guard let userId = Auth.auth().currentUser?.uid else { return }
-        
-        db.collection("favorites")
-            .whereField("userId", isEqualTo: userId)
-            .whereField("barberId", isEqualTo: barber.id)
-            .getDocuments { snapshot, _ in
-                isFavorite = !(snapshot?.documents.isEmpty ?? true)
+        guard let barberId = barber.id else { return }
+
+        db.collection("users")
+            .document(userId)
+            .collection("favoriteBarbers")
+            .document(barberId)
+            .getDocument { snapshot, _ in
+                isFavorite = snapshot?.exists == true
             }
     }
     

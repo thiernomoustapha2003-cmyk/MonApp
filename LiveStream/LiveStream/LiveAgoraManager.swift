@@ -281,6 +281,28 @@ extension LiveAgoraManager {
         print("🎥 setupLocalVideo OK view:", view.bounds)
     }
     
+    func becomeCoHost() {
+        guard let engine = engine else { return }
+
+        engine.setClientRole(.broadcaster)
+        engine.enableLocalVideo(true)
+        engine.muteLocalVideoStream(false)
+        engine.muteLocalAudioStream(false)
+        engine.startPreview()
+
+        let options = AgoraRtcChannelMediaOptions()
+        options.clientRoleType = .broadcaster
+        options.publishCameraTrack = true
+        options.publishMicrophoneTrack = true
+        options.autoSubscribeAudio = true
+        options.autoSubscribeVideo = true
+
+        engine.updateChannel(with: options)
+
+        print("🎤 Spectateur accepté → devient co-host / broadcaster")
+    }
+    
+    
     func setupRemoteVideo(uid: UInt, view: UIView) {
         guard let engine = engine else { return }
 

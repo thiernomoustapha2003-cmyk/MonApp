@@ -89,6 +89,7 @@ class WalletService: ObservableObject {
         }
         
         let transactionRef = db.collection("giftTransactions").document()
+        let senderRef = db.collection("users").document(senderId)
         let creatorRef = db.collection("users").document(creatorId)
         let platformRef = db.collection("platformStats").document("wallet")
         
@@ -106,11 +107,25 @@ class WalletService: ObservableObject {
             "creatorCoins": creatorCoins,
             "platformCoins": platformCoins,
             "commissionRate": platformCommissionRate,
-            "createdAt": FieldValue.serverTimestamp()
+            "createdAt": FieldValue.serverTimestamp(),
+            "type": "live_gift",
+            "status": "completed"
         ]
         
         db.runTransaction({ transaction, errorPointer -> Any? in
             do {
+                let senderSnapshot = try transaction.getDocument(senderRef)
+                let senderCoins = senderSnapshot.data()?["coins"] as? Int ?? 0
+                
+                if senderCoins < totalCoins {
+                    return false
+                }
+                
+                transaction.updateData([
+                    "coins": senderCoins - totalCoins,
+                    "totalGiftSentCoins": FieldValue.increment(Int64(totalCoins))
+                ], forDocument: senderRef)
+                
                 transaction.setData(data, forDocument: transactionRef)
                 
                 transaction.updateData([
@@ -130,7 +145,14 @@ class WalletService: ObservableObject {
                 errorPointer?.pointee = error as NSError
                 return false
             }
-        }) { result, _ in
+        }) { result, error in
+            
+            if let error = error {
+                print("❌ recordGiftTransaction error:", error.localizedDescription)
+                completion(false)
+                return
+            }
+            
             completion((result as? Bool) == true)
         }
     }

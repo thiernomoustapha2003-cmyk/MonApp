@@ -108,46 +108,75 @@ struct RegisterView: View {
         
         Auth.auth().createUser(withEmail: cleanEmail, password: password) { authResult, error in
             
-            isLoading = false
-            
-            if let error = error {
-                print("❌ Firebase Auth error:", error.localizedDescription)
-                errorMessage = error.localizedDescription
+            if let error = error as NSError? {
+                DispatchQueue.main.async {
+                    isLoading = false
+                    
+                    switch error.code {
+                    case AuthErrorCode.emailAlreadyInUse.rawValue:
+                        errorMessage = "❌ Cette adresse e-mail est déjà utilisée."
+                    case AuthErrorCode.invalidEmail.rawValue:
+                        errorMessage = "❌ Adresse e-mail invalide."
+                    case AuthErrorCode.weakPassword.rawValue:
+                        errorMessage = "❌ Mot de passe trop faible."
+                    default:
+                        errorMessage = "❌ Une erreur est survenue."
+                    }
+                }
                 return
             }
             
-            guard let userId = authResult?.user.uid else {
-                errorMessage = "❌ Impossible de récupérer l'utilisateur."
+            guard let user = authResult?.user else {
+                DispatchQueue.main.async {
+                    isLoading = false
+                    errorMessage = "❌ Impossible de récupérer l'utilisateur."
+                }
                 return
             }
             
+            let userId = user.uid
             let db = Firestore.firestore()
             
             let data: [String: Any] = [
+                "uid": userId,
                 "name": name,
                 "phone": phone,
                 "email": cleanEmail,
                 "role": role,
+                "emailVerified": false,
                 "createdAt": Timestamp(),
-
-                // Champs profil coiffeur par défaut (TU LES GARDES)
                 "isPro": false,
                 "isCertified": false,
                 "platformCommissionRate": 0.15
             ]
             
             db.collection("users").document(userId).setData(data) { error in
+                
                 if let error = error {
+                    DispatchQueue.main.async {
+                        isLoading = false
+                        errorMessage = "❌ Impossible de créer le profil utilisateur."
+                    }
                     print("❌ Firestore error:", error.localizedDescription)
-                    errorMessage = error.localizedDescription
-                } else {
-                    print("✅ Compte créé avec succès")
-
-                    // ✅ REDIRECTION CORRIGÉE
-                    if role == "coiffeur" {
-                        goToBarberRegister = true   // 👉 PROFIL COIFFEUR D'ABORD
-                    } else {
-                        goToClientHome = true      // 👉 Client va directement à l’app
+                    return
+                }
+                
+                user.sendEmailVerification { error in
+                    
+                    if let error = error {
+                        DispatchQueue.main.async {
+                            isLoading = false
+                            errorMessage = "❌ Impossible d’envoyer l’e-mail de vérification."
+                        }
+                        print("❌ Email verification error:", error.localizedDescription)
+                        return
+                    }
+                    
+                    try? Auth.auth().signOut()
+                    
+                    DispatchQueue.main.async {
+                        isLoading = false
+                        errorMessage = "✅ Compte créé. Vérifie ton e-mail avant de te connecter."
                     }
                 }
             }

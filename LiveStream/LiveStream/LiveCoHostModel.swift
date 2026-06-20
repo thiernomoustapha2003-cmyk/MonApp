@@ -19,6 +19,7 @@ struct LiveCoHost: Identifiable, Hashable {
     let userId: String
     let username: String
     let avatar: String
+    let agoraUid: UInt
     
     let role: LiveCoHostRole
     let status: LiveCoHostStatus
@@ -76,6 +77,7 @@ extension LiveCoHost {
             userId: data["userId"] as? String ?? id,
             username: data["username"] as? String ?? "Invité",
             avatar: data["avatar"] as? String ?? "",
+            agoraUid: UInt(data["agoraUid"] as? Int ?? 0),
             role: LiveCoHostRole(rawValue: roleRaw) ?? .guest,
             status: LiveCoHostStatus(rawValue: statusRaw) ?? .active,
             cameraEnabled: data["cameraEnabled"] as? Bool ?? false,

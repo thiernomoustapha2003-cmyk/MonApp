@@ -11,8 +11,12 @@ struct LoginView: View {
     @State private var errorMessage = ""
     @State private var isLoading = false
     
+    @State private var navigateToBarberProfile = false
+    
     @State private var navigateToClient = false
     @State private var navigateToBarber = false
+    
+    @State private var showVerificationActions = false
     
     // Pour Apple Sign In
     @State private var currentNonce: String?
@@ -22,95 +26,113 @@ struct LoginView: View {
 
     var body: some View {
         NavigationView {
-            VStack(spacing: 20) {
-                
-                Text("Connexion")
-                    .font(.largeTitle)
-                    .bold()
-                
-                // EMAIL FIELD
-                TextField("Email", text: $email)
-                    .textInputAutocapitalization(.never)
-                    .keyboardType(.emailAddress)
-                    .padding()
-                    .background(Color.gray.opacity(0.1))
-                    .cornerRadius(8)
-                
-                // PASSWORD FIELD
-                SecureField("Mot de passe", text: $password)
-                    .padding()
-                    .background(Color.gray.opacity(0.1))
-                    .cornerRadius(8)
-                
-                if !errorMessage.isEmpty {
-                    Text(errorMessage)
-                        .foregroundColor(.red)
-                        .font(.caption)
-                }
-                
-                // BOUTON CONNEXION EMAIL
-                Button(action: login) {
-                    if isLoading {
-                        ProgressView()
-                    } else {
-                        Text("Se connecter")
-                            .foregroundColor(.white)
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(Color.black)
-                            .cornerRadius(10)
+            ScrollView {
+                VStack(spacing: 20) {
+                    
+                    Text("Connexion")
+                        .font(.largeTitle)
+                        .bold()
+                        .padding(.top, 30)
+                    
+                    // EMAIL FIELD
+                    TextField("Exemple : nom@gmail.com", text: $email)
+                        .textInputAutocapitalization(.never)
+                        .keyboardType(.emailAddress)
+                        .padding()
+                        .background(Color.gray.opacity(0.1))
+                        .cornerRadius(8)
+                    
+                    // PASSWORD FIELD
+                    SecureField("Mot de passe", text: $password)
+                        .padding()
+                        .background(Color.gray.opacity(0.1))
+                        .cornerRadius(8)
+                    
+                    if !errorMessage.isEmpty {
+                        Text(errorMessage)
+                            .foregroundColor(.red)
+                            .font(.caption)
+                            .multilineTextAlignment(.center)
                     }
-                }
-                .disabled(isLoading)
-                
-                Text("OU")
-                    .font(.headline)
-                    .padding(.top, 10)
-                
-                // BOUTON APPLE SIGN IN
-                SignInWithAppleButton(
-                    .signIn,
-                    onRequest: { request in
-                        let nonce = randomNonceString()
-                        currentNonce = nonce
-                        request.requestedScopes = [.email, .fullName]
-                        request.nonce = sha256(nonce)
-                    },
-                    onCompletion: { result in
-                        switch result {
-                        case .success(let authResults):
-                            handleAppleSignIn(authResults)
-                        case .failure(let error):
-                            errorMessage = error.localizedDescription
+                    
+                    if showVerificationActions {
+                        Button("📧 Renvoyer l'email de vérification") {
+                            resendVerificationEmail()
+                        }
+                        .font(.caption)
+                        .foregroundColor(.blue)
+                        
+                        Button("✅ J’ai confirmé mon email") {
+                            checkEmailVerification()
+                        }
+                        .font(.caption)
+                        .foregroundColor(.green)
+                    }
+                    
+                    Button(action: login) {
+                        if isLoading {
+                            ProgressView()
+                        } else {
+                            Text("Se connecter")
+                                .foregroundColor(.white)
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .background(Color.black)
+                                .cornerRadius(10)
                         }
                     }
-                )
-                .frame(height: 55)
-                .cornerRadius(10)
-                
-                // ✅ BOUTON INSCRIPTION (TU L’AVAIS — JE GARDE)
-                Button("Créer un compte") {
-                    navigateToRegister = true
+                    .disabled(isLoading)
+                    
+                    Text("OU")
+                        .font(.headline)
+                        .padding(.top, 10)
+                    
+                    SignInWithAppleButton(
+                        .signIn,
+                        onRequest: { request in
+                            let nonce = randomNonceString()
+                            currentNonce = nonce
+                            request.requestedScopes = [.email, .fullName]
+                            request.nonce = sha256(nonce)
+                        },
+                        onCompletion: { result in
+                            switch result {
+                            case .success(let authResults):
+                                handleAppleSignIn(authResults)
+                            case .failure:
+                                errorMessage = "❌ Connexion Apple impossible. Réessaie."
+                            }
+                        }
+                    )
+                    .frame(height: 55)
+                    .cornerRadius(10)
+                    
+                    Button("Créer un compte") {
+                        navigateToRegister = true
+                    }
+                    .foregroundColor(.blue)
+                    .padding(.top, 10)
+                    
+                    
+                    NavigationLink(destination: BarberProfileView(), isActive: $navigateToBarberProfile) {
+                        EmptyView()
+                    }
+                    
+                    
+                    NavigationLink(destination: ClientHomeView(), isActive: $navigateToClient) {
+                        EmptyView()
+                    }
+                    
+                    NavigationLink(destination: BarberDashboardView(), isActive: $navigateToBarber) {
+                        EmptyView()
+                    }
+                    
+                    NavigationLink(destination: RegisterView(), isActive: $navigateToRegister) {
+                        EmptyView()
+                    }
                 }
-                .foregroundColor(.blue)
-                .padding(.top, 10)
-                
-                // NAVIGATIONS (SANS RIEN SUPPRIMER)
-                NavigationLink(destination: ClientHomeView(), isActive: $navigateToClient) {
-                    EmptyView()
-                }
-                
-                NavigationLink(destination: BarberDashboardView(), isActive: $navigateToBarber) {
-                    EmptyView()
-                }
-                
-                // Navigation vers RegisterView (GARDÉE)
-                NavigationLink(destination: RegisterView(), isActive: $navigateToRegister) {
-                    EmptyView()
-                }
-                
+                .padding()
             }
-            .padding()
             .navigationTitle("Cutly")
         }
     }
@@ -118,31 +140,129 @@ struct LoginView: View {
     // MARK: - Connexion Email (TA FONCTION — GARDÉE)
     func login() {
         errorMessage = ""
+        showVerificationActions = false
         isLoading = true
         
-        let cleanEmail = email.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+        let cleanEmail = email
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+            .lowercased()
         
         Auth.auth().signIn(withEmail: cleanEmail, password: password) { result, error in
-            if let error = error {
-                self.errorMessage = error.localizedDescription
-                self.isLoading = false
+            
+            if let error = error as NSError? {
+                DispatchQueue.main.async {
+                    self.isLoading = false
+                    
+                    switch error.code {
+                    case AuthErrorCode.invalidEmail.rawValue:
+                        self.errorMessage = "❌ Adresse e-mail invalide."
+                        
+                    case AuthErrorCode.userNotFound.rawValue:
+                        self.errorMessage = "❌ Aucun compte trouvé avec cette adresse e-mail."
+                        
+                    case AuthErrorCode.wrongPassword.rawValue:
+                        self.errorMessage = "❌ Mot de passe incorrect."
+                        
+                    case AuthErrorCode.userDisabled.rawValue:
+                        self.errorMessage = "❌ Ce compte a été désactivé."
+                        
+                    default:
+                        self.errorMessage = "❌ Email ou mot de passe incorrect."
+                    }
+                }
                 return
             }
             
-            guard let userId = result?.user.uid else {
-                self.errorMessage = "Utilisateur introuvable."
-                self.isLoading = false
+            guard let user = result?.user else {
+                DispatchQueue.main.async {
+                    self.isLoading = false
+                    self.errorMessage = "❌ Utilisateur introuvable."
+                }
                 return
             }
-
-
-            // 📱 enregistrer appareil
-            SessionManager.shared.registerSecureSession()
-
-           
-            fetchUserRole(userId: userId)
+            
+            user.reload { error in
+                
+                if let error = error {
+                    DispatchQueue.main.async {
+                        self.isLoading = false
+                        self.errorMessage = "❌ Impossible de vérifier votre compte."
+                    }
+                    print("❌ Reload user error:", error.localizedDescription)
+                    return
+                }
+                
+                let refreshedUser = Auth.auth().currentUser
+                
+                if refreshedUser?.isEmailVerified == false {
+                    DispatchQueue.main.async {
+                        self.errorMessage = "📧 Vérifie ton adresse e-mail avant de continuer."
+                        self.showVerificationActions = true
+                        self.isLoading = false
+                    }
+                    return
+                }
+                
+                SessionManager.shared.registerSecureSession()
+                fetchUserRole(userId: user.uid)
+            }
         }
     }
+    
+    func resendVerificationEmail() {
+        
+        guard let user = Auth.auth().currentUser else {
+            errorMessage = "❌ Reconnecte-toi pour renvoyer l'e-mail."
+            return
+        }
+        
+        user.sendEmailVerification { error in
+            
+            if let error = error {
+                print("❌ Erreur envoi email :", error.localizedDescription)
+                self.errorMessage = "❌ Impossible d'envoyer l'e-mail de vérification."
+                return
+            }
+            
+            self.errorMessage = "✅ E-mail de vérification renvoyé."
+        }
+    }
+
+    func checkEmailVerification() {
+        
+        guard let user = Auth.auth().currentUser else {
+            errorMessage = "❌ Utilisateur introuvable."
+            return
+        }
+        
+        isLoading = true
+        
+        user.reload { error in
+            
+            if let error = error {
+                DispatchQueue.main.async {
+                    self.isLoading = false
+                    self.errorMessage = "❌ Impossible de vérifier ton adresse e-mail."
+                }
+                print("❌ Reload verification error:", error.localizedDescription)
+                return
+            }
+            
+            if Auth.auth().currentUser?.isEmailVerified == true {
+                DispatchQueue.main.async {
+                    self.showVerificationActions = false
+                    SessionManager.shared.registerSecureSession()
+                    self.fetchUserRole(userId: user.uid)
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.isLoading = false
+                    self.errorMessage = "⚠️ E-mail pas encore confirmé. Clique sur le lien reçu dans ta boîte mail."
+                }
+            }
+        }
+    }
+    
     
     // MARK: - Récupérer le rôle dans Firestore (TA LOGIQUE — GARDÉE)
     func fetchUserRole(userId: String) {
@@ -162,12 +282,20 @@ struct LoginView: View {
                 return
             }
             
+            let profileCompleted = data["profileCompleted"] as? Bool ?? false
+            
             print("ROLE =", role)
+            print("PROFILE COMPLETED =", profileCompleted)
             
             if role == "client" {
                 self.navigateToClient = true
             } else if role == "coiffeur" {
-                self.navigateToBarber = true
+                if profileCompleted {
+                    self.navigateToBarber = true
+                } else {
+                    self.navigateToBarberProfile = true
+                    // On va corriger la navigation juste après
+                }
             } else {
                 self.errorMessage = "Rôle inconnu: \(role)"
             }
@@ -180,7 +308,7 @@ struct LoginView: View {
               let idTokenData = appleIDCredential.identityToken,
               let idTokenString = String(data: idTokenData, encoding: .utf8),
               let nonce = currentNonce else {
-            errorMessage = "Erreur lors de l’authentification Apple."
+            errorMessage = "❌ Erreur lors de l’authentification Apple."
             return
         }
         
@@ -191,21 +319,19 @@ struct LoginView: View {
         )
         
         Auth.auth().signIn(with: credential) { result, error in
+            
             if let error = error {
-                errorMessage = error.localizedDescription
+                print("❌ Apple Sign In error:", error.localizedDescription)
+                errorMessage = "❌ Connexion Apple impossible. Réessaie."
                 return
             }
             
             guard let user = result?.user else {
-                errorMessage = "Utilisateur introuvable."
+                errorMessage = "❌ Utilisateur introuvable."
                 return
             }
-
             
-            // 📱 enregistrer l'appareil
             SessionManager.shared.registerSecureSession()
-
-          
             saveUserToFirestore(userId: user.uid, email: user.email)
         }
     }

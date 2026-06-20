@@ -29,5 +29,23 @@
 	<string>Permet de filmer et publier du contenu.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Permet d&apos;enregistrer l&apos;audio des vidéos.</string>
+	<key>Privacy - Microphone Usage Descriptions</key>
+	<string>Cette application utilise le micro pour envoyer des messages vocaux.</string>
+	<key>Privacy - Photos Library Additions Usage Description</key>
+	<string>Autoriser l’application à enregistrer les photos et vidéos dans votre galerie.</string>
+	<key>NSApplePayUsageDescription</key>
+	<string>Nous utilisons Apple Pay pour sécuriser vos paiements.</string>
+	<key>NSPhotoLibraryUsageDescription
+NSPhotoLibraryUsageDescription
+NSPhotoLibraryUsageDescription
+</key>
+	<string>Nous avons besoin d’accéder à votre galerie pour votre photo de profil.
+Nous avons besoin d’accéder à votre galerie pour votre photo de profil.
+Nous avons besoin d’accéder à votre galerie pour votre photo de profil.
+Nous avons besoin d’accéder à votre galerie pour votre photo de profil.
+Nous avons besoin d’accéder à votre galerie pour votre photo de profil.
+Nous avons besoin d’accéder à votre galerie pour votre photo de profil.
+Nous avons besoin d’accéder à votre galerie pour votre photo de profil.
+Nous utilisons votre position pour calculer la distance avec le coiffeur.</string>
 </dict>
 </plist>

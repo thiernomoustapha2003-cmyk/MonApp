@@ -144,100 +144,117 @@ extension PremiumCoinShopView {
     }
     
     func badgeForPack(_ pack: CoinPack) -> String? {
-        if pack.bonus >= 1000 { return "VIP" }
-        if pack.bonus >= 500 { return "Meilleure offre" }
-        if pack.bonus > 0 { return "Bonus" }
-        return nil
+        
+        switch pack.totalCoins {
+            
+        case 40000...:
+            return "ULTIME 👑"
+            
+        case 14500...:
+            return "VIP ⭐️"
+            
+        case 6750...:
+            return "POPULAIRE 🔥"
+            
+        case 3200...:
+            return "BON PLAN 💎"
+            
+        case 1200...:
+            return "BONUS 🎁"
+            
+        default:
+            return nil
+        }
     }
-}
-
-struct PremiumCoinPackCard: View {
     
-    let pack: CoinPack
-    let badge: String?
-    let action: () -> Void
-    
-    var body: some View {
-        Button {
-            action()
-        } label: {
-            ZStack(alignment: .topTrailing) {
-                
-                HStack(spacing: 16) {
-                    ZStack {
-                        Circle()
-                            .fill(Color.yellow.opacity(0.18))
-                            .frame(width: 64, height: 64)
-                        
-                        Text("🪙")
-                            .font(.system(size: 34))
-                    }
+    struct PremiumCoinPackCard: View {
+        
+        let pack: CoinPack
+        let badge: String?
+        let action: () -> Void
+        
+        var body: some View {
+            Button {
+                action()
+            } label: {
+                ZStack(alignment: .topTrailing) {
                     
-                    VStack(alignment: .leading, spacing: 6) {
-                        Text("\(pack.totalCoins) coins")
-                            .font(.title3.bold())
-                            .foregroundColor(.white)
-                        
-                        if pack.bonus > 0 {
-                            Text("+\(pack.bonus) bonus offert 🎁")
-                                .font(.caption)
-                                .foregroundColor(.green)
-                        } else {
-                            Text("Pack standard")
-                                .font(.caption)
-                                .foregroundColor(.white.opacity(0.65))
+                    HStack(spacing: 16) {
+                        ZStack {
+                            Circle()
+                                .fill(Color.yellow.opacity(0.18))
+                                .frame(width: 64, height: 64)
+                            
+                            Text("🪙")
+                                .font(.system(size: 34))
                         }
                         
-                        Text(CurrencyConverter.shared.localizedPrice(eurAmount: pack.priceEUR))
-                            .font(.caption2)
-                            .foregroundColor(.white.opacity(0.75))
-                    }
-                    
-                    Spacer()
-                    
-                    VStack(alignment: .trailing, spacing: 4) {
-                        Text(CurrencyConverter.shared.formatEUR(pack.priceEUR))
-                            .font(.headline.bold())
-                            .foregroundColor(.yellow)
+                        VStack(alignment: .leading, spacing: 6) {
+                            Text("\(pack.totalCoins) coins")
+                                .font(.title3.bold())
+                                .foregroundColor(.white)
+                            
+                            if pack.bonus > 0 {
+                                Text("+\(pack.bonus) bonus offert 🎁")
+                                    .font(.caption)
+                                    .foregroundColor(.green)
+                            } else {
+                                Text("Pack standard")
+                                    .font(.caption)
+                                    .foregroundColor(.white.opacity(0.65))
+                            }
+                            
+                            Text(CurrencyConverter.shared.localizedPrice(eurAmount: pack.priceEUR))
+                                .font(.caption2)
+                                .foregroundColor(.white.opacity(0.75))
+                        }
                         
-                        Text("Carte • Apple Pay • Mobile Money")
-                            .font(.caption2)
-                            .foregroundColor(.white.opacity(0.55))
+                        Spacer()
+                        
+                        VStack(alignment: .trailing, spacing: 4) {
+                            Text(CurrencyConverter.shared.formatEUR(pack.priceEUR))
+                                .font(.headline.bold())
+                                .foregroundColor(.yellow)
+                            
+                            Text("Apple Pay • Carte • Orange Money • Wave • MTN Money")
+                                .font(.caption2)
+                                .foregroundColor(.white.opacity(0.55))
+                        }
                     }
-                }
-                .padding()
-                .background(
-                    RoundedRectangle(cornerRadius: 24)
-                        .fill(
-                            LinearGradient(
-                                colors: [
-                                    Color.white.opacity(0.12),
-                                    Color.white.opacity(0.05)
-                                ],
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
+                    .padding()
+                    .background(
+                        RoundedRectangle(cornerRadius: 24)
+                            .fill(
+                                LinearGradient(
+                                    colors: [
+                                        Color.white.opacity(0.12),
+                                        Color.white.opacity(0.05)
+                                    ],
+                                    startPoint: .topLeading,
+                                    endPoint: .bottomTrailing
+                                )
                             )
-                        )
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 24)
-                                .stroke(Color.white.opacity(0.1), lineWidth: 1)
-                        )
-                )
-                .padding(.horizontal)
-                
-                if let badge = badge {
-                    Text(badge)
-                        .font(.caption2.bold())
-                        .foregroundColor(.black)
-                        .padding(.horizontal, 10)
-                        .padding(.vertical, 5)
-                        .background(Color.yellow)
-                        .cornerRadius(10)
-                        .padding(.trailing, 28)
-                        .padding(.top, -6)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 24)
+                                    .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                            )
+                    )
+                    .padding(.horizontal)
+                    
+                    if let badge = badge {
+                        Text(badge)
+                            .font(.caption2.bold())
+                            .foregroundColor(.black)
+                            .padding(.horizontal, 10)
+                            .padding(.vertical, 5)
+                            .background(Color.yellow)
+                            .cornerRadius(10)
+                            .padding(.trailing, 28)
+                            .padding(.top, -6)
+                    }
                 }
             }
+            .buttonStyle(.plain)
         }
-        .buttonStyle(.plain)
     }
 }

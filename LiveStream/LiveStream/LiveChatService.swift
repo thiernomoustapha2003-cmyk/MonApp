@@ -293,9 +293,11 @@ class LiveChatService: ObservableObject {
                 return
             }
             
+            let name = user.displayName?.isEmpty == false ? user.displayName! : "Utilisateur"
+            
             self.sendSystemMessage(
                 liveId: liveId,
-                text: "❤️ \(user.displayName ?? "Un spectateur") a tapoté le live"
+                text: "❤️ \(name) a aimé le live"
             )
             
             ref.setData([
@@ -312,17 +314,38 @@ class LiveChatService: ObservableObject {
         
         guard let user = Auth.auth().currentUser else { return }
         
+        let username = user.displayName?.isEmpty == false
+            ? user.displayName!
+            : "Utilisateur"
+        
+        let avatar = user.photoURL?.absoluteString ?? ""
+        
         db.collection("lives")
             .document(liveId)
             .collection("joinRequests")
             .document(user.uid)
             .setData([
                 "userId": user.uid,
-                "username": user.displayName ?? "Spectateur",
-                "avatar": user.photoURL?.absoluteString ?? "",
+                "username": username,
+                "avatar": avatar,
                 "status": "pending",
-                "createdAt": Timestamp()
-            ])
+                "createdAt": Timestamp(),
+                "updatedAt": Timestamp()
+            ]) { error in
+                
+                if let error = error {
+                    print("❌ Erreur demande invité :", error.localizedDescription)
+                    return
+                }
+                
+                print("✅ Demande envoyée")
+                
+                // Notification dans le chat
+                self.sendSystemMessage(
+                    liveId: liveId,
+                    text: "🙋 \(username) souhaite monter dans le live"
+                )
+            }
     }
 
     //////////////////////////////////////////////////////////

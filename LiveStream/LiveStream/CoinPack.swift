@@ -24,9 +24,52 @@ struct CoinPack: Identifiable {
 
 // 🔥 CATALOGUE COINS
 let coinPacks: [CoinPack] = [
-    CoinPack(coins: 500,  priceEUR: 5,  bonus: 0),
-    CoinPack(coins: 1000, priceEUR: 10, bonus: 100),
-    CoinPack(coins: 5000, priceEUR: 50, bonus: 1000),
-    CoinPack(coins: 10000, priceEUR: 100, bonus: 3000)
-]
 
+    CoinPack(
+        coins: 50,
+        priceEUR: 4.99,
+        bonus: 0
+    ),
+
+    CoinPack(
+        coins: 100,
+        priceEUR: 9.99,
+        bonus: 10
+    ),
+
+    CoinPack(
+        coins: 500,
+        priceEUR: 49.99,
+        bonus: 75
+    ),
+
+    CoinPack(
+        coins: 1000,
+        priceEUR: 99.99,
+        bonus: 200
+    ),
+
+    CoinPack(
+        coins: 2500,
+        priceEUR: 249.99,
+        bonus: 700
+    ),
+
+    CoinPack(
+        coins: 5000,
+        priceEUR: 499.99,
+        bonus: 1750
+    ),
+
+    CoinPack(
+        coins: 10000,
+        priceEUR: 999.99,
+        bonus: 4500
+    ),
+
+    CoinPack(
+        coins: 25000,
+        priceEUR: 2499.99,
+        bonus: 15000
+    )
+]

@@ -206,11 +206,19 @@ extension LiveCoHostGridView {
     }
     
     func videoType(for participant: LiveCoHost) -> AgoraVideoView.VideoType? {
+        
         if participant.isHost && isHostView {
             return .local
         }
         
-        let uid = UInt(abs(participant.userId.hashValue))
-        return .remote(uid: uid)
+        if participant.isHost && !isHostView {
+            return .remote(uid: 1001)
+        }
+        
+        if participant.agoraUid > 0 {
+            return .remote(uid: participant.agoraUid)
+        }
+        
+        return nil
     }
 }

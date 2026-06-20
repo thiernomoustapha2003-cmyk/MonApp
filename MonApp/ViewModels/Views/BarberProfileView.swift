@@ -1,5 +1,6 @@
 import SwiftUI
 import FirebaseFirestore
+import FirebaseStorage
 import FirebaseAuth
 import PhotosUI
 
@@ -11,6 +12,13 @@ struct BarberProfileView: View {
     
     @State private var selectedImage: PhotosPickerItem?
     @State private var profileImage: UIImage?
+    
+    
+    @State private var existingImageUrl = ""
+    
+    @State private var phone = ""
+    @State private var price = ""
+    
     
     @State private var fullName = ""
     @State private var email = ""
@@ -55,7 +63,21 @@ struct BarberProfileView: View {
                             .scaledToFill()
                             .frame(width: 120, height: 120)
                             .clipShape(Circle())
-                    } else {
+                    }
+                    else if let url = URL(string: existingImageUrl),
+                            !existingImageUrl.isEmpty {
+
+                        AsyncImage(url: url) { image in
+                            image
+                                .resizable()
+                                .scaledToFill()
+                        } placeholder: {
+                            ProgressView()
+                        }
+                        .frame(width: 120, height: 120)
+                        .clipShape(Circle())
+                    }
+                    else {
                         Circle()
                             .fill(Color.gray.opacity(0.3))
                             .frame(width: 120, height: 120)
@@ -85,6 +107,13 @@ struct BarberProfileView: View {
                     TextField("Code postal", text: $postalCode)
                         .keyboardType(.numberPad)
                     TextField("Description", text: $description)
+                    TextField("Téléphone", text: $phone)
+                        .keyboardType(.phonePad)
+                    
+                    TextField("Prix moyen (€)", text: $price)
+                        .keyboardType(.decimalPad)
+                    
+                    
                 }
                 .textFieldStyle(.roundedBorder)
                 .padding(.horizontal)
@@ -165,6 +194,9 @@ struct BarberProfileView: View {
             .padding(.top)
         }
         .navigationTitle("Profil Coiffeur")
+        .onAppear {
+            loadExistingProfile()
+        }
     }
     
     // =============================
@@ -186,51 +218,123 @@ struct BarberProfileView: View {
         profileProgress = Double(score)
     }
     
+    func loadExistingProfile() {
+        guard !barberId.isEmpty else { return }
+
+        db.collection("users").document(barberId).getDocument { snapshot, error in
+            if let error = error {
+                print("❌ Erreur chargement profil:", error.localizedDescription)
+                return
+            }
+
+            let data = snapshot?.data() ?? [:]
+
+            DispatchQueue.main.async {
+                self.fullName = data["fullName"] as? String ?? data["name"] as? String ?? ""
+                self.email = data["email"] as? String ?? ""
+                self.phone = data["phone"] as? String ?? ""
+                self.price = String(format: "%.2f", data["price"] as? Double ?? 0.0)
+                self.streetAddress = data["streetAddress"] as? String ?? data["street"] as? String ?? ""
+                self.buildingNumber = data["buildingNumber"] as? String ?? data["houseNumber"] as? String ?? ""
+                self.city = data["city"] as? String ?? ""
+                self.postalCode = data["postalCode"] as? String ?? ""
+                self.description = data["description"] as? String ?? ""
+                self.services = data["services"] as? [String] ?? [""]
+                if self.services.isEmpty { self.services = [""] }
+
+                self.isProfessional = data["isProfessional"] as? Bool ?? false
+                self.stripeEnabled = data["acceptsOnlinePayment"] as? Bool ?? false
+                self.onlyByAppointment = data["onlyByAppointment"] as? Bool ?? true
+                self.existingImageUrl = data["imageUrl"] as? String ?? ""
+
+                self.calculateProgress()
+            }
+        }
+    }
+    
+    
     // =============================
     // SAUVEGARDE
     // =============================
     
     func saveProfile() {
-
+        
         guard !barberId.isEmpty else {
             print("❌ barberId vide")
             return
         }
+        
+        uploadProfileImage { uploadedImageUrl in
+            
+            let data: [String: Any] = [
+                "imageUrl": uploadedImageUrl ?? "",
+                "name": fullName,
+                "fullName": fullName,
+                "email": email,
+                "phone": phone,
+                "price": Double(price.replacingOccurrences(of: ",", with: ".")) ?? 0.0,
+                
+                "streetAddress": streetAddress,
+                "street": streetAddress,
+                "buildingNumber": buildingNumber,
+                "houseNumber": buildingNumber,
+                "city": city,
+                "postalCode": postalCode,
+                "description": description,
+                "services": services.filter { !$0.isEmpty },
+                
+                "profileCompleted": true,
+                "role": "coiffeur",
+                "acceptsOnlinePayment": stripeEnabled,
+                "platformCommissionRate": 0.15,
+                "payoutEnabled": false
+            ]
+            
+            db.collection("users").document(barberId).setData(data, merge: true) { error in
+                
+                if let error = error {
+                    print("❌ Erreur sauvegarde profil:", error.localizedDescription)
+                    return
+                }
+                
+                print("✅ Profil barber sauvegardé dans users avec image")
+                
+                DispatchQueue.main.async {
+                    showSuccessMessage = true
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                        goToAvailability = true
+                    }
+                }
+            }
+        }
+    }
+    
+    func uploadProfileImage(completion: @escaping (String?) -> Void) {
+        guard let image = profileImage,
+              let imageData = image.jpegData(compressionQuality: 0.7) else {
+            completion(nil)
+            return
+        }
 
-        let data: [String: Any] = [
-            "fullName": fullName,
-            "email": email,
-            "streetAddress": streetAddress,
-            "buildingNumber": buildingNumber,
-            "city": city,
-            "postalCode": postalCode,
-            "description": description,
-            "services": services,
-            "isProfessional": isProfessional,
-            "stripeEnabled": stripeEnabled,
-            "onlyByAppointment": onlyByAppointment,
-            "profileCompleted": true,
+        let ref = Storage.storage().reference()
+            .child("barber_profiles/\(barberId).jpg")
 
-            // 🔥 IMPORTANT POUR STRIPE
-            "role": "barber",
-            "acceptsOnlinePayment": stripeEnabled,
-            "platformCommissionRate": 0.15,
-            "payoutEnabled": false
-        ]
-
-        db.collection("users").document(barberId).setData(data, merge: true) { error in
-
+        ref.putData(imageData, metadata: nil) { _, error in
             if let error = error {
-                print("❌ Erreur sauvegarde profil:", error.localizedDescription)
+                print("❌ Upload image:", error.localizedDescription)
+                completion(nil)
                 return
             }
 
-            print("✅ Profil barber sauvegardé dans users")
+            ref.downloadURL { url, error in
+                if let error = error {
+                    print("❌ URL image:", error.localizedDescription)
+                    completion(nil)
+                    return
+                }
 
-            showSuccessMessage = true
-
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                goToAvailability = true
+                completion(url?.absoluteString)
             }
         }
     }

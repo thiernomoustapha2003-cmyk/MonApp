@@ -1,193 +1,89 @@
-//
-//  GiftAnimationView.swift
-//  MonApp
-//
-
 import SwiftUI
+import AVKit
+import AVFoundation
 
 struct GiftAnimationView: View {
     
     let gift: GiftType
     
-    @State private var show = false
     @State private var opacity: Double = 1
-    @State private var scale: CGFloat = 0.2
-    @State private var rotation: Double = 0
-    @State private var offsetY: CGFloat = 0
-    @State private var glow = false
-    @State private var cutMove: CGFloat = -180
+    @State private var scale: CGFloat = 0.92
+    @State private var player: AVPlayer?
     
     var body: some View {
         ZStack {
-            
-            // ✨ Particules autour
-            ForEach(0..<particleCount(), id: \.self) { index in
-                Text(particleEmoji(index))
-                    .font(.system(size: particleSize(index)))
-                    .offset(
-                        x: particleX(index),
-                        y: show ? particleY(index) : 0
-                    )
-                    .opacity(opacity)
-                    .scaleEffect(show ? 1.0 : 0.2)
-            }
-            
-            // 🔥 Effet spécial Ciseaux Royal
-            if gift == .royalScissors {
-                VStack(spacing: -25) {
-                    Text("✂️")
-                        .font(.system(size: 115))
-                        .rotationEffect(.degrees(show ? -25 : 25))
-                        .offset(x: cutMove)
-                    
-                    Text("CUTLY ROYAL")
-                        .font(.title)
-                        .bold()
-                        .foregroundColor(.white)
-                        .shadow(color: .yellow, radius: 14)
-                }
-                .scaleEffect(scale)
+            Color.black.opacity(isPremiumGift ? 0.35 : 0.12)
+                .ignoresSafeArea()
                 .opacity(opacity)
-            } else {
-                Text(mainEmoji())
-                    .font(.system(size: mainSize()))
-                    .scaleEffect(scale)
-                    .rotationEffect(.degrees(rotation))
-                    .offset(y: offsetY)
-                    .opacity(opacity)
-                    .shadow(color: glowColor(), radius: glow ? 28 : 8)
-            }
             
-            // 👑 Texte premium
-            if isPremiumGift() {
-                Text(premiumTitle())
-                    .font(.title2)
-                    .bold()
-                    .foregroundColor(.white)
-                    .shadow(color: glowColor(), radius: 12)
-                    .offset(y: 130)
+            if let url = Bundle.main.url(forResource: gift.assetName, withExtension: "mp4") {
+                GiftVideoPlayer(player: AVPlayer(url: url))
+                    .scaleEffect(scale)
                     .opacity(opacity)
+                    .onAppear {
+                        playSound()
+                    }
+            } else {
+                fallbackPremiumView
+                    .scaleEffect(scale)
+                    .opacity(opacity)
+                    .onAppear {
+                        playSound()
+                    }
             }
         }
+        .allowsHitTesting(false)
         .onAppear {
             startAnimation()
         }
     }
 }
 
-// MARK: - Animation
-
 extension GiftAnimationView {
     
     private func startAnimation() {
-        show = true
-        glow = true
-        
-        withAnimation(.spring(response: 0.45, dampingFraction: 0.5)) {
-            scale = isPremiumGift() ? 1.25 : 1.05
-            rotation = initialRotation()
+        withAnimation(.spring(response: 0.35, dampingFraction: 0.75)) {
+            scale = 1
+            opacity = 1
         }
         
-        if gift == .royalScissors {
-            withAnimation(.easeInOut(duration: 0.55).repeatCount(3, autoreverses: true)) {
-                cutMove = 180
-            }
-        } else {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
-                withAnimation(.easeInOut(duration: 0.35).repeatCount(2, autoreverses: true)) {
-                    rotation = -initialRotation()
-                }
-            }
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + durationBeforeDisappear()) {
-            withAnimation(.easeOut(duration: 1.0)) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + gift.duration) {
+            withAnimation(.easeOut(duration: 0.45)) {
                 opacity = 0
-                offsetY = -230
-                scale = 0.75
+                scale = 1.08
             }
         }
     }
-}
-
-// MARK: - Gift Visuals
-
-extension GiftAnimationView {
     
-    private func mainEmoji() -> String {
-        switch gift {
-        case .rose: return "🌹"
-        case .like: return "❤️"
-        case .clap: return "👏"
-        case .comb: return "🪮"
-        case .perfume: return "🧴"
-        case .lipstick: return "💄"
-        case .makeup: return "🎨"
-        case .nails: return "💅"
-        case .straightener: return "✨"
-        case .sunglasses: return "🕶"
-        case .hat: return "🎩"
-        case .crown: return "👑"
-        case .giftBox: return "🎁"
-        case .fireworks: return "🎆"
-        case .car: return "🏎"
-        case .lion: return "🦁"
-        case .universe: return "🌌"
-        case .royalScissors: return "✂️"
-        }
-    }
-    
-    private func particleEmoji(_ index: Int) -> String {
-        let particles: [String]
-        
-        switch gift {
-        case .rose:
-            particles = ["🌹", "💖", "✨"]
-        case .like:
-            particles = ["❤️", "💕", "💗"]
-        case .clap:
-            particles = ["👏", "✨", "🔥"]
-        case .comb:
-            particles = ["🪮", "✨", "💇🏾‍♀️"]
-        case .perfume:
-            particles = ["🧴", "💨", "✨"]
-        case .lipstick:
-            particles = ["💄", "💋", "✨"]
-        case .makeup:
-            particles = ["🎨", "✨", "💎"]
-        case .nails:
-            particles = ["💅", "✨", "💖"]
-        case .straightener:
-            particles = ["✨", "💇🏾‍♀️", "🔥"]
-        case .sunglasses:
-            particles = ["🕶", "😎", "✨"]
-        case .hat:
-            particles = ["🎩", "✨", "🔥"]
-        case .crown:
-            particles = ["👑", "💎", "✨"]
-        case .giftBox:
-            particles = ["🎁", "✨", "💰"]
-        case .fireworks:
-            particles = ["🎆", "🎇", "✨"]
-        case .car:
-            particles = ["🏎", "💨", "🔥"]
-        case .lion:
-            particles = ["🦁", "👑", "🔥", "💰"]
-        case .universe:
-            particles = ["🌌", "⭐️", "✨", "💫"]
-        case .royalScissors:
-            particles = ["✂️", "👑", "💎", "🔥", "💰"]
+    private func playSound() {
+        guard let url = Bundle.main.url(forResource: gift.soundName, withExtension: "mp3") else {
+            print("⚠️ Son introuvable:", gift.soundName)
+            return
         }
         
-        return particles[index % particles.count]
+        var soundId: SystemSoundID = 0
+        AudioServicesCreateSystemSoundID(url as CFURL, &soundId)
+        AudioServicesPlaySystemSound(soundId)
     }
 }
 
-// MARK: - Premium Logic
-
 extension GiftAnimationView {
     
-    private func isPremiumGift() -> Bool {
+    private var fallbackPremiumView: some View {
+        VStack(spacing: 14) {
+            Text(gift.emoji)
+                .font(.system(size: isPremiumGift ? 120 : 80))
+                .shadow(color: gift.glowColor, radius: 30)
+            
+            Text(gift.title)
+                .font(isPremiumGift ? .largeTitle.bold() : .title3.bold())
+                .foregroundColor(.white)
+                .shadow(color: gift.glowColor, radius: 18)
+        }
+        .padding()
+    }
+    
+    private var isPremiumGift: Bool {
         switch gift {
         case .crown, .giftBox, .fireworks, .car, .lion, .universe, .royalScissors:
             return true
@@ -195,90 +91,30 @@ extension GiftAnimationView {
             return false
         }
     }
-    
-    private func premiumTitle() -> String {
-        switch gift {
-        case .lion:
-            return "LION ROYAL"
-        case .universe:
-            return "UNIVERS CUTLY"
-        case .royalScissors:
-            return "CISEAUX ROYAL"
-        case .car:
-            return "STYLE SUPRÊME"
-        case .fireworks:
-            return "SHOW TIME"
-        case .crown:
-            return "ROI DU LIVE"
-        default:
-            return "CADEAU PREMIUM"
-        }
-    }
-    
-    private func mainSize() -> CGFloat {
-        isPremiumGift() ? 125 : 90
-    }
-    
-    private func particleCount() -> Int {
-        isPremiumGift() ? 34 : 18
-    }
-    
-    private func durationBeforeDisappear() -> Double {
-        switch gift {
-        case .royalScissors:
-            return 3.2
-        case .lion, .universe:
-            return 2.8
-        case .car, .fireworks:
-            return 2.4
-        default:
-            return 1.8
-        }
-    }
-    
-    private func initialRotation() -> Double {
-        switch gift {
-        case .car:
-            return 0
-        case .royalScissors:
-            return 30
-        default:
-            return 10
-        }
-    }
 }
 
-// MARK: - Particles Positions
-
-extension GiftAnimationView {
+struct GiftVideoPlayer: UIViewRepresentable {
     
-    private func particleX(_ index: Int) -> CGFloat {
-        let positions: [CGFloat] = [-170, -130, -95, -60, -25, 25, 60, 95, 130, 170]
-        return positions[index % positions.count]
-    }
+    let player: AVPlayer
     
-    private func particleY(_ index: Int) -> CGFloat {
-        let positions: [CGFloat] = [-260, -220, -180, -140, -100, -60, 40, 80, 120, 160]
-        return positions[(index * 3) % positions.count]
-    }
-    
-    private func particleSize(_ index: Int) -> CGFloat {
-        let sizes: [CGFloat] = [22, 26, 30, 34, 38]
-        return sizes[index % sizes.count]
-    }
-    
-    private func glowColor() -> Color {
-        switch gift {
-        case .lion, .royalScissors, .crown:
-            return .yellow
-        case .universe:
-            return .purple
-        case .rose, .like, .lipstick, .nails:
-            return .pink
-        case .fireworks, .car:
-            return .red
-        default:
-            return .white
+    func makeUIView(context: Context) -> UIView {
+        let view = UIView()
+        view.backgroundColor = .clear
+        
+        let layer = AVPlayerLayer(player: player)
+        layer.videoGravity = .resizeAspectFill
+        layer.backgroundColor = UIColor.clear.cgColor
+        layer.frame = UIScreen.main.bounds
+        
+        view.layer.addSublayer(layer)
+        
+        DispatchQueue.main.async {
+            player.seek(to: .zero)
+            player.play()
         }
+        
+        return view
     }
+    
+    func updateUIView(_ uiView: UIView, context: Context) {}
 }

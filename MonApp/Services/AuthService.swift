@@ -33,6 +33,15 @@ final class AuthService {
                 return
             }
 
+            // 📧 Envoi de l'email de vérification
+            result?.user.sendEmailVerification { error in
+                if let error = error {
+                    print("❌ Erreur email vérification :", error.localizedDescription)
+                } else {
+                    print("✅ Email de vérification envoyé")
+                }
+            }
+
             // ✅ ON ÉCRIT DANS "users" (COMME RegisterView)
             let docData: [String: Any] = [
                 "uid": uid,

@@ -3,38 +3,62 @@ import FirebaseFirestore
 import FirebaseAuth
 
 struct ClientHomeView: View {
-
+    
     @StateObject var viewModel = BarberViewModel()
-
+    
     @State private var searchText = ""
     @State private var showFavoritesOnly = false
-
+    
+    @State private var isAdmin = false
+    @State private var isPlatformOwner = false
+    
+    
     @State private var showLoginSheet = false
     @State private var selectedBarberForAction: Barber? = nil
     @State private var pendingAction: PendingAction? = nil
-
+    
     enum PendingAction {
         case call
         case whatsapp
         case book
     }
-
+    
     var filteredBarbers: [Barber] {
         viewModel.barbers.filter { barber in
             let matchesSearch = searchText.isEmpty ||
-                barber.name.lowercased().contains(searchText.lowercased()) ||
-                barber.city.lowercased().contains(searchText.lowercased())
-
+            barber.name.lowercased().contains(searchText.lowercased()) ||
+            barber.city.lowercased().contains(searchText.lowercased())
+            
             let matchesFavorite = !showFavoritesOnly || barber.isFavorite
-
+            
             return matchesSearch && matchesFavorite
         }
     }
-
+    
     var body: some View {
         NavigationStack {
             
             VStack(alignment: .leading, spacing: 12) {
+                
+                if isAdmin && isPlatformOwner {
+                    NavigationLink {
+                        AdminRevenueView()
+                    } label: {
+                        HStack {
+                            Image(systemName: "chart.line.uptrend.xyaxis")
+                            Text("📊 Revenus Cutly")
+                                .fontWeight(.bold)
+                            Spacer()
+                            Image(systemName: "lock.shield.fill")
+                        }
+                        .foregroundColor(.black)
+                        .padding()
+                        .background(Color.yellow)
+                        .cornerRadius(16)
+                        .padding(.horizontal)
+                    }
+                }
+                
                 
                 NavigationLink("💬 Mes messages") {
                     ChatListView()
@@ -128,8 +152,14 @@ struct ClientHomeView: View {
                                     
                                     Spacer()
                                     
-                                    Image(systemName: barber.isFavorite ? "heart.fill" : "heart")
-                                        .foregroundColor(barber.isFavorite ? .red : .gray)
+                                    Button {
+                                        toggleFavorite(barber: barber)
+                                    } label: {
+                                        Image(systemName: barber.isFavorite ? "heart.fill" : "heart")
+                                            .foregroundColor(barber.isFavorite ? .red : .gray)
+                                            .font(.title3)
+                                    }
+                                    .buttonStyle(BorderlessButtonStyle())
                                 }
                                 .padding(.vertical, 6)
                             }
@@ -176,6 +206,7 @@ struct ClientHomeView: View {
             .navigationTitle("Coiffeurs")
             .onAppear {
                 viewModel.fetchBarbers()
+                checkAdminAccess()
             }
             .sheet(isPresented: $showLoginSheet, onDismiss: {
                 if Auth.auth().currentUser != nil {
@@ -187,51 +218,125 @@ struct ClientHomeView: View {
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button("Logout") {
+                Button("Se déconnecter") {
                     try? Auth.auth().signOut()
                     print("🔴 Déconnecté")
                 }
             }
         }
     }
-
+    
     func handleAction(barber: Barber, action: PendingAction) {
-
+        
         selectedBarberForAction = barber
         pendingAction = action
-
+        
         if Auth.auth().currentUser == nil {
             showLoginSheet = true
         } else {
             performPendingAction()
         }
     }
-
+    
     func performPendingAction() {
-
+        
         guard let barber = selectedBarberForAction,
               let action = pendingAction else { return }
-
+        
         switch action {
-
+            
         case .call:
             let cleaned = barber.phone.replacingOccurrences(of: " ", with: "")
             if let url = URL(string: "tel://\(cleaned)") {
                 UIApplication.shared.open(url)
             }
-
+            
         case .whatsapp:
             let cleaned = barber.phone.replacingOccurrences(of: " ", with: "")
             let whatsappURL = "https://wa.me/\(cleaned)"
             if let url = URL(string: whatsappURL) {
                 UIApplication.shared.open(url)
             }
-
+            
         case .book:
             print("👉 Réserver avec \(barber.name)")
         }
     }
+    
+    func checkAdminAccess() {
+        guard let uid = Auth.auth().currentUser?.uid else {
+            isAdmin = false
+            isPlatformOwner = false
+            return
+        }
+
+        print("🔐 UID connecté =", uid)
+        print("📧 Email connecté =", Auth.auth().currentUser?.email ?? "pas email")
+
+        Firestore.firestore()
+            .collection("users")
+            .document(uid)
+            .getDocument { snapshot, error in
+
+                if let error = error {
+                    print("❌ Erreur admin access:", error.localizedDescription)
+                    return
+                }
+
+                let data = snapshot?.data() ?? [:]
+
+                let role = data["role"] as? String ?? ""
+                let owner = data["isPlatformOwner"] as? Bool ?? false
+
+                DispatchQueue.main.async {
+                    print("🔥 Role Firestore =", role)
+                    print("👑 isPlatformOwner Firestore =", owner)
+
+                    self.isAdmin = role == "admin"
+                    self.isPlatformOwner = owner
+
+                    print("✅ isAdmin =", self.isAdmin)
+                    print("✅ isPlatformOwner =", self.isPlatformOwner)
+                }
+            }
+    }
+    
+
+func toggleFavorite(barber: Barber) {
+
+    guard let clientId = Auth.auth().currentUser?.uid else { return }
+
+    let db = Firestore.firestore()
+
+    let barberId = barber.authId
+
+    let clientFavRef = db.collection("users")
+        .document(clientId)
+        .collection("favoriteBarbers")
+        .document(barberId)
+
+    clientFavRef.getDocument { snap, _ in
+
+        if snap?.exists == true {
+
+            clientFavRef.delete()
+
+        } else {
+
+            clientFavRef.setData([
+                "barberId": barberId,
+                "barberName": barber.name,
+                "barberCity": barber.city,
+                "barberImageUrl": barber.imageUrl ?? "",
+                "createdAt": Timestamp()
+            ])
+        }
+
+        viewModel.fetchBarbers()
+    }
 }
+}
+
 struct CutlyLiveCard: View {
     var body: some View {
         HStack(spacing: 14) {
@@ -289,4 +394,7 @@ struct CutlyLiveCard: View {
         .shadow(color: .red.opacity(0.35), radius: 12, x: 0, y: 6)
         .padding(.horizontal)
     }
+    
 }
+
+

@@ -32,7 +32,7 @@ struct ChooseRoleView: View {
             // COIFFEUR
             // COIFFEUR
             Button(action: {
-                createUser(role: "barber")
+                createUser(role: "coiffeur")
             }) {
                 Text("Je suis un coiffeur")
                     .frame(maxWidth: .infinity)

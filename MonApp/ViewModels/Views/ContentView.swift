@@ -10,10 +10,7 @@ struct ContentView: View {
     var body: some View {
 
         NavigationStack {
-
-            // 🔥 TOUJOURS afficher HomeView
-            HomeView()
-
+            RootRouterView()
         }
         .onAppear {
             Auth.auth().addStateDidChangeListener { _, user in

@@ -116,6 +116,8 @@
 		59AE98F82F3F4F00009C9A24 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59AE98F72F3F4F00009C9A24 /* Service.swift */; };
 		59AE98FA2F3FB846009C9A24 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59AE98F92F3FB846009C9A24 /* FavoritesView.swift */; };
 		59AE98FD2F3FCDF7009C9A24 /* ServiceCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59AE98FC2F3FCDF7009C9A24 /* ServiceCardView.swift */; };
+		59B009E72FD44D1F00F52B19 /* LiveVideoGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B009E62FD44D1F00F52B19 /* LiveVideoGridView.swift */; };
+		59B009EE2FD4914400F52B19 /* DeepARTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B009ED2FD4914400F52B19 /* DeepARTest.swift */; };
 		59B131CC2F48985D0092C62B /* BarberBookingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B131CB2F48985D0092C62B /* BarberBookingsView.swift */; };
 		59B131CE2F48B27F0092C62B /* PaymentsHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B131CD2F48B27F0092C62B /* PaymentsHistoryView.swift */; };
 		59B131D02F48E11A0092C62B /* InvoicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B131CF2F48E11A0092C62B /* InvoicesView.swift */; };
@@ -181,6 +183,19 @@
 		59BF45DB2FBA22260008498F /* AgoraVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF45DA2FBA22260008498F /* AgoraVideoView.swift */; };
 		59BF45DD2FBA22CB0008498F /* LiveVideoTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF45DC2FBA22CB0008498F /* LiveVideoTileView.swift */; };
 		59BF45DF2FBB62960008498F /* AgoraViewerContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF45DE2FBB62960008498F /* AgoraViewerContainer.swift */; };
+		59BF48682FE1968F0020B685 /* AdminRevenueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF48672FE1968F0020B685 /* AdminRevenueView.swift */; };
+		59BF486A2FE405000020B685 /* FavoritedByClientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF48692FE405000020B685 /* FavoritedByClientsView.swift */; };
+		59BF486C2FE41AD40020B685 /* ClientBookingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF486B2FE41AD40020B685 /* ClientBookingDetailView.swift */; };
+		59BF486E2FE4740E0020B685 /* ChatMediaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF486D2FE4740E0020B685 /* ChatMediaService.swift */; };
+		59BF48702FE484100020B685 /* ChatMediaPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF486F2FE4840F0020B685 /* ChatMediaPreviewView.swift */; };
+		59BF48722FE4A1F10020B685 /* NativeVideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF48712FE4A1F10020B685 /* NativeVideoPlayerView.swift */; };
+		59BF48742FE4A7EE0020B685 /* AudioRecorderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF48732FE4A7EE0020B685 /* AudioRecorderService.swift */; };
+		59BF48762FE4A9FC0020B685 /* ChatAudioService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF48752FE4A9FC0020B685 /* ChatAudioService.swift */; };
+		59BF48782FE4AA9E0020B685 /* ChatAudioPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF48772FE4AA9E0020B685 /* ChatAudioPlayerView.swift */; };
+		59BF487A2FE52C290020B685 /* ChatPresenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF48792FE52C290020B685 /* ChatPresenceService.swift */; };
+		59BF487C2FE546800020B685 /* ViewOnceMediaViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF487B2FE546800020B685 /* ViewOnceMediaViewer.swift */; };
+		59BF487E2FE578C40020B685 /* ChatViewOnceAudioBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF487D2FE578C40020B685 /* ChatViewOnceAudioBubble.swift */; };
+		59BF48842FE5BCF20020B685 /* ChatShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF48832FE5BCF10020B685 /* ChatShareSheet.swift */; };
 		59C639832F31656F00916B73 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 59C639822F31656F00916B73 /* GoogleSignIn */; };
 		59C639852F31656F00916B73 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 59C639842F31656F00916B73 /* GoogleSignInSwift */; };
 		59D4B2A42F33591200D9D2FB /* StripePayoutConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D4B2A32F33591200D9D2FB /* StripePayoutConfigView.swift */; };
@@ -248,6 +263,19 @@
 		59F61AB22F4103D4003999DD /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F61AB12F4103D4003999DD /* ChatView.swift */; };
 		59F61AB42F410400003999DD /* ChatListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F61AB32F410400003999DD /* ChatListView.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		59B009EC2FD4908C00F52B19 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		590903AF2F24211C001E5ADD /* MonApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MonApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -362,6 +390,8 @@
 		59AE98F72F3F4F00009C9A24 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		59AE98F92F3FB846009C9A24 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		59AE98FC2F3FCDF7009C9A24 /* ServiceCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCardView.swift; sourceTree = "<group>"; };
+		59B009E62FD44D1F00F52B19 /* LiveVideoGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveVideoGridView.swift; sourceTree = "<group>"; };
+		59B009ED2FD4914400F52B19 /* DeepARTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepARTest.swift; sourceTree = "<group>"; };
 		59B131CB2F48985D0092C62B /* BarberBookingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarberBookingsView.swift; sourceTree = "<group>"; };
 		59B131CD2F48B27F0092C62B /* PaymentsHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentsHistoryView.swift; sourceTree = "<group>"; };
 		59B131CF2F48E11A0092C62B /* InvoicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoicesView.swift; sourceTree = "<group>"; };
@@ -433,6 +463,19 @@
 		59BF45DA2FBA22260008498F /* AgoraVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgoraVideoView.swift; sourceTree = "<group>"; };
 		59BF45DC2FBA22CB0008498F /* LiveVideoTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveVideoTileView.swift; sourceTree = "<group>"; };
 		59BF45DE2FBB62960008498F /* AgoraViewerContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgoraViewerContainer.swift; sourceTree = "<group>"; };
+		59BF48672FE1968F0020B685 /* AdminRevenueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminRevenueView.swift; sourceTree = "<group>"; };
+		59BF48692FE405000020B685 /* FavoritedByClientsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritedByClientsView.swift; sourceTree = "<group>"; };
+		59BF486B2FE41AD40020B685 /* ClientBookingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientBookingDetailView.swift; sourceTree = "<group>"; };
+		59BF486D2FE4740E0020B685 /* ChatMediaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMediaService.swift; sourceTree = "<group>"; };
+		59BF486F2FE4840F0020B685 /* ChatMediaPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMediaPreviewView.swift; sourceTree = "<group>"; };
+		59BF48712FE4A1F10020B685 /* NativeVideoPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeVideoPlayerView.swift; sourceTree = "<group>"; };
+		59BF48732FE4A7EE0020B685 /* AudioRecorderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorderService.swift; sourceTree = "<group>"; };
+		59BF48752FE4A9FC0020B685 /* ChatAudioService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAudioService.swift; sourceTree = "<group>"; };
+		59BF48772FE4AA9E0020B685 /* ChatAudioPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAudioPlayerView.swift; sourceTree = "<group>"; };
+		59BF48792FE52C290020B685 /* ChatPresenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPresenceService.swift; sourceTree = "<group>"; };
+		59BF487B2FE546800020B685 /* ViewOnceMediaViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewOnceMediaViewer.swift; sourceTree = "<group>"; };
+		59BF487D2FE578C40020B685 /* ChatViewOnceAudioBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewOnceAudioBubble.swift; sourceTree = "<group>"; };
+		59BF48832FE5BCF10020B685 /* ChatShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatShareSheet.swift; sourceTree = "<group>"; };
 		59C6398A2F3191E900916B73 /* MonApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MonApp.entitlements; sourceTree = "<group>"; };
 		59D4B2A32F33591200D9D2FB /* StripePayoutConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripePayoutConfigView.swift; sourceTree = "<group>"; };
 		59EC252C2F3291A3003E976C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -566,6 +609,7 @@
 		590903A62F24211C001E5ADD = {
 			isa = PBXGroup;
 			children = (
+				59B009ED2FD4914400F52B19 /* DeepARTest.swift */,
 				5925C60E2FA56D3E00A05B3B /* FollowButton */,
 				5925C5F32FA56D2B00A05B3B /* LiveBadge */,
 				5925C5E42FA56D0A00A05B3B /* Sound */,
@@ -604,6 +648,8 @@
 		5925C5602FA558F000A05B3B /* LiveStream */ = {
 			isa = PBXGroup;
 			children = (
+				5925C55E2FA558F000A05B3B /* LiveStreamView.swift */,
+				59B512EC2FB914B800829D52 /* LiveViewerView.swift */,
 				597156A42FB1024200F575FF /* CoinPack.swift */,
 				5925C5532FA558F000A05B3B /* CameraPreview.swift */,
 				5925C5542FA558F000A05B3B /* FilterOverlayView.swift */,
@@ -615,7 +661,6 @@
 				5925C55A2FA558F000A05B3B /* LiveEventsView.swift */,
 				5925C55B2FA558F000A05B3B /* LiveReplayDetailView.swift */,
 				5925C55C2FA558F000A05B3B /* LiveReplaysView.swift */,
-				5925C55E2FA558F000A05B3B /* LiveStreamView.swift */,
 				5925C55F2FA558F000A05B3B /* LiveTab.swift */,
 				5925C56E2FA55DA400A05B3B /* CreateLiveEventView.swift */,
 				597156962FAB7C2300F575FF /* LiveChatInputView.swift */,
@@ -628,7 +673,6 @@
 				597156A62FB1027000F575FF /* WalletService.swift */,
 				597156A82FB102BB00F575FF /* CoinShopView.swift */,
 				59B512EA2FB90FA000829D52 /* LiveDiscoveryView.swift */,
-				59B512EC2FB914B800829D52 /* LiveViewerView.swift */,
 				59B512EE2FB9165E00829D52 /* GiftAnimationView.swift */,
 				59B512F02FB916BC00829D52 /* LiveAdOverlay.swift */,
 				59B512F22FB92EF800829D52 /* LiveJoinRequestsSheet.swift */,
@@ -651,6 +695,8 @@
 				59BF45DA2FBA22260008498F /* AgoraVideoView.swift */,
 				59BF45DC2FBA22CB0008498F /* LiveVideoTileView.swift */,
 				59BF45DE2FBB62960008498F /* AgoraViewerContainer.swift */,
+				59B009E62FD44D1F00F52B19 /* LiveVideoGridView.swift */,
+				59BF48672FE1968F0020B685 /* AdminRevenueView.swift */,
 			);
 			path = LiveStream;
 			sourceTree = "<group>";
@@ -916,6 +962,18 @@
 				59F61AB32F410400003999DD /* ChatListView.swift */,
 				59ACE2942F42458600FACD11 /* EscrowInfoView.swift */,
 				59ACE2962F424D4900FACD11 /* MessageDetailView.swift */,
+				59BF48692FE405000020B685 /* FavoritedByClientsView.swift */,
+				59BF486B2FE41AD40020B685 /* ClientBookingDetailView.swift */,
+				59BF486D2FE4740E0020B685 /* ChatMediaService.swift */,
+				59BF486F2FE4840F0020B685 /* ChatMediaPreviewView.swift */,
+				59BF48712FE4A1F10020B685 /* NativeVideoPlayerView.swift */,
+				59BF48732FE4A7EE0020B685 /* AudioRecorderService.swift */,
+				59BF48752FE4A9FC0020B685 /* ChatAudioService.swift */,
+				59BF48772FE4AA9E0020B685 /* ChatAudioPlayerView.swift */,
+				59BF48792FE52C290020B685 /* ChatPresenceService.swift */,
+				59BF487B2FE546800020B685 /* ViewOnceMediaViewer.swift */,
+				59BF487D2FE578C40020B685 /* ChatViewOnceAudioBubble.swift */,
+				59BF48832FE5BCF10020B685 /* ChatShareSheet.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -962,6 +1020,7 @@
 				590903AB2F24211C001E5ADD /* Sources */,
 				590903AC2F24211C001E5ADD /* Frameworks */,
 				590903AD2F24211C001E5ADD /* Resources */,
+				59B009EC2FD4908C00F52B19 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1077,6 +1136,7 @@
 				5994BA312F476EF1009CA70D /* DeviceSession.swift in Sources */,
 				59BF45BE2FB9E09A0008498F /* CurrencyConverter.swift in Sources */,
 				5994BA272F4748B0009CA70D /* ClientBookingDisplay.swift in Sources */,
+				59B009E72FD44D1F00F52B19 /* LiveVideoGridView.swift in Sources */,
 				59AE98FA2F3FB846009C9A24 /* FavoritesView.swift in Sources */,
 				597156852FA6528B00F575FF /* ExpertStudioView.swift in Sources */,
 				59F61AAE2F40815E003999DD /* AppUser.swift in Sources */,
@@ -1103,6 +1163,7 @@
 				59B569132F4A582E005345C3 /* AutoReminderViewModel.swift in Sources */,
 				59A223F52F4B6DF900D89777 /* SimpleActionSheet.swift in Sources */,
 				59BBF71E2F4E8049007D5387 /* CreatorFeedView.swift in Sources */,
+				59BF487E2FE578C40020B685 /* ChatViewOnceAudioBubble.swift in Sources */,
 				59B569152F4A5875005345C3 /* ReminderSettings.swift in Sources */,
 				59B569092F4A4B56005345C3 /* PayoutScheduleView.swift in Sources */,
 				59B569012F4A465F005345C3 /* CommissionSettingsView.swift in Sources */,
@@ -1122,6 +1183,7 @@
 				59EC256D2F3291A3003E976C /* AvailabilityView.swift in Sources */,
 				59EC256F2F3291A3003E976C /* Barber .swift in Sources */,
 				59BF45CE2FB9F7310008498F /* LiveHostControlPanel.swift in Sources */,
+				59BF486E2FE4740E0020B685 /* ChatMediaService.swift in Sources */,
 				597156972FAB7C2300F575FF /* LiveChatInputView.swift in Sources */,
 				5994BA252F473CC1009CA70D /* SecurityService.swift in Sources */,
 				59A223EB2F4B1D1000D89777 /* LocalNotificationManager.swift in Sources */,
@@ -1131,7 +1193,10 @@
 				59F61AB42F410400003999DD /* ChatListView.swift in Sources */,
 				59EC25702F3291A3003E976C /* Booking.swift in Sources */,
 				59BBF72E2F4E92DB007D5387 /* PostViewTracker.swift in Sources */,
+				59BF486C2FE41AD40020B685 /* ClientBookingDetailView.swift in Sources */,
+				59BF486A2FE405000020B685 /* FavoritedByClientsView.swift in Sources */,
 				59B569112F4A57C9005345C3 /* AutoReminderView.swift in Sources */,
+				59BF487C2FE546800020B685 /* ViewOnceMediaViewer.swift in Sources */,
 				59EC25CF2F32A1F4003E976C /* SplashView.swift in Sources */,
 				59BBF7482F4E9A1D007D5387 /* FeedPlaybackManager.swift in Sources */,
 				59BBF73A2F4E9652007D5387 /* SaveButton.swift in Sources */,
@@ -1159,6 +1224,7 @@
 				59AE98F82F3F4F00009C9A24 /* Service.swift in Sources */,
 				59ED2C2C2F46503100AD68E8 /* TwoFactorSetupView.swift in Sources */,
 				59BBF70D2F4DCC7C007D5387 /* AfterAppointmentMessageView.swift in Sources */,
+				59BF48842FE5BCF20020B685 /* ChatShareSheet.swift in Sources */,
 				5994BA292F474C1B009CA70D /* ClientBookingsView.swift in Sources */,
 				59EC25712F3291A3003E976C /* AuthService.swift in Sources */,
 				59EC25B32F32931F003E976C /* ClientRegisterView.swift in Sources */,
@@ -1169,6 +1235,7 @@
 				59ACE28F2F41EB5100FACD11 /* ConversationService.swift in Sources */,
 				59EC25B72F32931F003E976C /* Review.swift in Sources */,
 				59A223E72F4B196000D89777 /* ReminderEngine.swift in Sources */,
+				59B009EE2FD4914400F52B19 /* DeepARTest.swift in Sources */,
 				59EC25B82F32931F003E976C /* PaymentBlockedView.swift in Sources */,
 				59A223FD2F4BB61C00D89777 /* ScanClientButton.swift in Sources */,
 				590B1C912F450ED30023B554 /* BookingView.swift in Sources */,
@@ -1177,6 +1244,7 @@
 				59B512F32FB92EF800829D52 /* LiveJoinRequestsSheet.swift in Sources */,
 				59EC25B92F32931F003E976C /* RegisterView.swift in Sources */,
 				59EC25BB2F32931F003E976C /* ClientAuthView.swift in Sources */,
+				59BF48762FE4A9FC0020B685 /* ChatAudioService.swift in Sources */,
 				59EC25BD2F32931F003E976C /* ClientHomeView .swift in Sources */,
 				59BBF72A2F4E91B4007D5387 /* PostViewService.swift in Sources */,
 				59BBF7502F4F046F007D5387 /* Services:PostService.swift in Sources */,
@@ -1186,6 +1254,7 @@
 				59A223F72F4B6F1B00D89777 /* OpeningHoursSheet.swift in Sources */,
 				597156922FA656C800F575FF /* LikeButton.swift in Sources */,
 				59ACE28D2F41EA4400FACD11 /* Conversation.swift in Sources */,
+				59BF48682FE1968F0020B685 /* AdminRevenueView.swift in Sources */,
 				59EC25BF2F32931F003E976C /* LoginView.swift in Sources */,
 				59ACE29B2F425E7900FACD11 /* ChatUserService.swift in Sources */,
 				59EC25C02F32931F003E976C /* HomeView.swift in Sources */,
@@ -1195,8 +1264,10 @@
 				59ED2C1A2F463D5500AD68E8 /* ShareableFile.swift in Sources */,
 				59BF45D42FB9F9830008498F /* LiveGuestRequestStatusView.swift in Sources */,
 				59BF45B82FB9DF4C0008498F /* PaymentMethod.swift in Sources */,
+				59BF48742FE4A7EE0020B685 /* AudioRecorderService.swift in Sources */,
 				59BF45BA2FB9DFC80008498F /* PaymentMethodCard.swift in Sources */,
 				59EC25C32F32931F003E976C /* LocationManager.swift .swift in Sources */,
+				59BF487A2FE52C290020B685 /* ChatPresenceService.swift in Sources */,
 				59A223FF2F4BB66100D89777 /* ScanPressEffect.swift in Sources */,
 				59EC25C42F32931F003E976C /* FavoriteBarbersView.swift .swift in Sources */,
 				5971569B2FB0E4EA00F575FF /* GiftModels.swift in Sources */,
@@ -1205,6 +1276,7 @@
 				59ED2C2A2F464C7D00AD68E8 /* AuthSecurityService.swift in Sources */,
 				59F33DE12F3E87E600B1EA12 /* BarberAccessGateView.swift in Sources */,
 				59A223F32F4B6B8000D89777 /* AutomationService.swift in Sources */,
+				59BF48782FE4AA9E0020B685 /* ChatAudioPlayerView.swift in Sources */,
 				59BF45DB2FBA22260008498F /* AgoraVideoView.swift in Sources */,
 				59ACE2932F4240FE00FACD11 /* ServiceImageUploader.swift in Sources */,
 				597156A52FB1024200F575FF /* CoinPack.swift in Sources */,
@@ -1221,6 +1293,7 @@
 				5925C5672FA558F000A05B3B /* LiveChatService.swift in Sources */,
 				5925C5682FA558F000A05B3B /* LiveAction.swift in Sources */,
 				5925C56A2FA558F000A05B3B /* LiveEffect.swift .swift in Sources */,
+				59BF48722FE4A1F10020B685 /* NativeVideoPlayerView.swift in Sources */,
 				597156932FA772B600F575FF /* LikeService.swift in Sources */,
 				5925C56B2FA558F000A05B3B /* LiveStreamView.swift in Sources */,
 				5925C56C2FA558F000A05B3B /* LiveReplayDetailView.swift in Sources */,
@@ -1239,6 +1312,7 @@
 				5925C6182FA56D3E00A05B3B /* FeedRankingEngine.swift in Sources */,
 				5925C6192FA56D3E00A05B3B /* CityFollowersView.swift in Sources */,
 				59BF45CC2FB9F67C0008498F /* LiveSpeakingTimerView.swift in Sources */,
+				59BF48702FE484100020B685 /* ChatMediaPreviewView.swift in Sources */,
 				5925C61A2FA56D3E00A05B3B /* FollowersActivityHours.swift in Sources */,
 				5925C61C2FA56D3E00A05B3B /* FollowersAudienceSection.swift in Sources */,
 				5925C61D2FA56D3E00A05B3B /* FollowersGrowthData.swift in Sources */,

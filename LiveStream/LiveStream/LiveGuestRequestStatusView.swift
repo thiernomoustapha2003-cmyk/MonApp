@@ -56,6 +56,7 @@ struct LiveGuestRequestStatusView: View {
         }
         .alert("Demande acceptée 🎉", isPresented: $showAcceptedAlert) {
             Button("Activer caméra/micro") {
+                LiveAgoraManager.shared.becomeCoHost()
                 LiveCoHostService.shared.toggleMyCamera(liveId: liveId)
             }
             

@@ -25,6 +25,16 @@ struct ClientManagementView: View {
                         .cornerRadius(12)
                 }
                 
+                NavigationLink {
+                    FavoritedByClientsView()
+                } label: {
+                    Text("Clients qui m’ont ajouté en favori")
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.pink.opacity(0.2))
+                        .cornerRadius(12)
+                }
+                
                 // 🔹 Export données clients
                 Button {
                     exportClientsCSV()

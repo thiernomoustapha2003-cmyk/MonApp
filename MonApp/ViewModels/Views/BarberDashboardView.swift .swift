@@ -79,6 +79,20 @@ struct BarberDashboardView: View {
                 // ===== HEADER PROFIL =====
                 headerProfile
 
+                NavigationLink(destination: BarberProfileView()) {
+                    HStack {
+                        Image(systemName: "person.crop.circle")
+                        Text("Modifier mon profil")
+                            .font(.headline)
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color.blue)
+                    .foregroundColor(.white)
+                    .cornerRadius(12)
+                }
+                .padding(.horizontal)
+
                 Divider()
 
                 // ===== PAIEMENTS =====
@@ -205,7 +219,7 @@ struct BarberDashboardView: View {
                 }
                 .padding(.bottom, 40)
             }
-            .navigationTitle("Mon Dashboard")
+            .navigationTitle("Mon tableau de bord")
             .onAppear {
                 fetchBarberProfile()
                 fetchPendingBookings()

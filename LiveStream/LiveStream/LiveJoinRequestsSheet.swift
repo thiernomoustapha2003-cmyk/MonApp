@@ -75,6 +75,7 @@ struct LiveJoinRequestsSheet: View {
                                 acceptRequest(request)
                             }
                             .foregroundColor(.green)
+                            
                         }
                         .padding(.vertical, 6)
                     }
@@ -124,6 +125,9 @@ struct LiveJoinRequestsSheet: View {
     }
     
     func updateRequest(_ request: LiveJoinRequest, status: String) {
+        
+        print("🔥 UPDATE STATUS =", status)
+        
         db.collection("lives")
             .document(liveId)
             .collection("joinRequests")
@@ -131,28 +135,84 @@ struct LiveJoinRequestsSheet: View {
             .updateData([
                 "status": status,
                 "updatedAt": Timestamp()
-            ])
+            ]) { error in
+                
+                if let error = error {
+                    print("❌ UPDATE ERROR =", error.localizedDescription)
+                } else {
+                    print("✅ STATUS UPDATED =", status)
+                }
+            }
     }
     
     func acceptRequest(_ request: LiveJoinRequest) {
-        let cohostRef = db.collection("lives")
-            .document(liveId)
-            .collection("cohosts")
-            .document(request.userId)
         
-        cohostRef.setData([
-            "userId": request.userId,
-            "username": request.username,
-            "avatar": request.avatar,
-            "role": "guest",
-            "status": "active",
-            "cameraEnabled": false,
-            "micEnabled": true,
-            "mutedByHost": false,
-            "timerSeconds": 300,
-            "joinedAt": Timestamp()
-        ])
+        print("✅ ACCEPT REQUEST =", request.username)
         
-        updateRequest(request, status: "accepted")
+        let db = Firestore.firestore()
+        
+        let liveRef = db.collection("lives").document(liveId)
+        
+        liveRef.collection("cohosts")
+            .whereField("status", isEqualTo: "active")
+            .getDocuments { snapshot, error in
+                
+                if let error = error {
+                    print("❌ Erreur lecture cohosts:", error.localizedDescription)
+                    return
+                }
+                
+                let activeGuestsCount = snapshot?.documents.filter { doc in
+                    let role = doc.data()["role"] as? String ?? ""
+                    return role == "guest" || role == "moderator"
+                }.count ?? 0
+                
+                if activeGuestsCount >= 10 {
+                    print("❌ Maximum 10 invités atteint")
+                    return
+                }
+                
+                let agoraUid = 2001 + UInt(activeGuestsCount)
+                
+                let requestRef = liveRef
+                    .collection("joinRequests")
+                    .document(request.userId)
+                
+                let cohostRef = liveRef
+                    .collection("cohosts")
+                    .document(request.userId)
+                
+                let batch = db.batch()
+                
+                batch.setData([
+                    "userId": request.userId,
+                    "username": request.username,
+                    "avatar": request.avatar,
+                    "role": "guest",
+                    "status": "active",
+                    "agoraUid": Int(agoraUid),
+                    "cameraEnabled": true,
+                    "micEnabled": true,
+                    "mutedByHost": false,
+                    "canModerate": false,
+                    "timerSeconds": 300,
+                    "joinedAt": Timestamp(),
+                    "updatedAt": Timestamp()
+                ], forDocument: cohostRef, merge: true)
+                
+                batch.updateData([
+                    "status": "accepted",
+                    "agoraUid": Int(agoraUid),
+                    "updatedAt": Timestamp()
+                ], forDocument: requestRef)
+                
+                batch.commit { error in
+                    if let error = error {
+                        print("❌ ACCEPT ERROR =", error.localizedDescription)
+                    } else {
+                        print("✅ INVITÉ ACCEPTÉ + COHOST CRÉÉ agoraUid =", agoraUid)
+                    }
+                }
+            }
     }
 }

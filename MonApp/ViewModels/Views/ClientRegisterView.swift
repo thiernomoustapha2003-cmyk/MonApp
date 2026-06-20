@@ -69,45 +69,73 @@ struct ClientRegisterView: View {
               !email.isEmpty,
               !password.isEmpty else {
             
-            alertMessage = "Veuillez remplir tous les champs"
+            alertMessage = "❌ Veuillez remplir tous les champs."
             showAlert = true
             return
         }
         
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
             
-            if let error = error {
-                alertMessage = error.localizedDescription
+            if let error = error as NSError? {
+                
+                switch error.code {
+                    
+                case AuthErrorCode.emailAlreadyInUse.rawValue:
+                    alertMessage = "❌ Cette adresse e-mail est déjà utilisée."
+                    
+                case AuthErrorCode.invalidEmail.rawValue:
+                    alertMessage = "❌ Adresse e-mail invalide."
+                    
+                case AuthErrorCode.weakPassword.rawValue:
+                    alertMessage = "❌ Mot de passe trop faible."
+                    
+                default:
+                    alertMessage = "❌ Une erreur est survenue."
+                }
+                
                 showAlert = true
                 return
             }
             
             guard let user = result?.user else { return }
             
-            // 🔥 1️⃣ Mettre le displayName automatiquement
             let changeRequest = user.createProfileChangeRequest()
             changeRequest.displayName = "\(firstName) \(lastName)"
             
-            changeRequest.commitChanges { error in
-                if let error = error {
-                    print("Erreur displayName:", error.localizedDescription)
-                }
-            }
+            changeRequest.commitChanges { _ in }
             
-            // 🔥 2️⃣ Créer le document Firestore
             Firestore.firestore().collection("users").document(user.uid).setData([
+                "uid": user.uid,
                 "firstName": firstName,
                 "lastName": lastName,
+                "name": "\(firstName) \(lastName)",
                 "email": email,
                 "role": "client",
+                "emailVerified": false,
                 "createdAt": Timestamp()
-            ])
-            
-            alertMessage = "Compte créé avec succès 🎉"
-            showAlert = true
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
-                dismiss()
+            ]) { error in
+                
+                if let error = error {
+                    print("❌ Firestore:", error.localizedDescription)
+                    alertMessage = "❌ Impossible de créer le profil."
+                    showAlert = true
+                    return
+                }
+                
+                user.sendEmailVerification { error in
+                    
+                    if let error = error {
+                        print("❌ Email:", error.localizedDescription)
+                        alertMessage = "❌ Impossible d'envoyer l'e-mail de vérification."
+                        showAlert = true
+                        return
+                    }
+                    
+                    try? Auth.auth().signOut()
+                    
+                    alertMessage = "✅ Compte créé. Vérifie ton e-mail avant de te connecter."
+                    showAlert = true
+                }
             }
         }
     }

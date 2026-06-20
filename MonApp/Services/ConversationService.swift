@@ -12,25 +12,35 @@ class ConversationService: ObservableObject {
 
     func listenConversations() {
 
-        guard let uid = Auth.auth().currentUser?.uid else { return }
+        guard let uid = Auth.auth().currentUser?.uid else {
+            print("❌ Aucun utilisateur connecté")
+            return
+        }
 
         listener?.remove()
 
         listener = db.collection("conversations")
             .whereField("participants", arrayContains: uid)
-            .order(by: "lastMessageDate", descending: true)
+            .order(by: "updatedAt", descending: true)
             .addSnapshotListener { snapshot, error in
 
-                guard let documents = snapshot?.documents else {
-                    print("❌ No conversations")
+                if let error = error {
+                    print("❌ Erreur conversations:", error.localizedDescription)
                     return
                 }
 
-                self.conversations = documents.compactMap { doc in
-                    try? doc.data(as: Conversation.self)
+                guard let documents = snapshot?.documents else {
+                    print("❌ Aucun document conversation")
+                    return
                 }
 
-                print("📩 Conversations chargées:", self.conversations.count)
+                DispatchQueue.main.async {
+                    self.conversations = documents.compactMap { doc in
+                        try? doc.data(as: Conversation.self)
+                    }
+
+                    print("📩 Conversations chargées:", self.conversations.count)
+                }
             }
     }
 
