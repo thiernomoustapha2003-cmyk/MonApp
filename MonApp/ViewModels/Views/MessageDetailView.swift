@@ -834,36 +834,67 @@ struct MessageDetailView: View {
                         .buttonStyle(PlainButtonStyle())
 
                     } else if message.type == "audio", message.isViewOnce {
-
-                        if message.openedBy.contains(currentUserId), !isMine {
-                            HStack(spacing: 8) {
-                                Image(systemName: "mic.slash.fill")
-                                    .foregroundColor(.gray)
-
-                                Text("Vocal déjà écouté")
-                                    .font(.caption)
-                                    .foregroundColor(.gray)
+                        
+                        let currentUserHasOpened = message.openedBy.contains(currentUserId) || message.listenedBy.contains(currentUserId)
+                        let otherHasListened = message.listenedBy.contains(where: { $0 != currentUserId }) || message.openedBy.contains(where: { $0 != currentUserId })
+                        
+                        if isMine {
+                            if otherHasListened {
+                                HStack(spacing: 8) {
+                                    Image(systemName: "mic.slash.fill")
+                                        .foregroundColor(.gray)
+                                    
+                                    Text(formatOpenedTime(message.openedAt).replacingOccurrences(of: "Ouvert", with: "Écouté"))
+                                        .font(.caption)
+                                        .foregroundColor(.gray)
+                                        .italic()
+                                }
+                                .padding(.horizontal, 14)
+                                .padding(.vertical, 10)
+                                .background(Color.green.opacity(0.18))
+                                .cornerRadius(18)
+                            } else {
+                                HStack(spacing: 8) {
+                                    Image(systemName: "1.circle")
+                                    Text("Vocal vue unique")
+                                    Text(formatAudioTime(message.audioDuration ?? 0))
+                                        .foregroundColor(.gray)
+                                }
+                                .font(.caption)
+                                .padding(.horizontal, 14)
+                                .padding(.vertical, 10)
+                                .background(Color.green.opacity(0.28))
+                                .cornerRadius(18)
                             }
-                            .padding(.horizontal, 14)
-                            .padding(.vertical, 10)
-                            .background(Color.gray.opacity(0.15))
-                            .cornerRadius(18)
-
-                        } else if let audioUrl = message.audioUrl {
-
-                            ChatViewOnceAudioBubble(
-                                audioUrl: audioUrl,
-                                duration: message.audioDuration,
-                                messageId: message.id,
-                                conversationId: conversationId,
-                                listenedBy: message.listenedBy,
-                                isMine: isMine
-                            )
+                            
+                        } else {
+                            if currentUserHasOpened {
+                                HStack(spacing: 8) {
+                                    Image(systemName: "mic.slash.fill")
+                                        .foregroundColor(.gray)
+                                    
+                                    Text("Vocal déjà écouté")
+                                        .font(.caption)
+                                        .foregroundColor(.gray)
+                                        .italic()
+                                }
+                                .padding(.horizontal, 14)
+                                .padding(.vertical, 10)
+                                .background(Color.gray.opacity(0.15))
+                                .cornerRadius(18)
+                                
+                            } else if let audioUrl = message.audioUrl {
+                                ChatViewOnceAudioBubble(
+                                    audioUrl: audioUrl,
+                                    duration: message.audioDuration,
+                                    messageId: message.id,
+                                    conversationId: conversationId,
+                                    listenedBy: message.listenedBy,
+                                    isMine: isMine
+                                )
+                            }
                         }
-                        
-                        
-                        
-                    } else if message.type == "audio",
+                    }else if message.type == "audio",
                               let audioUrl = message.audioUrl {
 
                         if otherListeningMessageId == message.id {
