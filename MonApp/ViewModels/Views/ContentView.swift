@@ -73,7 +73,12 @@ struct RootRouterView: View {
                 }
             }
             .onAppear {
+
                 loadUserData()
+
+                IncomingCallListener.shared.startListening()
+
+                print("📞 IncomingCallListener lancé")
             }
         }
     }

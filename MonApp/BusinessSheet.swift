@@ -237,10 +237,9 @@ struct BusinessSheet: View {
                     
                     PhotosPicker(
                         selection: $selectedPhotosPickerItems,
-                        maxSelectionCount: 3,
                         matching: .images
                     ) {
-                        Text("Ajouter des photos (max 3 gratuites)")
+                        Text("Ajouter des photos")
                             .foregroundColor(.blue)
                     }
                     
@@ -344,10 +343,7 @@ struct BusinessSheet: View {
             let duration = Int(newServiceDuration)
         else { return }
         
-        if selectedImages.count > 3 {
-            print("⚠️ Limite gratuite atteinte")
-            return
-        }
+        
         
         let db = Firestore.firestore()
         
@@ -378,6 +374,46 @@ struct BusinessSheet: View {
             
             do {
                 try serviceRef.setData(from: service)
+                let style = Style(
+                    id: serviceId,
+                    barberId: uid,
+                    barberName: salonName.isEmpty ? "Coiffeur Cutly" : salonName,
+                    title: newServiceName,
+                    description: newServiceDescription,
+                    imageUrl: urls.first ?? "",
+                    price: price,
+                    duration: duration,
+                    likesCount: 0,
+                    createdAt: Date(),
+                    likedBy: [],
+                    favoritesCount: 0,
+                    commentsCount: 0,
+                )
+
+                StylesService.shared.publishStyle(style: style) { success in
+                    print(success ? "✅ Style publié aussi dans styles" : "❌ Erreur publication style")
+                }
+                let postRef = Firestore.firestore().collection("posts").document()
+
+                postRef.setData([
+                    "userId": uid,
+                    "caption": "\(newServiceName) • \(Int(price))€ • \(duration) min\n\(newServiceDescription)",
+                    "mediaURL": urls.first ?? "",
+                    "type": "image",
+                    "createdAt": Timestamp(date: Date()),
+                    "likesCount": 0,
+                    "commentsCount": 0,
+                    "savesCount": 0,
+                    "source": "service",
+                    "styleId": serviceId,
+                    "barberId": uid
+                ]) { error in
+                    if let error = error {
+                        print("❌ Erreur création post service:", error.localizedDescription)
+                    } else {
+                        print("✅ Service publié aussi dans le feed")
+                    }
+                }
                 
                 DispatchQueue.main.async {
                     newServiceName = ""
@@ -473,7 +509,7 @@ struct BusinessSheet: View {
             group.enter()
             
             let imageRef = storage.reference()
-                .child("serviceImages/(uid)/(serviceId)/image(index).jpg")
+                .child("serviceImages/\(uid)/\(serviceId)/image\(index).jpg")
             
             guard let imageData = image.jpegData(compressionQuality: 0.7) else {
                 print("❌ Impossible de convertir l'image en data")

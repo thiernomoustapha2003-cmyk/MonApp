@@ -196,6 +196,21 @@
 		59BF487C2FE546800020B685 /* ViewOnceMediaViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF487B2FE546800020B685 /* ViewOnceMediaViewer.swift */; };
 		59BF487E2FE578C40020B685 /* ChatViewOnceAudioBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF487D2FE578C40020B685 /* ChatViewOnceAudioBubble.swift */; };
 		59BF48842FE5BCF20020B685 /* ChatShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF48832FE5BCF10020B685 /* ChatShareSheet.swift */; };
+		59BF48862FE68ABF0020B685 /* ImageViewerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF48852FE68ABF0020B685 /* ImageViewerView.swift */; };
+		59BF48882FE693470020B685 /* ImageViewerActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF48872FE693470020B685 /* ImageViewerActions.swift */; };
+		59BF488A2FE69A990020B685 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF48892FE69A990020B685 /* ActivityViewController.swift */; };
+		59BF488C2FE69B930020B685 /* ReportReason.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF488B2FE69B930020B685 /* ReportReason.swift */; };
+		59BF488E2FE69E100020B685 /* FavoriteMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF488D2FE69E100020B685 /* FavoriteMedia.swift */; };
+		59BF48902FE6BF0D0020B685 /* StyleBookingAssistantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF488F2FE6BF0D0020B685 /* StyleBookingAssistantView.swift */; };
+		59BF48922FE6C35B0020B685 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF48912FE6C35B0020B685 /* Style.swift */; };
+		59BF48962FE6C4990020B685 /* StyleCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF48952FE6C4990020B685 /* StyleCardView.swift */; };
+		59BF48982FE6C5EC0020B685 /* StylesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF48972FE6C5EC0020B685 /* StylesService.swift */; };
+		59BF489A2FE6F8A30020B685 /* StyleCommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF48992FE6F8A30020B685 /* StyleCommentsView.swift */; };
+		59BF489C2FE7539C0020B685 /* CallScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF489B2FE7539C0020B685 /* CallScreenView.swift */; };
+		59BF489E2FE7582D0020B685 /* CallService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF489D2FE7582D0020B685 /* CallService.swift */; };
+		59BF48A02FE7634C0020B685 /* IncomingCallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF489F2FE7634C0020B685 /* IncomingCallView.swift */; };
+		59BF48A22FE76A740020B685 /* IncomingCallListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF48A12FE76A740020B685 /* IncomingCallListener.swift */; };
+		59BF48A42FE784690020B685 /* AgoraVideoRenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF48A32FE784690020B685 /* AgoraVideoRenderView.swift */; };
 		59C639832F31656F00916B73 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 59C639822F31656F00916B73 /* GoogleSignIn */; };
 		59C639852F31656F00916B73 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 59C639842F31656F00916B73 /* GoogleSignInSwift */; };
 		59D4B2A42F33591200D9D2FB /* StripePayoutConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D4B2A32F33591200D9D2FB /* StripePayoutConfigView.swift */; };
@@ -476,6 +491,21 @@
 		59BF487B2FE546800020B685 /* ViewOnceMediaViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewOnceMediaViewer.swift; sourceTree = "<group>"; };
 		59BF487D2FE578C40020B685 /* ChatViewOnceAudioBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewOnceAudioBubble.swift; sourceTree = "<group>"; };
 		59BF48832FE5BCF10020B685 /* ChatShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatShareSheet.swift; sourceTree = "<group>"; };
+		59BF48852FE68ABF0020B685 /* ImageViewerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewerView.swift; sourceTree = "<group>"; };
+		59BF48872FE693470020B685 /* ImageViewerActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewerActions.swift; sourceTree = "<group>"; };
+		59BF48892FE69A990020B685 /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
+		59BF488B2FE69B930020B685 /* ReportReason.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportReason.swift; sourceTree = "<group>"; };
+		59BF488D2FE69E100020B685 /* FavoriteMedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMedia.swift; sourceTree = "<group>"; };
+		59BF488F2FE6BF0D0020B685 /* StyleBookingAssistantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleBookingAssistantView.swift; sourceTree = "<group>"; };
+		59BF48912FE6C35B0020B685 /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
+		59BF48952FE6C4990020B685 /* StyleCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleCardView.swift; sourceTree = "<group>"; };
+		59BF48972FE6C5EC0020B685 /* StylesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StylesService.swift; sourceTree = "<group>"; };
+		59BF48992FE6F8A30020B685 /* StyleCommentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleCommentsView.swift; sourceTree = "<group>"; };
+		59BF489B2FE7539C0020B685 /* CallScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallScreenView.swift; sourceTree = "<group>"; };
+		59BF489D2FE7582D0020B685 /* CallService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallService.swift; sourceTree = "<group>"; };
+		59BF489F2FE7634C0020B685 /* IncomingCallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomingCallView.swift; sourceTree = "<group>"; };
+		59BF48A12FE76A740020B685 /* IncomingCallListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomingCallListener.swift; sourceTree = "<group>"; };
+		59BF48A32FE784690020B685 /* AgoraVideoRenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgoraVideoRenderView.swift; sourceTree = "<group>"; };
 		59C6398A2F3191E900916B73 /* MonApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MonApp.entitlements; sourceTree = "<group>"; };
 		59D4B2A32F33591200D9D2FB /* StripePayoutConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripePayoutConfigView.swift; sourceTree = "<group>"; };
 		59EC252C2F3291A3003E976C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -697,6 +727,7 @@
 				59BF45DE2FBB62960008498F /* AgoraViewerContainer.swift */,
 				59B009E62FD44D1F00F52B19 /* LiveVideoGridView.swift */,
 				59BF48672FE1968F0020B685 /* AdminRevenueView.swift */,
+				59BF48A32FE784690020B685 /* AgoraVideoRenderView.swift */,
 			);
 			path = LiveStream;
 			sourceTree = "<group>";
@@ -974,6 +1005,20 @@
 				59BF487B2FE546800020B685 /* ViewOnceMediaViewer.swift */,
 				59BF487D2FE578C40020B685 /* ChatViewOnceAudioBubble.swift */,
 				59BF48832FE5BCF10020B685 /* ChatShareSheet.swift */,
+				59BF48852FE68ABF0020B685 /* ImageViewerView.swift */,
+				59BF48872FE693470020B685 /* ImageViewerActions.swift */,
+				59BF48892FE69A990020B685 /* ActivityViewController.swift */,
+				59BF488B2FE69B930020B685 /* ReportReason.swift */,
+				59BF488D2FE69E100020B685 /* FavoriteMedia.swift */,
+				59BF488F2FE6BF0D0020B685 /* StyleBookingAssistantView.swift */,
+				59BF48912FE6C35B0020B685 /* Style.swift */,
+				59BF48952FE6C4990020B685 /* StyleCardView.swift */,
+				59BF48972FE6C5EC0020B685 /* StylesService.swift */,
+				59BF48992FE6F8A30020B685 /* StyleCommentsView.swift */,
+				59BF489B2FE7539C0020B685 /* CallScreenView.swift */,
+				59BF489D2FE7582D0020B685 /* CallService.swift */,
+				59BF489F2FE7634C0020B685 /* IncomingCallView.swift */,
+				59BF48A12FE76A740020B685 /* IncomingCallListener.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1129,6 +1174,7 @@
 				59EC255A2F3291A3003E976C /* BarberDetailView.swift .swift in Sources */,
 				59BBF7462F4E97B8007D5387 /* PostCellView.swift in Sources */,
 				59ED2C282F46497B00AD68E8 /* ChangePasswordView.swift in Sources */,
+				59BF48862FE68ABF0020B685 /* ImageViewerView.swift in Sources */,
 				59BF45C22FB9E2AB0008498F /* PremiumCoinShopView.swift in Sources */,
 				597156942FA77E8800F575FF /* ExpertFeedView.swift in Sources */,
 				599768E12F50BBEC0020457C /* ActionButton.swift in Sources */,
@@ -1155,6 +1201,8 @@
 				59F61AA42F4079EC003999DD /* Client.swift in Sources */,
 				59F61AAA2F407BAE003999DD /* ClientManagementView.swift in Sources */,
 				59BBF7542F4F3E19007D5387 /* MovieTransferable.swift in Sources */,
+				59BF48A22FE76A740020B685 /* IncomingCallListener.swift in Sources */,
+				59BF48962FE6C4990020B685 /* StyleCardView.swift in Sources */,
 				59BBF71C2F4E7FA4007D5387 /* StatCard.swift in Sources */,
 				59ACE2952F42458600FACD11 /* EscrowInfoView.swift in Sources */,
 				59EC256B2F3291A3003E976C /* BarberDashboardView.swift .swift in Sources */,
@@ -1172,6 +1220,7 @@
 				59F61AA82F407A58003999DD /* ClientService.swift in Sources */,
 				5994BA372F47B176009CA70D /* FinanceMonthlyView.swift in Sources */,
 				59A223F12F4B6B5C00D89777 /* AutomationSettings.swift in Sources */,
+				59BF489C2FE7539C0020B685 /* CallScreenView.swift in Sources */,
 				59BBF70B2F4DBCEE007D5387 /* StripeConnectService.swift in Sources */,
 				59F61AA62F407A20003999DD /* ClientNote.swift in Sources */,
 				597156892FA654A900F575FF /* AgeChartView.swift in Sources */,
@@ -1181,11 +1230,15 @@
 				5971569D2FB0EAEA00F575FF /* GiftCatalog.swift in Sources */,
 				59BBF7322F4E939E007D5387 /* UploadContentView.swift in Sources */,
 				59EC256D2F3291A3003E976C /* AvailabilityView.swift in Sources */,
+				59BF489E2FE7582D0020B685 /* CallService.swift in Sources */,
 				59EC256F2F3291A3003E976C /* Barber .swift in Sources */,
 				59BF45CE2FB9F7310008498F /* LiveHostControlPanel.swift in Sources */,
 				59BF486E2FE4740E0020B685 /* ChatMediaService.swift in Sources */,
+				59BF48882FE693470020B685 /* ImageViewerActions.swift in Sources */,
+				59BF48A42FE784690020B685 /* AgoraVideoRenderView.swift in Sources */,
 				597156972FAB7C2300F575FF /* LiveChatInputView.swift in Sources */,
 				5994BA252F473CC1009CA70D /* SecurityService.swift in Sources */,
+				59BF48902FE6BF0D0020B685 /* StyleBookingAssistantView.swift in Sources */,
 				59A223EB2F4B1D1000D89777 /* LocalNotificationManager.swift in Sources */,
 				59ED2C322F467BF400AD68E8 /* ChooseRoleView.swift in Sources */,
 				59BF45D22FB9F8C70008498F /* LiveModerationService.swift in Sources */,
@@ -1195,6 +1248,7 @@
 				59BBF72E2F4E92DB007D5387 /* PostViewTracker.swift in Sources */,
 				59BF486C2FE41AD40020B685 /* ClientBookingDetailView.swift in Sources */,
 				59BF486A2FE405000020B685 /* FavoritedByClientsView.swift in Sources */,
+				59BF48A02FE7634C0020B685 /* IncomingCallView.swift in Sources */,
 				59B569112F4A57C9005345C3 /* AutoReminderView.swift in Sources */,
 				59BF487C2FE546800020B685 /* ViewOnceMediaViewer.swift in Sources */,
 				59EC25CF2F32A1F4003E976C /* SplashView.swift in Sources */,
@@ -1229,6 +1283,7 @@
 				59EC25712F3291A3003E976C /* AuthService.swift in Sources */,
 				59EC25B32F32931F003E976C /* ClientRegisterView.swift in Sources */,
 				590B1C8B2F4327D80023B554 /* PaymentSheetView.swift in Sources */,
+				59BF489A2FE6F8A30020B685 /* StyleCommentsView.swift in Sources */,
 				59EC25B42F32931F003E976C /* ContentView.swift in Sources */,
 				59ED2C262F4646FF00AD68E8 /* BlockedClientsView.swift in Sources */,
 				59BF45C02FB9E1700008498F /* AfricanPaymentSheet.swift in Sources */,
@@ -1244,11 +1299,13 @@
 				59B512F32FB92EF800829D52 /* LiveJoinRequestsSheet.swift in Sources */,
 				59EC25B92F32931F003E976C /* RegisterView.swift in Sources */,
 				59EC25BB2F32931F003E976C /* ClientAuthView.swift in Sources */,
+				59BF48922FE6C35B0020B685 /* Style.swift in Sources */,
 				59BF48762FE4A9FC0020B685 /* ChatAudioService.swift in Sources */,
 				59EC25BD2F32931F003E976C /* ClientHomeView .swift in Sources */,
 				59BBF72A2F4E91B4007D5387 /* PostViewService.swift in Sources */,
 				59BBF7502F4F046F007D5387 /* Services:PostService.swift in Sources */,
 				59ED2C182F4628CE00AD68E8 /* ClientExportView.swift in Sources */,
+				59BF488A2FE69A990020B685 /* ActivityViewController.swift in Sources */,
 				59B569032F4A46DF005345C3 /* CommissionViewModel.swift in Sources */,
 				5925C56F2FA55DA400A05B3B /* CreateLiveEventView.swift in Sources */,
 				59A223F72F4B6F1B00D89777 /* OpeningHoursSheet.swift in Sources */,
@@ -1267,11 +1324,13 @@
 				59BF48742FE4A7EE0020B685 /* AudioRecorderService.swift in Sources */,
 				59BF45BA2FB9DFC80008498F /* PaymentMethodCard.swift in Sources */,
 				59EC25C32F32931F003E976C /* LocationManager.swift .swift in Sources */,
+				59BF48982FE6C5EC0020B685 /* StylesService.swift in Sources */,
 				59BF487A2FE52C290020B685 /* ChatPresenceService.swift in Sources */,
 				59A223FF2F4BB66100D89777 /* ScanPressEffect.swift in Sources */,
 				59EC25C42F32931F003E976C /* FavoriteBarbersView.swift .swift in Sources */,
 				5971569B2FB0E4EA00F575FF /* GiftModels.swift in Sources */,
 				597156A32FB1022800F575FF /* CoinModel.swift in Sources */,
+				59BF488C2FE69B930020B685 /* ReportReason.swift in Sources */,
 				59BF45BC2FB9E03C0008498F /* MobileMoneyService.swift in Sources */,
 				59ED2C2A2F464C7D00AD68E8 /* AuthSecurityService.swift in Sources */,
 				59F33DE12F3E87E600B1EA12 /* BarberAccessGateView.swift in Sources */,
@@ -1299,6 +1358,7 @@
 				5925C56C2FA558F000A05B3B /* LiveReplayDetailView.swift in Sources */,
 				5925C56D2FA558F000A05B3B /* LiveAnalyticsViewModel.swift in Sources */,
 				59BBF7562F4F4921007D5387 /* UploadButtonUI.swift in Sources */,
+				59BF488E2FE69E100020B685 /* FavoriteMedia.swift in Sources */,
 				59ACE2972F424D4900FACD11 /* MessageDetailView.swift in Sources */,
 				59B5690F2F4A4CD7005345C3 /* PayoutScheduleModel.swift in Sources */,
 				5925C60F2FA56D3E00A05B3B /* FeedSoundManager.swift in Sources */,

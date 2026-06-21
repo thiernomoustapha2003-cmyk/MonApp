@@ -15,6 +15,9 @@ struct MessageDetailView: View {
     let otherUserName: String
     
     
+    @State private var activeImage: ChatImageItem? = nil
+    
+    
     @State private var showTranscriptionSheet = false
     @State private var messageToTranscribe: Message? = nil
     @State private var transcriptionText = ""
@@ -71,6 +74,14 @@ struct MessageDetailView: View {
     @State private var otherListeningProgress: Double = 0
     
     @State private var activeViewOnceMessage: Message?
+    @State private var showAudioCall = false
+    @State private var showVideoCall = false
+    @State private var currentCallId: String? = nil
+    @State private var incomingCallId: String? = nil
+    @State private var incomingCallType = "audio"
+    @State private var showIncomingCall = false
+    
+    
     
     
     @State private var activeVideo: ChatVideoItem? = nil
@@ -318,6 +329,39 @@ struct MessageDetailView: View {
             
         .navigationTitle(otherUserName)
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItemGroup(placement: .topBarTrailing) {
+                Button {
+                    CallService.shared.startCall(
+                        conversationId: conversationId,
+                        receiverName: otherUserName,
+                        type: "audio"
+                    ) { callId in
+                        currentCallId = callId
+                        showAudioCall = true
+                    }
+
+                    showAudioCall = true
+                } label: {
+                    Image(systemName: "phone.fill")
+                }
+
+                Button {
+                    CallService.shared.startCall(
+                        conversationId: conversationId,
+                        receiverName: otherUserName,
+                        type: "video"
+                    ) { callId in
+                        currentCallId = callId
+                        showVideoCall = true
+                    }
+
+                    showVideoCall = true
+                } label: {
+                    Image(systemName: "video.fill")
+                }
+            }
+        }
         .confirmationDialog("Réagir au message", isPresented: $showReactionPicker) {
             ForEach(reactionEmojis, id: \.self) { emoji in
                 Button(emoji) {
@@ -362,6 +406,94 @@ struct MessageDetailView: View {
             NativeVideoPlayerScreen(url: item.url)
         }
 
+        .fullScreenCover(isPresented: $showIncomingCall) {
+            IncomingCallView(
+                callerName: otherUserName,
+                callType: incomingCallType,
+                onAccept: {
+                    if let callId = incomingCallId {
+                        CallService.shared.acceptCall(callId: callId)
+                        currentCallId = callId
+                    }
+
+                    showIncomingCall = false
+
+                    if incomingCallType == "video" {
+                        showVideoCall = true
+                    } else {
+                        showAudioCall = true
+                    }
+                },
+                onDecline: {
+                    if let callId = incomingCallId {
+                        CallService.shared.declineCall(callId: callId)
+                        CallService.shared.saveMissedCall(
+                            conversationId: conversationId,
+                            type: incomingCallType
+                        )
+                    }
+
+                    showIncomingCall = false
+                }
+            )
+        }
+        
+        
+        
+        .fullScreenCover(isPresented: $showAudioCall) {
+            CallScreenView(
+                name: otherUserName,
+                avatarURL: nil,
+                mode: .audio,
+                callId: currentCallId,
+                conversationId: conversationId
+            ) { duration in
+                if let callId = currentCallId {
+                    CallService.shared.endCall(
+                        callId: callId,
+                        conversationId: conversationId,
+                        type: "audio",
+                        duration: duration
+                    )
+                }
+            }
+        }
+
+        .fullScreenCover(isPresented: $showVideoCall) {
+            CallScreenView(
+                name: otherUserName,
+                avatarURL: nil,
+                mode: .video,
+                callId: currentCallId,
+                conversationId: conversationId
+            ) { duration in
+                if let callId = currentCallId {
+                    CallService.shared.endCall(
+                        callId: callId,
+                        conversationId: conversationId,
+                        type: "video",
+                        duration: duration
+                    )
+                }
+            }
+        }
+        
+        
+        
+        .fullScreenCover(item: $activeImage) { item in
+            ImageViewerView(
+                imageUrl: item.url,
+                onOpenMessageMenu: {
+
+                    activeImage = nil
+
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                        selectedMenuMessage = item.message
+                    }
+                }
+            )
+        }
+        
         .fullScreenCover(item: $activeViewOnceMessage) { message in
 
             ViewOnceMediaViewer(
@@ -646,6 +778,7 @@ struct MessageDetailView: View {
         .onAppear {
             listenMessages()
             listenPresence()
+            listenIncomingCalls()
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 markConversationAsSeen()
@@ -810,17 +943,25 @@ struct MessageDetailView: View {
                     }
                     else
                     
-                    if message.type == "image", let imageUrl = message.imageUrl {
-                        AsyncImage(url: URL(string: imageUrl)) { image in
-                            image
-                                .resizable()
-                                .scaledToFill()
-                        } placeholder: {
-                            ProgressView()
+                    if message.type == "image",
+                       let imageUrl = message.imageUrl {
+
+                        Button {
+                            activeImage = ChatImageItem(url: imageUrl, message: message)
+                        } label: {
+
+                            AsyncImage(url: URL(string: imageUrl)) { image in
+                                image
+                                    .resizable()
+                                    .scaledToFill()
+                            } placeholder: {
+                                ProgressView()
+                            }
+                            .frame(width: 230, height: 260)
+                            .clipped()
+                            .cornerRadius(16)
                         }
-                        .frame(width: 230, height: 260)
-                        .clipped()
-                        .cornerRadius(16)
+                        .buttonStyle(.plain)
 
                     } else if message.type == "video",
                               let videoUrl = message.videoUrl,
@@ -1423,6 +1564,33 @@ extension MessageDetailView {
             .collection("messages")
             .document(messageId)
             .setData(messageData)
+        db.collection("conversations")
+            .document(conversationId)
+            .getDocument { snap, _ in
+
+                let data = snap?.data() ?? [:]
+                let participants = data["participants"] as? [String] ?? []
+                let receiverId = participants.first(where: { $0 != currentUserId }) ?? ""
+
+                var updates: [String: Any] = [
+                    "lastMessage": type == "image" ? "📷 Photo" : "🎥 Vidéo",
+                    "lastMessagePreview": type == "image" ? "📷 Photo" : "🎥 Vidéo",
+                    "lastMessageType": type,
+                    "lastSenderId": currentUserId,
+                    "lastMessageDate": now,
+                    "updatedAt": now,
+                    "seenBy": [currentUserId]
+                ]
+
+                if !receiverId.isEmpty {
+                    updates["unreadCounts.\(receiverId)"] = FieldValue.increment(Int64(1))
+                    updates["unreadFor"] = FieldValue.arrayUnion([receiverId])
+                }
+
+                db.collection("conversations")
+                    .document(conversationId)
+                    .updateData(updates)
+            }
     }
     
    
@@ -1526,7 +1694,6 @@ extension MessageDetailView {
             }
         }
     }
-
     func saveAudioMessage(audioUrl: String, duration: Double, isViewOnce: Bool) {
         guard let currentUserId = Auth.auth().currentUser?.uid else { return }
 
@@ -1550,9 +1717,7 @@ extension MessageDetailView {
             "openedAt": NSNull()
         ]
 
-        print("🎤 Vocal vue unique =", isViewOnce)
-        Firestore.firestore()
-            .collection("users")
+        db.collection("users")
             .document(currentUserId)
             .getDocument { snap, _ in
 
@@ -1571,37 +1736,34 @@ extension MessageDetailView {
                     .collection("messages")
                     .document(messageId)
                     .setData(messageData)
-            }
-
-        return
-        
-        
-        db.collection("conversations")
-            .document(conversationId)
-            .getDocument { snap, _ in
-
-                let data = snap?.data() ?? [:]
-                let participants = data["participants"] as? [String] ?? []
-                let receiverId = participants.first(where: { $0 != currentUserId }) ?? ""
-
-                var updates: [String: Any] = [
-                    "lastMessage": "🎤 Message vocal",
-                    "lastMessagePreview": "🎤 Message vocal",
-                    "lastMessageType": "audio",
-                    "lastSenderId": currentUserId,
-                    "lastMessageDate": now,
-                    "updatedAt": now,
-                    "seenBy": [currentUserId]
-                ]
-
-                if !receiverId.isEmpty {
-                    updates["unreadCounts.\(receiverId)"] = FieldValue.increment(Int64(1))
-                    updates["unreadFor"] = FieldValue.arrayUnion([receiverId])
-                }
 
                 db.collection("conversations")
                     .document(conversationId)
-                    .updateData(updates)
+                    .getDocument { snap, _ in
+
+                        let convData = snap?.data() ?? [:]
+                        let participants = convData["participants"] as? [String] ?? []
+                        let receiverId = participants.first(where: { $0 != currentUserId }) ?? ""
+
+                        var updates: [String: Any] = [
+                            "lastMessage": isViewOnce ? "🎤 Vocal vue unique" : "🎤 Message vocal",
+                            "lastMessagePreview": isViewOnce ? "🎤 Vocal vue unique" : "🎤 Message vocal",
+                            "lastMessageType": "audio",
+                            "lastSenderId": currentUserId,
+                            "lastMessageDate": now,
+                            "updatedAt": now,
+                            "seenBy": [currentUserId]
+                        ]
+
+                        if !receiverId.isEmpty {
+                            updates["unreadCounts.\(receiverId)"] = FieldValue.increment(Int64(1))
+                            updates["unreadFor"] = FieldValue.arrayUnion([receiverId])
+                        }
+
+                        db.collection("conversations")
+                            .document(conversationId)
+                            .updateData(updates)
+                    }
             }
     }
 
@@ -1864,8 +2026,30 @@ extension MessageDetailView {
         }
     }
     
-    
-    
+    func listenIncomingCalls() {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+
+        Firestore.firestore()
+            .collection("calls")
+            .whereField("receiverId", isEqualTo: uid)
+            .whereField("status", isEqualTo: "ringing")
+            .addSnapshotListener { snapshot, _ in
+
+                guard let doc = snapshot?.documents.first else {
+                    showIncomingCall = false
+                    return
+                }
+
+                let data = doc.data()
+                let callConversationId = data["conversationId"] as? String ?? ""
+
+                guard callConversationId == conversationId else { return }
+
+                incomingCallId = doc.documentID
+                incomingCallType = data["type"] as? String ?? "audio"
+                showIncomingCall = true
+            }
+    }
     
     
     
@@ -1973,4 +2157,10 @@ struct ChatVideoThumbnailView: View {
             }
         }
     }
+}
+
+struct ChatImageItem: Identifiable {
+    let id = UUID()
+    let url: String
+    let message: Message
 }

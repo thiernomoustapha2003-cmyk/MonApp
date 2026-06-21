@@ -120,4 +120,27 @@ class AppDelegate: NSObject,
     ) {
         completionHandler([.banner, .sound, .badge])
     }
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        Messaging.messaging().token { token, error in
+            if let error = error {
+                print("❌ Erreur récupération FCM token:", error.localizedDescription)
+                return
+            }
+
+            guard let token = token,
+                  let uid = Auth.auth().currentUser?.uid else { return }
+
+            print("🔥 FCM token actif:", token)
+
+            Firestore.firestore()
+                .collection("users")
+                .document(uid)
+                .setData([
+                    "fcmToken": token,
+                    "fcmTokenUpdatedAt": Timestamp(date: Date())
+                ], merge: true)
+        }
+    }
+    
+    
 }

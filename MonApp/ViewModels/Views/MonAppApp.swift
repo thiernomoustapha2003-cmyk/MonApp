@@ -14,6 +14,7 @@ struct MonAppApp: App {
 
         // 🔔 permission rappels automatiques
         LocalNotificationManager.shared.requestPermission()
+        
     }
 
     var body: some Scene {

@@ -5,6 +5,7 @@ struct PostCardView: View {
     
     let post: Post
     @State private var player: AVPlayer?
+    @State private var showStyleAssistant = false
     
     var body: some View {
         
@@ -37,6 +38,25 @@ struct PostCardView: View {
                 LikeButton(post: post)
                 CommentButton(postId: post.id ?? "")
                 SaveButton(postId: post.id ?? "")
+
+                if post.safeType == .image && post.isServicePost {
+                    Button {
+                        showStyleAssistant = true
+                    } label: {
+                        VStack(spacing: 4) {
+                            Image(systemName: "scissors")
+                                .font(.system(size: 28, weight: .bold))
+                                .foregroundColor(.white)
+
+                            Text("Réserver")
+                                .font(.caption2.bold())
+                                .foregroundColor(.white)
+                        }
+                        .padding(10)
+                        .background(Color.black.opacity(0.45))
+                        .clipShape(RoundedRectangle(cornerRadius: 14))
+                    }
+                }
             }
             .padding(.trailing, 12)
             .padding(.bottom, 110)
@@ -54,6 +74,11 @@ struct PostCardView: View {
             }
             .frame(maxWidth: .infinity, alignment: .leading)
         }
+        
+        StyleBookingAssistantView(
+            imageUrl: post.mediaURL,
+            preferredStyleId: post.safeStyleId
+        )
         .background(Color.black)
         .onAppear {
             setupPlayer()

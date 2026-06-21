@@ -38,6 +38,10 @@ extension LiveAgoraManager {
         rtcEngine.setChannelProfile(.liveBroadcasting)
         rtcEngine.enableVideo()
         rtcEngine.enableAudio()
+        rtcEngine.setAudioProfile(.default, scenario: .chatRoom)
+        rtcEngine.adjustRecordingSignalVolume(100)
+        rtcEngine.adjustPlaybackSignalVolume(100)
+        
         
         self.engine = rtcEngine
     }
@@ -345,8 +349,9 @@ extension LiveAgoraManager: AgoraRtcEngineDelegate {
     func rtcEngine(_ engine: AgoraRtcEngineKit, didJoinChannel channel: String, withUid uid: UInt, elapsed: Int) {
         DispatchQueue.main.async {
             self.isJoined = true
+            self.currentChannel = channel
+            print("✅ Agora rejoint:", channel, "uid:", uid)
         }
-        print("✅ Agora rejoint:", channel, "uid:", uid)
     }
     
     func rtcEngine(_ engine: AgoraRtcEngineKit, didJoinedOfUid uid: UInt, elapsed: Int) {
@@ -390,4 +395,70 @@ extension LiveAgoraManager: AgoraRtcEngineDelegate {
     func rtcEngine(_ engine: AgoraRtcEngineKit, didOccurError errorCode: AgoraErrorCode) {
         print("❌ AGORA ERROR:", errorCode.rawValue)
     }
+    func joinCall(channelName: String, uid: UInt, isVideo: Bool) {
+        
+        if isJoined && currentChannel == channelName {
+            print("⚠️ Déjà connecté au canal:", channelName)
+            return
+        }
+
+        if isJoined && currentChannel != channelName {
+            print("🔄 Changement de canal Agora")
+            leaveCall()
+        }
+        setupEngine()
+
+        if isVideo {
+            engine?.enableVideo()
+        } else {
+            engine?.disableVideo()
+        }
+
+        fetchAgoraToken(channelName: channelName, uid: uid, role: "publisher") { token in
+            guard let token = token else { return }
+
+            DispatchQueue.main.async {
+                let options = AgoraRtcChannelMediaOptions()
+                options.clientRoleType = .broadcaster
+                options.channelProfile = .communication
+
+                
+                self.engine?.muteLocalAudioStream(false)
+                self.engine?.adjustPlaybackSignalVolume(100)
+                self.engine?.adjustRecordingSignalVolume(100)
+                self.engine?.joinChannel(
+                    byToken: token,
+                    channelId: channelName,
+                    uid: uid,
+                    mediaOptions: options
+                )
+
+                self.currentChannel = channelName
+            }
+        }
+    }
+
+    func leaveCall() {
+        engine?.leaveChannel(nil)
+        isJoined = false
+        remoteUsers.removeAll()
+    }
+
+    func muteLocalAudio(_ muted: Bool) {
+        engine?.muteLocalAudioStream(muted)
+        isMuted = muted
+    }
+
+    func enableSpeaker(_ enabled: Bool) {
+        engine?.setEnableSpeakerphone(enabled)
+    }
+
+    func enableCamera(_ enabled: Bool) {
+        engine?.muteLocalVideoStream(!enabled)
+        isCameraOff = !enabled
+    }
+    
+    
+    
+    
 }

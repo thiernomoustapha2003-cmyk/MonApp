@@ -1,7 +1,7 @@
 import Foundation
 import FirebaseFirestore
 
-struct Barber: Identifiable, Codable {
+struct Barber: Identifiable, Codable, Hashable {
 
     // 🔹 ID DU DOCUMENT FIRESTORE (TRÈS IMPORTANT)
     @DocumentID
