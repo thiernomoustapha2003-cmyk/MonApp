@@ -211,6 +211,7 @@
 		59BF48A02FE7634C0020B685 /* IncomingCallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF489F2FE7634C0020B685 /* IncomingCallView.swift */; };
 		59BF48A22FE76A740020B685 /* IncomingCallListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF48A12FE76A740020B685 /* IncomingCallListener.swift */; };
 		59BF48A42FE784690020B685 /* AgoraVideoRenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF48A32FE784690020B685 /* AgoraVideoRenderView.swift */; };
+		59BF48A62FE8004D0020B685 /* CallKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF48A52FE8004D0020B685 /* CallKitManager.swift */; };
 		59C639832F31656F00916B73 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 59C639822F31656F00916B73 /* GoogleSignIn */; };
 		59C639852F31656F00916B73 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 59C639842F31656F00916B73 /* GoogleSignInSwift */; };
 		59D4B2A42F33591200D9D2FB /* StripePayoutConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D4B2A32F33591200D9D2FB /* StripePayoutConfigView.swift */; };
@@ -506,6 +507,7 @@
 		59BF489F2FE7634C0020B685 /* IncomingCallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomingCallView.swift; sourceTree = "<group>"; };
 		59BF48A12FE76A740020B685 /* IncomingCallListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomingCallListener.swift; sourceTree = "<group>"; };
 		59BF48A32FE784690020B685 /* AgoraVideoRenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgoraVideoRenderView.swift; sourceTree = "<group>"; };
+		59BF48A52FE8004D0020B685 /* CallKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallKitManager.swift; sourceTree = "<group>"; };
 		59C6398A2F3191E900916B73 /* MonApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MonApp.entitlements; sourceTree = "<group>"; };
 		59D4B2A32F33591200D9D2FB /* StripePayoutConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripePayoutConfigView.swift; sourceTree = "<group>"; };
 		59EC252C2F3291A3003E976C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -1019,6 +1021,7 @@
 				59BF489D2FE7582D0020B685 /* CallService.swift */,
 				59BF489F2FE7634C0020B685 /* IncomingCallView.swift */,
 				59BF48A12FE76A740020B685 /* IncomingCallListener.swift */,
+				59BF48A52FE8004D0020B685 /* CallKitManager.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1299,6 +1302,7 @@
 				59B512F32FB92EF800829D52 /* LiveJoinRequestsSheet.swift in Sources */,
 				59EC25B92F32931F003E976C /* RegisterView.swift in Sources */,
 				59EC25BB2F32931F003E976C /* ClientAuthView.swift in Sources */,
+				59BF48A62FE8004D0020B685 /* CallKitManager.swift in Sources */,
 				59BF48922FE6C35B0020B685 /* Style.swift in Sources */,
 				59BF48762FE4A9FC0020B685 /* ChatAudioService.swift in Sources */,
 				59EC25BD2F32931F003E976C /* ClientHomeView .swift in Sources */,
@@ -1550,8 +1554,8 @@
 				INFOPLIST_KEY_CFBundleDisplayName = CutLy;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Permet de filmer et publier du contenu.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Nous utilisons votre localisation pour trouver les coiffeurs proches.\nNous utilisons votre localisation pour trouver les coiffeurs proches.\n";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Permet d'enregistrer l'audio des vidéo";
-				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Nous sauvegardons vos contenus publiés.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Permet d'enregistrer l'audio des vidéos.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Privacy - Photo Library Additions Usage Descripti.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Nous avons besoin d'accéder à votre galerie pour publier vos contenus.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1593,8 +1597,8 @@
 				INFOPLIST_KEY_CFBundleDisplayName = CutLy;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Permet de filmer et publier du contenu.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Nous utilisons votre localisation pour trouver les coiffeurs proches.\nNous utilisons votre localisation pour trouver les coiffeurs proches.\n";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Permet d'enregistrer l'audio des vidéo";
-				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Nous sauvegardons vos contenus publiés.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Permet d'enregistrer l'audio des vidéos.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Privacy - Photo Library Additions Usage Descripti.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Nous avons besoin d'accéder à votre galerie pour publier vos contenus.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

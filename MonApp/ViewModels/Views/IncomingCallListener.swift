@@ -51,6 +51,17 @@ final class IncomingCallListener: ObservableObject {
                     self.conversationId = data["conversationId"] as? String
                     self.callerId = data["callerId"] as? String
                     self.callType = data["type"] as? String
+                    let callerName = data["callerName"] as? String ?? "Appel Cutly"
+                    let conversationId = data["conversationId"] as? String ?? ""
+                    let type = data["type"] as? String ?? "audio"
+
+                    CallKitManager.shared.reportIncomingCall(
+                        callId: doc.documentID,
+                        callerName: callerName,
+                        conversationId: conversationId,
+                        type: type
+                    )
+                    
 
                     print("📲 APPEL ENTRANT DÉTECTÉ :", doc.documentID)
                 }
