@@ -2,29 +2,65 @@ import SwiftUI
 import FirebaseAuth
 import FirebaseFirestore
 
+struct AcceptedCallRoute: Identifiable, Hashable {
+    let id = UUID()
+    let callId: String
+    let conversationId: String
+    let type: String
+    let callerName: String
+}
 
 struct ContentView: View {
 
     @State private var isLoggedIn: Bool = Auth.auth().currentUser != nil
+    @State private var acceptedCallRoute: AcceptedCallRoute?
 
     var body: some View {
 
         NavigationStack {
             RootRouterView()
+                .navigationDestination(item: $acceptedCallRoute) { route in
+                    CallScreenView(
+                        name: route.callerName,
+                        avatarURL: nil,
+                        mode: route.type == "video" ? .video : .audio,
+                        callId: route.callId,
+                        conversationId: route.conversationId,
+                        onEndCall: { _ in }
+                    )
+                }
         }
         .onAppear {
             Auth.auth().addStateDidChangeListener { _, user in
                 self.isLoggedIn = (user != nil)
             }
-       
-        }
-        .onAppear {
+
             startSessionListener()
+        }
+        .onReceive(NotificationCenter.default.publisher(for: Notification.Name("OpenAcceptedCall"))) { notification in
+            let info = notification.userInfo ?? [:]
+
+            let callId = info["callId"] as? String ?? ""
+            let conversationId = info["conversationId"] as? String ?? ""
+            let type = info["type"] as? String ?? "audio"
+            let callerName = info["callerName"] as? String ?? "Appel Cutly"
+
+            guard !callId.isEmpty else {
+                print("❌ OpenAcceptedCall sans callId")
+                return
+            }
+
+            print("📲 Ouverture écran appel accepté:", callId)
+
+            acceptedCallRoute = AcceptedCallRoute(
+                callId: callId,
+                conversationId: conversationId,
+                type: type,
+                callerName: callerName
+            )
         }
     }
 }
-    
-
 
 // ==========================
 // 🔥 ROUTEUR PRINCIPAL CLEAN
@@ -42,62 +78,39 @@ struct RootRouterView: View {
 
     var body: some View {
 
-        // 🔥 PAS CONNECTÉ → on renvoie vers login
         if Auth.auth().currentUser == nil {
             LoginView()
-        }
-
-        // 🔥 CONNECTÉ → on peut router
-        else {
+        } else {
             Group {
-
                 if role == nil {
                     ProgressView("Chargement du compte...")
-                }
-
-                else if role == "chooseRole" {
+                } else if role == "chooseRole" {
                     ChooseRoleView()
-                }
-
-                else if role == "coiffeur" {
-
+                } else if role == "coiffeur" {
                     if hasCompletedProfile == true {
                         BarberDashboardView()
                     } else {
                         BarberProfileView()
                     }
-                }
-
-                else {
+                } else {
                     ClientHomeView()
                 }
             }
             .onAppear {
-
                 loadUserData()
-
                 IncomingCallListener.shared.startListening()
-
                 print("📞 IncomingCallListener lancé")
             }
         }
     }
 
-    // ===========================
-    // 🔥 LOGIQUE SIMPLE ET PROPRE
-    // ===========================
-
     func loadUserData() {
-
         guard let uid = Auth.auth().currentUser?.uid else { return }
 
         let ref = db.collection("users").document(uid)
 
         ref.getDocument { snapshot, _ in
-
-            // 🔥 PREMIÈRE CONNEXION → on crée le compte
             if snapshot?.exists == false {
-
                 print("🆕 Création du document utilisateur")
 
                 ref.setData([
@@ -105,7 +118,6 @@ struct RootRouterView: View {
                     "profileCompleted": false,
                     "createdAt": Timestamp()
                 ]) { _ in
-
                     DispatchQueue.main.async {
                         self.role = "chooseRole"
                         self.hasCompletedProfile = false
@@ -115,7 +127,6 @@ struct RootRouterView: View {
                 return
             }
 
-            // 🔥 COMPTE EXISTE
             let data = snapshot?.data() ?? [:]
 
             DispatchQueue.main.async {
@@ -125,8 +136,8 @@ struct RootRouterView: View {
         }
     }
 }
-func startSessionListener() {
 
+func startSessionListener() {
     guard let uid = Auth.auth().currentUser?.uid else { return }
 
     Firestore.firestore()
@@ -140,7 +151,6 @@ func startSessionListener() {
             let localVersion = UserDefaults.standard.integer(forKey: "sessionVersion")
 
             if serverVersion != localVersion {
-
                 print("🔐 Déconnecté car session invalidée")
 
                 try? Auth.auth().signOut()

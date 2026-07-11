@@ -8,6 +8,8 @@ import AuthenticationServices
 
 struct ClientHomeView: View {
 
+    @State private var didLoadClientHome = false
+    
     @StateObject var viewModel = BarberViewModel()
 
     @State private var searchText = ""
@@ -68,7 +70,7 @@ struct ClientHomeView: View {
                         }
 
                         NavigationLink {
-                            MarketplaceHomeView()
+                            MarketplaceEntryView()
                         } label: {
                             CutlyMarketplaceCard()
                         }
@@ -130,12 +132,15 @@ struct ClientHomeView: View {
                 case .bookings:
                     ClientBookingsView()
                 case .marketplace:
-                    MarketplaceHomeView()
+                    MarketplaceEntryView()
                 case .profile:
                     ClientProfilePlaceholderView()
                 }
             }
             .onAppear {
+                guard !didLoadClientHome else { return }
+                didLoadClientHome = true
+
                 viewModel.fetchBarbers()
                 checkAdminAccess()
             }
@@ -605,16 +610,42 @@ struct CutlyMarketplaceCard: View {
     }
 }
 
-struct MarketplaceHomeView: View {
-    var body: some View {
-        Text("Bienvenue sur Cutly Marketplace")
-            .font(.title.bold())
+enum MarketplaceTab: String, CaseIterable, Identifiable {
+    case home = "Accueil"
+    case orders = "Commandes"
+    case tracking = "Suivi"
+    case sell = "Vendre"
+    case messages = "Messages"
+    case wallet = "Revenus"
+    case profile = "Profil"
+
+    var id: String { rawValue }
+
+    var icon: String {
+        switch self {
+        case .home: return "house.fill"
+        case .orders: return "cart.fill"
+        case .tracking: return "location.fill"
+        case .sell: return "plus.app.fill"
+        case .messages: return "bubble.left.and.bubble.right.fill"
+        case .wallet: return "eurosign.circle.fill"
+        case .profile: return "person.crop.circle.fill"
+        }
     }
 }
 
-struct ClientProfilePlaceholderView: View {
+import SwiftUI
+
+struct MarketplaceHomeView: View {
     var body: some View {
-        Text("Mon profil")
-            .font(.title.bold())
+        MarketplacePremiumHomeView()
     }
 }
+struct ClientProfilePlaceholderView: View {
+    var body: some View {
+        Text("Profil client")
+            .font(.title.bold())
+            .navigationTitle("Profil")
+    }
+}
+

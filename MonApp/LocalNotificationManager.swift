@@ -6,21 +6,36 @@ final class LocalNotificationManager {
     static let shared = LocalNotificationManager()
     private init() {}
 
-    // Permission
     func requestPermission() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
-            print("🔔 Local notification permission:", granted)
+        UNUserNotificationCenter.current().getNotificationSettings { settings in
+            if settings.authorizationStatus == .authorized ||
+               settings.authorizationStatus == .provisional ||
+               settings.authorizationStatus == .ephemeral {
+
+                print("✅ Local notifications déjà autorisées")
+                return
+            }
+
+            UNUserNotificationCenter.current().requestAuthorization(
+                options: [.alert, .sound, .badge]
+            ) { granted, error in
+
+                if let error = error {
+                    print("❌ Local notification permission error:", error.localizedDescription)
+                    return
+                }
+
+                print("🔔 Local notification permission:", granted)
+            }
         }
     }
 
-    // Planifier notification
     func scheduleNotification(
         id: String,
         title: String,
         body: String,
         date: Date
     ) {
-
         let content = UNMutableNotificationContent()
         content.title = title
         content.body = body
@@ -33,23 +48,28 @@ final class LocalNotificationManager {
 
         let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
 
-        let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
+        let request = UNNotificationRequest(
+            identifier: id,
+            content: content,
+            trigger: trigger
+        )
 
         UNUserNotificationCenter.current().add(request) { error in
             if let error = error {
-                print("❌ Notification scheduling error:", error)
+                print("❌ Notification scheduling error:", error.localizedDescription)
             } else {
                 print("✅ Notification scheduled:", id)
             }
         }
     }
 
-    // Supprimer notifications d’un booking
     func cancelNotifications(for bookingId: String) {
-        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [
-            "\(bookingId)_24h",
-            "\(bookingId)_2h",
-            "\(bookingId)_30m"
-        ])
+        UNUserNotificationCenter.current().removePendingNotificationRequests(
+            withIdentifiers: [
+                "\(bookingId)_24h",
+                "\(bookingId)_2h",
+                "\(bookingId)_30m"
+            ]
+        )
     }
 }

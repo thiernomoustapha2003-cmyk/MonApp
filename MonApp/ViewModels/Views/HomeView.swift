@@ -29,7 +29,7 @@ struct HomeView: View {
                 Spacer().frame(height: 40)
 
                 // 🔵 Je suis client (PAS de login)
-                NavigationLink(destination: BarberListView()) {
+                NavigationLink(destination: ClientHomeView()) {
                     Text("Je suis client")
                         .font(.headline)
                         .foregroundColor(.white)

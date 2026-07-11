@@ -40,19 +40,22 @@ class BarberViewModel: ObservableObject {
                 
                 print("📄 \(documents.count) documents trouvés dans Firestore")
                 
-                let currentUid = Auth.auth().currentUser?.uid ?? ""
+                let currentUid = Auth.auth().currentUser?.uid
                 var favoriteIds: Set<String> = []
-                
+
                 let group = DispatchGroup()
-                
-                group.enter()
-                self.db.collection("users")
-                    .document(currentUid)
-                    .collection("favoriteBarbers")
-                    .getDocuments { favSnap, _ in
-                        favoriteIds = Set(favSnap?.documents.map { $0.documentID } ?? [])
-                        group.leave()
-                    }
+
+                if let currentUid, !currentUid.isEmpty {
+                    group.enter()
+                    self.db.collection("users")
+                        .document(currentUid)
+                        .collection("favoriteBarbers")
+                        .getDocuments { favSnap, _ in
+                            favoriteIds = Set(favSnap?.documents.map { $0.documentID } ?? [])
+                            group.leave()
+                        }
+                }
+
                 group.notify(queue: .main) {
                     var loadedBarbers: [Barber] = []
                     

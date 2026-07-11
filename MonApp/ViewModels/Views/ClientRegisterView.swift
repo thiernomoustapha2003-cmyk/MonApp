@@ -111,9 +111,13 @@ struct ClientRegisterView: View {
                 "name": "\(firstName) \(lastName)",
                 "email": email,
                 "role": "client",
+                "isAdmin": false,
+                "isPlatformOwner": false,
+                "adminLevel": "none",
+                "profileCompleted": true,
                 "emailVerified": false,
                 "createdAt": Timestamp()
-            ]) { error in
+            ], merge: true) { error in
                 
                 if let error = error {
                     print("❌ Firestore:", error.localizedDescription)

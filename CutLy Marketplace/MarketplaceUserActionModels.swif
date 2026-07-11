@@ -6,3 +6,267 @@
 //
 
 import Foundation
+import FirebaseFirestore
+
+// MARK: - Marketplace User Action Type
+
+enum MarketplaceUserActionType: String, Codable, CaseIterable, Identifiable {
+    case viewProduct
+    case viewStore
+    case favoriteProduct
+    case unfavoriteProduct
+    case favoriteStore
+    case unfavoriteStore
+    case followStore
+    case unfollowStore
+    case search
+    case clickCategory
+    case addToCart
+    case removeFromCart
+    case startCheckout
+    case purchase
+    case shareProduct
+    case reportProduct
+    case contactSeller
+    case watchVideo
+    case viewLiveShopping
+    case clickAd
+
+    var id: String { rawValue }
+
+    var title: String {
+        switch self {
+        case .viewProduct: return "Vue produit"
+        case .viewStore: return "Vue boutique"
+        case .favoriteProduct: return "Produit favori"
+        case .unfavoriteProduct: return "Produit retiré des favoris"
+        case .favoriteStore: return "Boutique favorite"
+        case .unfavoriteStore: return "Boutique retirée des favoris"
+        case .followStore: return "Boutique suivie"
+        case .unfollowStore: return "Boutique désuivie"
+        case .search: return "Recherche"
+        case .clickCategory: return "Catégorie ouverte"
+        case .addToCart: return "Ajout au panier"
+        case .removeFromCart: return "Retrait du panier"
+        case .startCheckout: return "Début paiement"
+        case .purchase: return "Achat"
+        case .shareProduct: return "Partage produit"
+        case .reportProduct: return "Signalement produit"
+        case .contactSeller: return "Contact vendeur"
+        case .watchVideo: return "Visionnage vidéo"
+        case .viewLiveShopping: return "Live shopping"
+        case .clickAd: return "Publicité cliquée"
+        }
+    }
+}
+
+// MARK: - Marketplace User Action
+
+struct MarketplaceUserAction: Codable, Identifiable, Hashable {
+    @DocumentID var id: String?
+
+    var userId: String
+    var type: MarketplaceUserActionType
+
+    var productId: String?
+    var storeId: String?
+    var categoryId: String?
+    var orderId: String?
+    var adId: String?
+    var liveId: String?
+
+    var query: String?
+    var searchFilters: [String: String]
+
+    var countryCode: String?
+    var city: String?
+
+    var durationSeconds: Double?
+    var watchProgress: Double?
+
+    var metadata: [String: String]
+
+    var createdAt: Timestamp?
+
+    init(
+        id: String? = nil,
+        userId: String,
+        type: MarketplaceUserActionType,
+        productId: String? = nil,
+        storeId: String? = nil,
+        categoryId: String? = nil,
+        orderId: String? = nil,
+        adId: String? = nil,
+        liveId: String? = nil,
+        query: String? = nil,
+        searchFilters: [String: String] = [:],
+        countryCode: String? = nil,
+        city: String? = nil,
+        durationSeconds: Double? = nil,
+        watchProgress: Double? = nil,
+        metadata: [String: String] = [:],
+        createdAt: Timestamp? = nil
+    ) {
+        self.id = id
+        self.userId = userId
+        self.type = type
+        self.productId = productId
+        self.storeId = storeId
+        self.categoryId = categoryId
+        self.orderId = orderId
+        self.adId = adId
+        self.liveId = liveId
+        self.query = query
+        self.searchFilters = searchFilters
+        self.countryCode = countryCode
+        self.city = city
+        self.durationSeconds = durationSeconds
+        self.watchProgress = watchProgress
+        self.metadata = metadata
+        self.createdAt = createdAt
+    }
+}
+
+// MARK: - Marketplace Favorite
+
+struct MarketplaceFavorite: Codable, Identifiable, Hashable {
+    @DocumentID var id: String?
+
+    var userId: String
+    var productId: String?
+    var storeId: String?
+    var categoryId: String?
+    var searchQuery: String?
+
+    var createdAt: Timestamp?
+
+    init(
+        id: String? = nil,
+        userId: String,
+        productId: String? = nil,
+        storeId: String? = nil,
+        categoryId: String? = nil,
+        searchQuery: String? = nil,
+        createdAt: Timestamp? = nil
+    ) {
+        self.id = id
+        self.userId = userId
+        self.productId = productId
+        self.storeId = storeId
+        self.categoryId = categoryId
+        self.searchQuery = searchQuery
+        self.createdAt = createdAt
+    }
+}
+
+// MARK: - Marketplace Recently Viewed
+
+struct MarketplaceRecentlyViewed: Codable, Identifiable, Hashable {
+    @DocumentID var id: String?
+
+    var userId: String
+    var productId: String
+    var storeId: String?
+    var categoryId: String?
+
+    var title: String?
+    var imageURL: String?
+    var price: MarketplacePrice?
+
+    var viewedAt: Timestamp?
+
+    init(
+        id: String? = nil,
+        userId: String,
+        productId: String,
+        storeId: String? = nil,
+        categoryId: String? = nil,
+        title: String? = nil,
+        imageURL: String? = nil,
+        price: MarketplacePrice? = nil,
+        viewedAt: Timestamp? = nil
+    ) {
+        self.id = id
+        self.userId = userId
+        self.productId = productId
+        self.storeId = storeId
+        self.categoryId = categoryId
+        self.title = title
+        self.imageURL = imageURL
+        self.price = price
+        self.viewedAt = viewedAt
+    }
+}
+
+// MARK: - Marketplace Recommendation Profile
+
+struct MarketplaceRecommendationProfile: Codable, Identifiable, Hashable {
+    @DocumentID var id: String?
+
+    var userId: String
+
+    var preferredCategoryIds: [String]
+    var preferredStoreIds: [String]
+    var preferredBrands: [String]
+    var preferredColors: [String]
+    var preferredSizes: [String]
+    var preferredCountryCodes: [String]
+
+    var averagePriceMin: Double?
+    var averagePriceMax: Double?
+    var preferredCurrency: MarketplaceCurrency?
+
+    var likedProductIds: [String]
+    var purchasedProductIds: [String]
+    var ignoredProductIds: [String]
+
+    var lastSearchQueries: [String]
+
+    var aiInterestVector: [Double]
+    var aiConfidenceScore: Double?
+
+    var createdAt: Timestamp?
+    var updatedAt: Timestamp?
+
+    init(
+        id: String? = nil,
+        userId: String,
+        preferredCategoryIds: [String] = [],
+        preferredStoreIds: [String] = [],
+        preferredBrands: [String] = [],
+        preferredColors: [String] = [],
+        preferredSizes: [String] = [],
+        preferredCountryCodes: [String] = [],
+        averagePriceMin: Double? = nil,
+        averagePriceMax: Double? = nil,
+        preferredCurrency: MarketplaceCurrency? = nil,
+        likedProductIds: [String] = [],
+        purchasedProductIds: [String] = [],
+        ignoredProductIds: [String] = [],
+        lastSearchQueries: [String] = [],
+        aiInterestVector: [Double] = [],
+        aiConfidenceScore: Double? = nil,
+        createdAt: Timestamp? = nil,
+        updatedAt: Timestamp? = nil
+    ) {
+        self.id = id
+        self.userId = userId
+        self.preferredCategoryIds = preferredCategoryIds
+        self.preferredStoreIds = preferredStoreIds
+        self.preferredBrands = preferredBrands
+        self.preferredColors = preferredColors
+        self.preferredSizes = preferredSizes
+        self.preferredCountryCodes = preferredCountryCodes
+        self.averagePriceMin = averagePriceMin
+        self.averagePriceMax = averagePriceMax
+        self.preferredCurrency = preferredCurrency
+        self.likedProductIds = likedProductIds
+        self.purchasedProductIds = purchasedProductIds
+        self.ignoredProductIds = ignoredProductIds
+        self.lastSearchQueries = lastSearchQueries
+        self.aiInterestVector = aiInterestVector
+        self.aiConfidenceScore = aiConfidenceScore
+        self.createdAt = createdAt
+        self.updatedAt = updatedAt
+    }
+}

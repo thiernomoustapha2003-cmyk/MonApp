@@ -81,8 +81,10 @@ struct MessageDetailView: View {
     @State private var incomingCallType = "audio"
     @State private var showIncomingCall = false
     
-    
-    
+    @State private var isCreatingCall = false
+    @State private var incomingCallsListener: ListenerRegistration? = nil
+    @State private var openAcceptedCallObserver: NSObjectProtocol? = nil
+    @State private var handledIncomingCallId: String? = nil
     
     @State private var activeVideo: ChatVideoItem? = nil
     
@@ -331,35 +333,64 @@ struct MessageDetailView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItemGroup(placement: .topBarTrailing) {
+
                 Button {
+                    guard !isCreatingCall else { return }
+                    guard !showAudioCall && !showVideoCall && !showIncomingCall else { return }
+
+                    isCreatingCall = true
+
                     CallService.shared.startCall(
                         conversationId: conversationId,
                         receiverName: otherUserName,
                         type: "audio"
                     ) { callId in
-                        currentCallId = callId
-                        showAudioCall = true
-                    }
+                        DispatchQueue.main.async {
+                            isCreatingCall = false
 
-                    showAudioCall = true
+                            guard let callId = callId else {
+                                print("❌ Impossible de créer appel audio")
+                                return
+                            }
+
+                            currentCallId = callId
+                            incomingCallType = "audio"
+                            showAudioCall = true
+                        }
+                    }
                 } label: {
                     Image(systemName: "phone.fill")
                 }
+                .disabled(isCreatingCall)
 
                 Button {
+                    guard !isCreatingCall else { return }
+                    guard !showAudioCall && !showVideoCall && !showIncomingCall else { return }
+
+                    isCreatingCall = true
+
                     CallService.shared.startCall(
                         conversationId: conversationId,
                         receiverName: otherUserName,
                         type: "video"
                     ) { callId in
-                        currentCallId = callId
-                        showVideoCall = true
-                    }
+                        DispatchQueue.main.async {
+                            isCreatingCall = false
 
-                    showVideoCall = true
+                            guard let callId = callId else {
+                                print("❌ Impossible de créer appel vidéo")
+                                return
+                            }
+
+                            currentCallId = callId
+                            incomingCallType = "video"
+                            showVideoCall = true
+                        }
+                    }
                 } label: {
                     Image(systemName: "video.fill")
                 }
+                .disabled(isCreatingCall)
             }
         }
         .confirmationDialog("Réagir au message", isPresented: $showReactionPicker) {
@@ -406,49 +437,20 @@ struct MessageDetailView: View {
             NativeVideoPlayerScreen(url: item.url)
         }
 
-        .fullScreenCover(isPresented: $showIncomingCall) {
-            IncomingCallView(
-                callerName: otherUserName,
-                callType: incomingCallType,
-                onAccept: {
-                    if let callId = incomingCallId {
-                        CallService.shared.acceptCall(callId: callId)
-                        currentCallId = callId
-                    }
-
-                    showIncomingCall = false
-
-                    if incomingCallType == "video" {
-                        showVideoCall = true
-                    } else {
-                        showAudioCall = true
-                    }
-                },
-                onDecline: {
-                    if let callId = incomingCallId {
-                        CallService.shared.declineCall(callId: callId)
-                        CallService.shared.saveMissedCall(
-                            conversationId: conversationId,
-                            type: incomingCallType
-                        )
-                    }
-
-                    showIncomingCall = false
-                }
-            )
-        }
-        
+        // IncomingCallView désactivé ici.
+        // Les appels entrants sont gérés uniquement par CallKit + CallNavigationManager.
+        // Cela évite le double écran d'appel entrant.
         
         
         .fullScreenCover(isPresented: $showAudioCall) {
-            CallScreenView(
-                name: otherUserName,
-                avatarURL: nil,
-                mode: .audio,
-                callId: currentCallId,
-                conversationId: conversationId
-            ) { duration in
-                if let callId = currentCallId {
+            if let callId = currentCallId, !callId.isEmpty {
+                CallScreenView(
+                    name: otherUserName,
+                    avatarURL: nil,
+                    mode: .audio,
+                    callId: callId,
+                    conversationId: conversationId
+                ) { duration in
                     CallService.shared.endCall(
                         callId: callId,
                         conversationId: conversationId,
@@ -456,18 +458,24 @@ struct MessageDetailView: View {
                         duration: duration
                     )
                 }
+            } else {
+                ProgressView("Ouverture de l'appel...")
+                    .onAppear {
+                        print("❌ showAudioCall ouvert sans currentCallId")
+                        showAudioCall = false
+                    }
             }
         }
 
         .fullScreenCover(isPresented: $showVideoCall) {
-            CallScreenView(
-                name: otherUserName,
-                avatarURL: nil,
-                mode: .video,
-                callId: currentCallId,
-                conversationId: conversationId
-            ) { duration in
-                if let callId = currentCallId {
+            if let callId = currentCallId, !callId.isEmpty {
+                CallScreenView(
+                    name: otherUserName,
+                    avatarURL: nil,
+                    mode: .video,
+                    callId: callId,
+                    conversationId: conversationId
+                ) { duration in
                     CallService.shared.endCall(
                         callId: callId,
                         conversationId: conversationId,
@@ -475,9 +483,14 @@ struct MessageDetailView: View {
                         duration: duration
                     )
                 }
+            } else {
+                ProgressView("Ouverture de l'appel...")
+                    .onAppear {
+                        print("❌ showVideoCall ouvert sans currentCallId")
+                        showVideoCall = false
+                    }
             }
         }
-        
         
         
         .fullScreenCover(item: $activeImage) { item in
@@ -778,12 +791,32 @@ struct MessageDetailView: View {
         .onAppear {
             listenMessages()
             listenPresence()
-            listenIncomingCalls()
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 markConversationAsSeen()
             }
         }
+        .onDisappear {
+            incomingCallsListener?.remove()
+            incomingCallsListener = nil
+
+            if let observer = openAcceptedCallObserver {
+                NotificationCenter.default.removeObserver(observer)
+                openAcceptedCallObserver = nil
+            }
+
+            ChatPresenceService.shared.setTyping(
+                conversationId: conversationId,
+                isTyping: false
+            )
+
+            ChatPresenceService.shared.setRecording(
+                conversationId: conversationId,
+                isRecording: false
+            )
+        }
+        
+        
         .onChange(of: selectedMediaItems) { oldValue, newValue in
             prepareSelectedMedias()
         }
@@ -2029,7 +2062,9 @@ extension MessageDetailView {
     func listenIncomingCalls() {
         guard let uid = Auth.auth().currentUser?.uid else { return }
 
-        Firestore.firestore()
+        incomingCallsListener?.remove()
+
+        incomingCallsListener = Firestore.firestore()
             .collection("calls")
             .whereField("receiverId", isEqualTo: uid)
             .whereField("status", isEqualTo: "ringing")
@@ -2037,6 +2072,7 @@ extension MessageDetailView {
 
                 guard let doc = snapshot?.documents.first else {
                     showIncomingCall = false
+                    incomingCallId = nil
                     return
                 }
 
@@ -2045,9 +2081,18 @@ extension MessageDetailView {
 
                 guard callConversationId == conversationId else { return }
 
-                incomingCallId = doc.documentID
+                let newCallId = doc.documentID
+
+                guard handledIncomingCallId != newCallId else { return }
+
+                handledIncomingCallId = newCallId
+                incomingCallId = newCallId
                 incomingCallType = data["type"] as? String ?? "audio"
-                showIncomingCall = true
+
+                // IMPORTANT : avec CallKit/VoIP, on ne montre plus IncomingCallView ici.
+                // Sinon ça crée deux écrans d'appel entrant en même temps.
+                print("📞 Appel entrant détecté dans MessageDetailView, laissé à CallKit:", newCallId)
+                showIncomingCall = false
             }
     }
     

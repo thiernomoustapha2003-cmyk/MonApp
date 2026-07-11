@@ -10,7 +10,7 @@ struct ChatListView: View {
     @State private var avatars: [String: String] = [:]
     
     var body: some View {
-        NavigationStack {
+        Group {
             List(service.conversations) { convo in
                 
                 let otherId = otherParticipantId(convo)

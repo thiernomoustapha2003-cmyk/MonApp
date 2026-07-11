@@ -90,6 +90,7 @@
 		5994BA2F2F476ECC009CA70D /* ConnectedDevicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5994BA2E2F476ECC009CA70D /* ConnectedDevicesView.swift */; };
 		5994BA312F476EF1009CA70D /* DeviceSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5994BA302F476EF1009CA70D /* DeviceSession.swift */; };
 		5994BA372F47B176009CA70D /* FinanceMonthlyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5994BA362F47B176009CA70D /* FinanceMonthlyView.swift */; };
+		5996553A3000192800CEACC6 /* MarketplaceVariantEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599655393000192800CEACC6 /* MarketplaceVariantEditorView.swift */; };
 		599768E12F50BBEC0020457C /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599768E02F50BBEC0020457C /* ActionButton.swift */; };
 		59A223E72F4B196000D89777 /* ReminderEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A223E62F4B196000D89777 /* ReminderEngine.swift */; };
 		59A223E92F4B19D500D89777 /* ReminderScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A223E82F4B19D500D89777 /* ReminderScheduler.swift */; };
@@ -104,6 +105,9 @@
 		59A223FB2F4BB2B900D89777 /* QRScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A223FA2F4BB2B800D89777 /* QRScannerView.swift */; };
 		59A223FD2F4BB61C00D89777 /* ScanClientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A223FC2F4BB61C00D89777 /* ScanClientButton.swift */; };
 		59A223FF2F4BB66100D89777 /* ScanPressEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A223FE2F4BB66100D89777 /* ScanPressEffect.swift */; };
+		59A8788C2FFC7EDE00C411CA /* MarketplaceStripeCheckoutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A8788B2FFC7EDE00C411CA /* MarketplaceStripeCheckoutService.swift */; };
+		59A8788E2FFC86A600C411CA /* MarketplacePaymentRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A8788D2FFC86A600C411CA /* MarketplacePaymentRouter.swift */; };
+		59A878902FFECC9400C411CA /* MarketplaceProductCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A8788F2FFECC9400C411CA /* MarketplaceProductCard.swift */; };
 		59A97B782F3CF8E2003E2FFC /*  SlotStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A97B772F3CF8E2003E2FFC /*  SlotStatus.swift */; };
 		59ACE28D2F41EA4400FACD11 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59ACE28C2F41EA4400FACD11 /* Conversation.swift */; };
 		59ACE28F2F41EB5100FACD11 /* ConversationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59ACE28E2F41EB5100FACD11 /* ConversationService.swift */; };
@@ -118,6 +122,30 @@
 		59AE98FD2F3FCDF7009C9A24 /* ServiceCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59AE98FC2F3FCDF7009C9A24 /* ServiceCardView.swift */; };
 		59B009E72FD44D1F00F52B19 /* LiveVideoGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B009E62FD44D1F00F52B19 /* LiveVideoGridView.swift */; };
 		59B009EE2FD4914400F52B19 /* DeepARTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B009ED2FD4914400F52B19 /* DeepARTest.swift */; };
+		59B0FA7B2FF270F0007B5A27 /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59B0FA7A2FF270F0007B5A27 /* ReplayKit.framework */; };
+		59B0FA852FF270F1007B5A27 /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59B0FA7A2FF270F0007B5A27 /* ReplayKit.framework */; };
+		59B0FA872FF270F1007B5A27 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59B0FA862FF270F1007B5A27 /* UIKit.framework */; };
+		59B0FA8E2FF270F1007B5A27 /* CutlyScreenShareExtensionSetupUI.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 59B0FA842FF270F1007B5A27 /* CutlyScreenShareExtensionSetupUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		59B0FA912FF270F1007B5A27 /* CutlyScreenShareExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 59B0FA792FF270F0007B5A27 /* CutlyScreenShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		59B0FA9E2FF28B52007B5A27 /* ReplayKit in Frameworks */ = {isa = PBXBuildFile; productRef = 59B0FA9D2FF28B52007B5A27 /* ReplayKit */; };
+		59B0FAA02FF28B63007B5A27 /* ReplayKit in Frameworks */ = {isa = PBXBuildFile; productRef = 59B0FA9F2FF28B63007B5A27 /* ReplayKit */; };
+		59B0FAA72FF2B259007B5A27 /* AdminDashboardModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0FAA62FF2B259007B5A27 /* AdminDashboardModels.swift */; };
+		59B0FAA92FF2B282007B5A27 /* AdminDashboardComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0FAA82FF2B282007B5A27 /* AdminDashboardComponents.swift */; };
+		59B0FAAB2FF2B2BB007B5A27 /* AdminDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0FAAA2FF2B2BB007B5A27 /* AdminDashboardView.swift */; };
+		59B0FAAD2FF2B68E007B5A27 /* AdminDashboardFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0FAAC2FF2B68E007B5A27 /* AdminDashboardFirestore.swift */; };
+		59B0FAAF2FF2C0F9007B5A27 /* AdminDashboardTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0FAAE2FF2C0F9007B5A27 /* AdminDashboardTheme.swift */; };
+		59B0FAB12FF2C18B007B5A27 /* AdminDashboardLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0FAB02FF2C18B007B5A27 /* AdminDashboardLocalization.swift */; };
+		59B0FAB32FF2C3B6007B5A27 /* AdminDashboardSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0FAB22FF2C3B6007B5A27 /* AdminDashboardSidebar.swift */; };
+		59B0FAB52FF2C5BC007B5A27 /* AdminDashboardHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0FAB42FF2C5BC007B5A27 /* AdminDashboardHome.swift */; };
+		59B0FAB72FF2C8F2007B5A27 /* AdminDashboardUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0FAB62FF2C8F2007B5A27 /* AdminDashboardUsers.swift */; };
+		59B0FAB92FF2C9B8007B5A27 /* AdminDashboardReports.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0FAB82FF2C9B8007B5A27 /* AdminDashboardReports.swift */; };
+		59B0FABB2FF2D136007B5A27 /* AdminDashboardBookings.swift..swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0FABA2FF2D136007B5A27 /* AdminDashboardBookings.swift..swift */; };
+		59B0FABD2FF2D3F5007B5A27 /* AdminDashboardTransactions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0FABC2FF2D3F5007B5A27 /* AdminDashboardTransactions.swift */; };
+		59B0FABF2FF2D5FE007B5A27 /* AdminDashboardAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0FABE2FF2D5FE007B5A27 /* AdminDashboardAnalytics.swift */; };
+		59B0FAC12FF2E17B007B5A27 /* AdminDashboardMarketplace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0FAC02FF2E17B007B5A27 /* AdminDashboardMarketplace.swift */; };
+		59B0FAC32FF2E358007B5A27 /* AdminDashboardLive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0FAC22FF2E358007B5A27 /* AdminDashboardLive.swift */; };
+		59B0FAC52FF2E6DB007B5A27 /* AdminDashboardAppeals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0FAC42FF2E6DB007B5A27 /* AdminDashboardAppeals.swift */; };
+		59B0FAC72FF2EF17007B5A27 /* AdminDashboardLiveFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0FAC62FF2EF16007B5A27 /* AdminDashboardLiveFirestore.swift */; };
 		59B131CC2F48985D0092C62B /* BarberBookingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B131CB2F48985D0092C62B /* BarberBookingsView.swift */; };
 		59B131CE2F48B27F0092C62B /* PaymentsHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B131CD2F48B27F0092C62B /* PaymentsHistoryView.swift */; };
 		59B131D02F48E11A0092C62B /* InvoicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B131CF2F48E11A0092C62B /* InvoicesView.swift */; };
@@ -212,9 +240,16 @@
 		59BF48A22FE76A740020B685 /* IncomingCallListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF48A12FE76A740020B685 /* IncomingCallListener.swift */; };
 		59BF48A42FE784690020B685 /* AgoraVideoRenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF48A32FE784690020B685 /* AgoraVideoRenderView.swift */; };
 		59BF48A62FE8004D0020B685 /* CallKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF48A52FE8004D0020B685 /* CallKitManager.swift */; };
+		59C54A1A2FE9CEC300BB0FAC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59C54A192FE9CEC300BB0FAC /* GoogleService-Info.plist */; };
+		59C54A1C2FEA26FA00BB0FAC /* CallAgoraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C54A1B2FEA26FA00BB0FAC /* CallAgoraManager.swift */; };
+		59C54A202FEA2D8B00BB0FAC /* CallVideoRenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C54A1F2FEA2D8B00BB0FAC /* CallVideoRenderView.swift */; };
+		59C54A222FEAC89A00BB0FAC /* CallNavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C54A212FEAC89A00BB0FAC /* CallNavigationManager.swift */; };
 		59C639832F31656F00916B73 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 59C639822F31656F00916B73 /* GoogleSignIn */; };
 		59C639852F31656F00916B73 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 59C639842F31656F00916B73 /* GoogleSignInSwift */; };
 		59D4B2A42F33591200D9D2FB /* StripePayoutConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D4B2A32F33591200D9D2FB /* StripePayoutConfigView.swift */; };
+		59DA123E2FEB349A007D1121 /* ReportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DA123D2FEB349A007D1121 /* ReportService.swift */; };
+		59DA12402FEB51BA007D1121 /* CallRecordingsHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DA123F2FEB51BA007D1121 /* CallRecordingsHistoryView.swift */; };
+		59DA12422FEB55F5007D1121 /* CallRecordingStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DA12412FEB55F5007D1121 /* CallRecordingStorageService.swift */; };
 		59E7E8E22F426A6700F095E2 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 59E7E8E12F426A6700F095E2 /* FirebaseAuth */; };
 		59E7E8E42F426A6700F095E2 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 59E7E8E32F426A6700F095E2 /* FirebaseCore */; };
 		59E7E8E62F426A6700F095E2 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 59E7E8E52F426A6700F095E2 /* FirebaseFirestore */; };
@@ -264,7 +299,6 @@
 		59ED2C2A2F464C7D00AD68E8 /* AuthSecurityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59ED2C292F464C7D00AD68E8 /* AuthSecurityService.swift */; };
 		59ED2C2C2F46503100AD68E8 /* TwoFactorSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59ED2C2B2F46503100AD68E8 /* TwoFactorSetupView.swift */; };
 		59ED2C2E2F46603F00AD68E8 /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59ED2C2D2F46603F00AD68E8 /* PushNotificationManager.swift */; };
-		59ED2C302F46669600AD68E8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59ED2C2F2F46669600AD68E8 /* GoogleService-Info.plist */; };
 		59ED2C322F467BF400AD68E8 /* ChooseRoleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59ED2C312F467BF400AD68E8 /* ChooseRoleView.swift */; };
 		59F33DE12F3E87E600B1EA12 /* BarberAccessGateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F33DE02F3E87E600B1EA12 /* BarberAccessGateView.swift */; };
 		59F61A9E2F40799F003999DD /* ClientListView .swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F61A9D2F40799F003999DD /* ClientListView .swift */; };
@@ -278,7 +312,85 @@
 		59F61AAE2F40815E003999DD /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F61AAD2F40815E003999DD /* AppUser.swift */; };
 		59F61AB22F4103D4003999DD /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F61AB12F4103D4003999DD /* ChatView.swift */; };
 		59F61AB42F410400003999DD /* ChatListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F61AB32F410400003999DD /* ChatListView.swift */; };
+		59FD21032FF301E8007DD9E7 /* AdminRealtimeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD21022FF301E8007DD9E7 /* AdminRealtimeService.swift */; };
+		59FD21052FF30382007DD9E7 /* AdminAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD21042FF30382007DD9E7 /* AdminAIService.swift */; };
+		59FD21082FF42A52007DD9E7 /* MarketplaceModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD21072FF42A52007DD9E7 /* MarketplaceModels.swift */; };
+		59FD210A2FF42C37007DD9E7 /* MarketplaceOrderModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD21092FF42C37007DD9E7 /* MarketplaceOrderModels.swift */; };
+		59FD210C2FF42CA7007DD9E7 /* MarketplaceWalletModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD210B2FF42CA7007DD9E7 /* MarketplaceWalletModels.swift */; };
+		59FD210E2FF42D00007DD9E7 /* MarketplaceReviewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD210D2FF42D00007DD9E7 /* MarketplaceReviewModels.swift */; };
+		59FD21102FF42D61007DD9E7 /* MarketplaceMessageModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD210F2FF42D61007DD9E7 /* MarketplaceMessageModels.swift */; };
+		59FD21142FF42EF4007DD9E7 /* MarketplaceUserActionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD21132FF42EF4007DD9E7 /* MarketplaceUserActionModels.swift */; };
+		59FD21162FF42F59007DD9E7 /* MarketplaceNotificationModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD21152FF42F59007DD9E7 /* MarketplaceNotificationModels.swift */; };
+		59FD21182FF42F99007DD9E7 /* MarketplaceAIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD21172FF42F99007DD9E7 /* MarketplaceAIModels.swift */; };
+		59FD211A2FF43035007DD9E7 /* MarketplaceAnalyticsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD21192FF43035007DD9E7 /* MarketplaceAnalyticsModels.swift */; };
+		59FD211C2FF43135007DD9E7 /* MarketplaceUITheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD211B2FF43135007DD9E7 /* MarketplaceUITheme.swift */; };
+		59FD211E2FF43172007DD9E7 /* MarketplaceHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD211D2FF43172007DD9E7 /* MarketplaceHomeView.swift */; };
+		59FD21202FF4350F007DD9E7 /* MarketplaceExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD211F2FF4350F007DD9E7 /* MarketplaceExploreView.swift */; };
+		59FD21222FF43982007DD9E7 /* MarketplaceCategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD21212FF43982007DD9E7 /* MarketplaceCategoriesView.swift */; };
+		59FD21242FF43AB1007DD9E7 /* MarketplaceProductDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD21232FF43AB1007DD9E7 /* MarketplaceProductDetailView.swift */; };
+		59FD21262FF444CF007DD9E7 /* MarketplaceGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD21252FF444CF007DD9E7 /* MarketplaceGalleryView.swift */; };
+		59FD21292FF44802007DD9E7 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 59FD21282FF44802007DD9E7 /* Kingfisher */; };
+		59FD212B2FF448AB007DD9E7 /* MarketplaceReviewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD212A2FF448AB007DD9E7 /* MarketplaceReviewsView.swift */; };
+		59FD212D2FF44DD2007DD9E7 /* MarketplaceStoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD212C2FF44DD2007DD9E7 /* MarketplaceStoreView.swift */; };
+		59FD212F2FF45101007DD9E7 /* MarketplaceSellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD212E2FF45101007DD9E7 /* MarketplaceSellView.swift */; };
+		59FD21312FF455B7007DD9E7 /* MarketplaceEditProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD21302FF455B7007DD9E7 /* MarketplaceEditProductView.swift */; };
+		59FD21332FF457C0007DD9E7 /* MarketplaceOrdersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD21322FF457C0007DD9E7 /* MarketplaceOrdersView.swift */; };
+		59FD21352FF45DD5007DD9E7 /* MarketplaceOrderDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD21342FF45DD5007DD9E7 /* MarketplaceOrderDetailView.swift */; };
+		59FD21372FF46193007DD9E7 /* MarketplaceTrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD21362FF46193007DD9E7 /* MarketplaceTrackingView.swift */; };
+		59FD21392FF46328007DD9E7 /* MarketplaceWalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD21382FF46328007DD9E7 /* MarketplaceWalletView.swift */; };
+		59FD213B2FF464C0007DD9E7 /* MarketplaceMessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD213A2FF464C0007DD9E7 /* MarketplaceMessagesView.swift */; };
+		59FD213D2FF4666B007DD9E7 /* MarketplaceFavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD213C2FF4666B007DD9E7 /* MarketplaceFavoritesView.swift */; };
+		59FD213F2FF46720007DD9E7 /* MarketplaceNotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD213E2FF46720007DD9E7 /* MarketplaceNotificationsView.swift */; };
+		59FD21412FF4686C007DD9E7 /* MarketplaceProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD21402FF4686C007DD9E7 /* MarketplaceProfileView.swift */; };
+		59FD21432FF4693C007DD9E7 /* MarketplaceSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD21422FF4693C007DD9E7 /* MarketplaceSettingsView.swift */; };
+		59FD21452FF46AAA007DD9E7 /* MarketplaceLegalPrivacyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD21442FF46AAA007DD9E7 /* MarketplaceLegalPrivacyView.swift */; };
+		59FD21472FF46E5A007DD9E7 /* MarketplaceSupportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD21462FF46E5A007DD9E7 /* MarketplaceSupportView.swift */; };
+		59FD21492FF46FF2007DD9E7 /* MarketplaceFirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD21482FF46FF2007DD9E7 /* MarketplaceFirestoreService.swift */; };
+		59FD214B2FF4732D007DD9E7 /* MarketplaceStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD214A2FF4732D007DD9E7 /* MarketplaceStorageService.swift */; };
+		59FD214D2FF4741E007DD9E7 /* MarketplacePaymentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD214C2FF4741E007DD9E7 /* MarketplacePaymentService.swift */; };
+		59FD214F2FF4763A007DD9E7 /* MarketplaceShippingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD214E2FF4763A007DD9E7 /* MarketplaceShippingService.swift */; };
+		59FD21512FF47A26007DD9E7 /* MarketplaceAnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD21502FF47A26007DD9E7 /* MarketplaceAnalyticsService.swift */; };
+		59FD21532FF48144007DD9E7 /* MarketplaceSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD21522FF48144007DD9E7 /* MarketplaceSearchService.swift */; };
+		59FD21552FF483F4007DD9E7 /* MarketplaceRecommendationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD21542FF483F4007DD9E7 /* MarketplaceRecommendationService.swift */; };
+		59FD21572FF486B3007DD9E7 /* MarketplaceModerationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD21562FF486B3007DD9E7 /* MarketplaceModerationService.swift */; };
+		59FD21592FF488AD007DD9E7 /* MarketplaceReportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD21582FF488AD007DD9E7 /* MarketplaceReportService.swift */; };
+		59FD215B2FF48A05007DD9E7 /* MarketplaceNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD215A2FF48A05007DD9E7 /* MarketplaceNotificationService.swift */; };
+		59FD215D2FF48C30007DD9E7 /* MarketplaceSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD215C2FF48C30007DD9E7 /* MarketplaceSyncService.swift */; };
+		59FD215F2FF5486D007DD9E7 /* MarketplaceProfileSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD215E2FF5486D007DD9E7 /* MarketplaceProfileSetupView.swift */; };
+		59FD21612FF54BED007DD9E7 /* MarketplaceLocationSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD21602FF54BED007DD9E7 /* MarketplaceLocationSetupView.swift */; };
+		59FD21632FF54FDC007DD9E7 /* MarketplaceEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD21622FF54FDC007DD9E7 /* MarketplaceEntryView.swift */; };
+		59FD21652FF5793C007DD9E7 /* MarketplaceCountries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD21642FF5793C007DD9E7 /* MarketplaceCountries.swift */; };
+		59FD21672FF57C91007DD9E7 /* MarketplacePaymentSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD21662FF57C91007DD9E7 /* MarketplacePaymentSetupView.swift */; };
+		59FD21692FF57E9D007DD9E7 /* MarketplaceVerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD21682FF57E9D007DD9E7 /* MarketplaceVerificationView.swift */; };
+		59FD216B2FF580F2007DD9E7 /* MarketplaceSetupSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD216A2FF580F2007DD9E7 /* MarketplaceSetupSummaryView.swift */; };
+		59FD216D2FF58260007DD9E7 /* MarketplaceProfileService.swift .swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD216C2FF58260007DD9E7 /* MarketplaceProfileService.swift .swift */; };
+		59FD216F2FF5D8F9007DD9E7 /* MarketplaceAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD216E2FF5D8F9007DD9E7 /* MarketplaceAuthView.swift */; };
+		59FD21712FF64C95007DD9E7 /* MarketplaceHelpCenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD21702FF64C95007DD9E7 /* MarketplaceHelpCenterView.swift */; };
+		59FD21732FF64FFF007DD9E7 /* MarketplaceSupportTicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD21722FF64FFF007DD9E7 /* MarketplaceSupportTicketView.swift */; };
+		59FD21752FF65688007DD9E7 /* MarketplaceCertificationRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD21742FF65688007DD9E7 /* MarketplaceCertificationRequestView.swift */; };
+		59FD21772FF6813C007DD9E7 /* MarketplaceHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD21762FF6813C007DD9E7 /* MarketplaceHomeViewModel.swift */; };
+		59FD21792FF69B48007DD9E7 /* MarketplaceLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD21782FF69B48007DD9E7 /* MarketplaceLocationManager.swift */; };
+		59FD217B2FF6C9E0007DD9E7 /* MarketplaceExploreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD217A2FF6C9E0007DD9E7 /* MarketplaceExploreViewModel.swift */; };
+		59FD217D2FF6E9A0007DD9E7 /* MarketplaceSellerProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD217C2FF6E9A0007DD9E7 /* MarketplaceSellerProfileView.swift */; };
+		59FD217F2FF82852007DD9E7 /* MarketplaceConversationThreadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD217E2FF82852007DD9E7 /* MarketplaceConversationThreadView.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		59B0FA8C2FF270F1007B5A27 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 590903A72F24211C001E5ADD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 59B0FA832FF270F1007B5A27;
+			remoteInfo = CutlyScreenShareExtensionSetupUI;
+		};
+		59B0FA8F2FF270F1007B5A27 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 590903A72F24211C001E5ADD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 59B0FA782FF270F0007B5A27;
+			remoteInfo = CutlyScreenShareExtension;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		59B009EC2FD4908C00F52B19 /* Embed Frameworks */ = {
@@ -289,6 +401,18 @@
 			files = (
 			);
 			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		59B0FA922FF270F1007B5A27 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				59B0FA912FF270F1007B5A27 /* CutlyScreenShareExtension.appex in Embed Foundation Extensions */,
+				59B0FA8E2FF270F1007B5A27 /* CutlyScreenShareExtensionSetupUI.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -380,6 +504,7 @@
 		5994BA2E2F476ECC009CA70D /* ConnectedDevicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedDevicesView.swift; sourceTree = "<group>"; };
 		5994BA302F476EF1009CA70D /* DeviceSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceSession.swift; sourceTree = "<group>"; };
 		5994BA362F47B176009CA70D /* FinanceMonthlyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinanceMonthlyView.swift; sourceTree = "<group>"; };
+		599655393000192800CEACC6 /* MarketplaceVariantEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceVariantEditorView.swift; sourceTree = "<group>"; };
 		599768E02F50BBEC0020457C /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActionButton.swift; path = Calendar/ActionButton.swift; sourceTree = SOURCE_ROOT; };
 		59A223E62F4B196000D89777 /* ReminderEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderEngine.swift; sourceTree = "<group>"; };
 		59A223E82F4B19D500D89777 /* ReminderScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderScheduler.swift; sourceTree = "<group>"; };
@@ -394,6 +519,9 @@
 		59A223FA2F4BB2B800D89777 /* QRScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerView.swift; sourceTree = "<group>"; };
 		59A223FC2F4BB61C00D89777 /* ScanClientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanClientButton.swift; sourceTree = "<group>"; };
 		59A223FE2F4BB66100D89777 /* ScanPressEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanPressEffect.swift; sourceTree = "<group>"; };
+		59A8788B2FFC7EDE00C411CA /* MarketplaceStripeCheckoutService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceStripeCheckoutService.swift; sourceTree = "<group>"; };
+		59A8788D2FFC86A600C411CA /* MarketplacePaymentRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplacePaymentRouter.swift; sourceTree = "<group>"; };
+		59A8788F2FFECC9400C411CA /* MarketplaceProductCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceProductCard.swift; sourceTree = "<group>"; };
 		59A97B772F3CF8E2003E2FFC /*  SlotStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " SlotStatus.swift"; sourceTree = "<group>"; };
 		59ACE28C2F41EA4400FACD11 /* Conversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
 		59ACE28E2F41EB5100FACD11 /* ConversationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationService.swift; sourceTree = "<group>"; };
@@ -408,6 +536,27 @@
 		59AE98FC2F3FCDF7009C9A24 /* ServiceCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCardView.swift; sourceTree = "<group>"; };
 		59B009E62FD44D1F00F52B19 /* LiveVideoGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveVideoGridView.swift; sourceTree = "<group>"; };
 		59B009ED2FD4914400F52B19 /* DeepARTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepARTest.swift; sourceTree = "<group>"; };
+		59B0FA792FF270F0007B5A27 /* CutlyScreenShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CutlyScreenShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		59B0FA7A2FF270F0007B5A27 /* ReplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReplayKit.framework; path = System/Library/Frameworks/ReplayKit.framework; sourceTree = SDKROOT; };
+		59B0FA842FF270F1007B5A27 /* CutlyScreenShareExtensionSetupUI.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CutlyScreenShareExtensionSetupUI.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		59B0FA862FF270F1007B5A27 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		59B0FAA62FF2B259007B5A27 /* AdminDashboardModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminDashboardModels.swift; sourceTree = "<group>"; };
+		59B0FAA82FF2B282007B5A27 /* AdminDashboardComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminDashboardComponents.swift; sourceTree = "<group>"; };
+		59B0FAAA2FF2B2BB007B5A27 /* AdminDashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminDashboardView.swift; sourceTree = "<group>"; };
+		59B0FAAC2FF2B68E007B5A27 /* AdminDashboardFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminDashboardFirestore.swift; sourceTree = "<group>"; };
+		59B0FAAE2FF2C0F9007B5A27 /* AdminDashboardTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminDashboardTheme.swift; sourceTree = "<group>"; };
+		59B0FAB02FF2C18B007B5A27 /* AdminDashboardLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminDashboardLocalization.swift; sourceTree = "<group>"; };
+		59B0FAB22FF2C3B6007B5A27 /* AdminDashboardSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminDashboardSidebar.swift; sourceTree = "<group>"; };
+		59B0FAB42FF2C5BC007B5A27 /* AdminDashboardHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminDashboardHome.swift; sourceTree = "<group>"; };
+		59B0FAB62FF2C8F2007B5A27 /* AdminDashboardUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminDashboardUsers.swift; sourceTree = "<group>"; };
+		59B0FAB82FF2C9B8007B5A27 /* AdminDashboardReports.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminDashboardReports.swift; sourceTree = "<group>"; };
+		59B0FABA2FF2D136007B5A27 /* AdminDashboardBookings.swift..swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminDashboardBookings.swift..swift; sourceTree = "<group>"; };
+		59B0FABC2FF2D3F5007B5A27 /* AdminDashboardTransactions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminDashboardTransactions.swift; sourceTree = "<group>"; };
+		59B0FABE2FF2D5FE007B5A27 /* AdminDashboardAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminDashboardAnalytics.swift; sourceTree = "<group>"; };
+		59B0FAC02FF2E17B007B5A27 /* AdminDashboardMarketplace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminDashboardMarketplace.swift; sourceTree = "<group>"; };
+		59B0FAC22FF2E358007B5A27 /* AdminDashboardLive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminDashboardLive.swift; sourceTree = "<group>"; };
+		59B0FAC42FF2E6DB007B5A27 /* AdminDashboardAppeals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminDashboardAppeals.swift; sourceTree = "<group>"; };
+		59B0FAC62FF2EF16007B5A27 /* AdminDashboardLiveFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminDashboardLiveFirestore.swift; sourceTree = "<group>"; };
 		59B131CB2F48985D0092C62B /* BarberBookingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarberBookingsView.swift; sourceTree = "<group>"; };
 		59B131CD2F48B27F0092C62B /* PaymentsHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentsHistoryView.swift; sourceTree = "<group>"; };
 		59B131CF2F48E11A0092C62B /* InvoicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoicesView.swift; sourceTree = "<group>"; };
@@ -508,8 +657,15 @@
 		59BF48A12FE76A740020B685 /* IncomingCallListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomingCallListener.swift; sourceTree = "<group>"; };
 		59BF48A32FE784690020B685 /* AgoraVideoRenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgoraVideoRenderView.swift; sourceTree = "<group>"; };
 		59BF48A52FE8004D0020B685 /* CallKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallKitManager.swift; sourceTree = "<group>"; };
+		59C54A192FE9CEC300BB0FAC /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		59C54A1B2FEA26FA00BB0FAC /* CallAgoraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallAgoraManager.swift; sourceTree = "<group>"; };
+		59C54A1F2FEA2D8B00BB0FAC /* CallVideoRenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallVideoRenderView.swift; sourceTree = "<group>"; };
+		59C54A212FEAC89A00BB0FAC /* CallNavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallNavigationManager.swift; sourceTree = "<group>"; };
 		59C6398A2F3191E900916B73 /* MonApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MonApp.entitlements; sourceTree = "<group>"; };
 		59D4B2A32F33591200D9D2FB /* StripePayoutConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripePayoutConfigView.swift; sourceTree = "<group>"; };
+		59DA123D2FEB349A007D1121 /* ReportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportService.swift; sourceTree = "<group>"; };
+		59DA123F2FEB51BA007D1121 /* CallRecordingsHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallRecordingsHistoryView.swift; sourceTree = "<group>"; };
+		59DA12412FEB55F5007D1121 /* CallRecordingStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallRecordingStorageService.swift; sourceTree = "<group>"; };
 		59EC252C2F3291A3003E976C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		59EC252D2F3291A3003E976C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		59EC252E2F3291A3003E976C /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
@@ -554,7 +710,6 @@
 		59ED2C292F464C7D00AD68E8 /* AuthSecurityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthSecurityService.swift; sourceTree = "<group>"; };
 		59ED2C2B2F46503100AD68E8 /* TwoFactorSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoFactorSetupView.swift; sourceTree = "<group>"; };
 		59ED2C2D2F46603F00AD68E8 /* PushNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationManager.swift; sourceTree = "<group>"; };
-		59ED2C2F2F46669600AD68E8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		59ED2C312F467BF400AD68E8 /* ChooseRoleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseRoleView.swift; sourceTree = "<group>"; };
 		59F33DE02F3E87E600B1EA12 /* BarberAccessGateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarberAccessGateView.swift; sourceTree = "<group>"; };
 		59F61A9D2F40799F003999DD /* ClientListView .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ClientListView .swift"; sourceTree = "<group>"; };
@@ -568,6 +723,66 @@
 		59F61AAD2F40815E003999DD /* AppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
 		59F61AB12F4103D4003999DD /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		59F61AB32F410400003999DD /* ChatListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListView.swift; sourceTree = "<group>"; };
+		59FD21022FF301E8007DD9E7 /* AdminRealtimeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminRealtimeService.swift; sourceTree = "<group>"; };
+		59FD21042FF30382007DD9E7 /* AdminAIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminAIService.swift; sourceTree = "<group>"; };
+		59FD21072FF42A52007DD9E7 /* MarketplaceModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceModels.swift; sourceTree = "<group>"; };
+		59FD21092FF42C37007DD9E7 /* MarketplaceOrderModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceOrderModels.swift; sourceTree = "<group>"; };
+		59FD210B2FF42CA7007DD9E7 /* MarketplaceWalletModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceWalletModels.swift; sourceTree = "<group>"; };
+		59FD210D2FF42D00007DD9E7 /* MarketplaceReviewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceReviewModels.swift; sourceTree = "<group>"; };
+		59FD210F2FF42D61007DD9E7 /* MarketplaceMessageModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceMessageModels.swift; sourceTree = "<group>"; };
+		59FD21132FF42EF4007DD9E7 /* MarketplaceUserActionModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceUserActionModels.swift; sourceTree = "<group>"; };
+		59FD21152FF42F59007DD9E7 /* MarketplaceNotificationModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceNotificationModels.swift; sourceTree = "<group>"; };
+		59FD21172FF42F99007DD9E7 /* MarketplaceAIModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceAIModels.swift; sourceTree = "<group>"; };
+		59FD21192FF43035007DD9E7 /* MarketplaceAnalyticsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceAnalyticsModels.swift; sourceTree = "<group>"; };
+		59FD211B2FF43135007DD9E7 /* MarketplaceUITheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceUITheme.swift; sourceTree = "<group>"; };
+		59FD211D2FF43172007DD9E7 /* MarketplaceHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceHomeView.swift; sourceTree = "<group>"; };
+		59FD211F2FF4350F007DD9E7 /* MarketplaceExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceExploreView.swift; sourceTree = "<group>"; };
+		59FD21212FF43982007DD9E7 /* MarketplaceCategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceCategoriesView.swift; sourceTree = "<group>"; };
+		59FD21232FF43AB1007DD9E7 /* MarketplaceProductDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceProductDetailView.swift; sourceTree = "<group>"; };
+		59FD21252FF444CF007DD9E7 /* MarketplaceGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceGalleryView.swift; sourceTree = "<group>"; };
+		59FD212A2FF448AB007DD9E7 /* MarketplaceReviewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceReviewsView.swift; sourceTree = "<group>"; };
+		59FD212C2FF44DD2007DD9E7 /* MarketplaceStoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceStoreView.swift; sourceTree = "<group>"; };
+		59FD212E2FF45101007DD9E7 /* MarketplaceSellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceSellView.swift; sourceTree = "<group>"; };
+		59FD21302FF455B7007DD9E7 /* MarketplaceEditProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceEditProductView.swift; sourceTree = "<group>"; };
+		59FD21322FF457C0007DD9E7 /* MarketplaceOrdersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceOrdersView.swift; sourceTree = "<group>"; };
+		59FD21342FF45DD5007DD9E7 /* MarketplaceOrderDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceOrderDetailView.swift; sourceTree = "<group>"; };
+		59FD21362FF46193007DD9E7 /* MarketplaceTrackingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceTrackingView.swift; sourceTree = "<group>"; };
+		59FD21382FF46328007DD9E7 /* MarketplaceWalletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceWalletView.swift; sourceTree = "<group>"; };
+		59FD213A2FF464C0007DD9E7 /* MarketplaceMessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceMessagesView.swift; sourceTree = "<group>"; };
+		59FD213C2FF4666B007DD9E7 /* MarketplaceFavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceFavoritesView.swift; sourceTree = "<group>"; };
+		59FD213E2FF46720007DD9E7 /* MarketplaceNotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceNotificationsView.swift; sourceTree = "<group>"; };
+		59FD21402FF4686C007DD9E7 /* MarketplaceProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceProfileView.swift; sourceTree = "<group>"; };
+		59FD21422FF4693C007DD9E7 /* MarketplaceSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceSettingsView.swift; sourceTree = "<group>"; };
+		59FD21442FF46AAA007DD9E7 /* MarketplaceLegalPrivacyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceLegalPrivacyView.swift; sourceTree = "<group>"; };
+		59FD21462FF46E5A007DD9E7 /* MarketplaceSupportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceSupportView.swift; sourceTree = "<group>"; };
+		59FD21482FF46FF2007DD9E7 /* MarketplaceFirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceFirestoreService.swift; sourceTree = "<group>"; };
+		59FD214A2FF4732D007DD9E7 /* MarketplaceStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceStorageService.swift; sourceTree = "<group>"; };
+		59FD214C2FF4741E007DD9E7 /* MarketplacePaymentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplacePaymentService.swift; sourceTree = "<group>"; };
+		59FD214E2FF4763A007DD9E7 /* MarketplaceShippingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceShippingService.swift; sourceTree = "<group>"; };
+		59FD21502FF47A26007DD9E7 /* MarketplaceAnalyticsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceAnalyticsService.swift; sourceTree = "<group>"; };
+		59FD21522FF48144007DD9E7 /* MarketplaceSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceSearchService.swift; sourceTree = "<group>"; };
+		59FD21542FF483F4007DD9E7 /* MarketplaceRecommendationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceRecommendationService.swift; sourceTree = "<group>"; };
+		59FD21562FF486B3007DD9E7 /* MarketplaceModerationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceModerationService.swift; sourceTree = "<group>"; };
+		59FD21582FF488AD007DD9E7 /* MarketplaceReportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceReportService.swift; sourceTree = "<group>"; };
+		59FD215A2FF48A05007DD9E7 /* MarketplaceNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceNotificationService.swift; sourceTree = "<group>"; };
+		59FD215C2FF48C30007DD9E7 /* MarketplaceSyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceSyncService.swift; sourceTree = "<group>"; };
+		59FD215E2FF5486D007DD9E7 /* MarketplaceProfileSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceProfileSetupView.swift; sourceTree = "<group>"; };
+		59FD21602FF54BED007DD9E7 /* MarketplaceLocationSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceLocationSetupView.swift; sourceTree = "<group>"; };
+		59FD21622FF54FDC007DD9E7 /* MarketplaceEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceEntryView.swift; sourceTree = "<group>"; };
+		59FD21642FF5793C007DD9E7 /* MarketplaceCountries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceCountries.swift; sourceTree = "<group>"; };
+		59FD21662FF57C91007DD9E7 /* MarketplacePaymentSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplacePaymentSetupView.swift; sourceTree = "<group>"; };
+		59FD21682FF57E9D007DD9E7 /* MarketplaceVerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceVerificationView.swift; sourceTree = "<group>"; };
+		59FD216A2FF580F2007DD9E7 /* MarketplaceSetupSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceSetupSummaryView.swift; sourceTree = "<group>"; };
+		59FD216C2FF58260007DD9E7 /* MarketplaceProfileService.swift .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MarketplaceProfileService.swift .swift"; sourceTree = "<group>"; };
+		59FD216E2FF5D8F9007DD9E7 /* MarketplaceAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceAuthView.swift; sourceTree = "<group>"; };
+		59FD21702FF64C95007DD9E7 /* MarketplaceHelpCenterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceHelpCenterView.swift; sourceTree = "<group>"; };
+		59FD21722FF64FFF007DD9E7 /* MarketplaceSupportTicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceSupportTicketView.swift; sourceTree = "<group>"; };
+		59FD21742FF65688007DD9E7 /* MarketplaceCertificationRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceCertificationRequestView.swift; sourceTree = "<group>"; };
+		59FD21762FF6813C007DD9E7 /* MarketplaceHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceHomeViewModel.swift; sourceTree = "<group>"; };
+		59FD21782FF69B48007DD9E7 /* MarketplaceLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceLocationManager.swift; sourceTree = "<group>"; };
+		59FD217A2FF6C9E0007DD9E7 /* MarketplaceExploreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceExploreViewModel.swift; sourceTree = "<group>"; };
+		59FD217C2FF6E9A0007DD9E7 /* MarketplaceSellerProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceSellerProfileView.swift; sourceTree = "<group>"; };
+		59FD217E2FF82852007DD9E7 /* MarketplaceConversationThreadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceConversationThreadView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -584,6 +799,20 @@
 				"Services:VideoUploadService.swift",
 			);
 			target = 590903AE2F24211C001E5ADD /* MonApp */;
+		};
+		59B0FA982FF270F1007B5A27 /* Exceptions for "CutlyScreenShareExtensionSetupUI" folder in "CutlyScreenShareExtensionSetupUI" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 59B0FA832FF270F1007B5A27 /* CutlyScreenShareExtensionSetupUI */;
+		};
+		59B0FA9A2FF270F1007B5A27 /* Exceptions for "CutlyScreenShareExtension" folder in "CutlyScreenShareExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 59B0FA782FF270F0007B5A27 /* CutlyScreenShareExtension */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -611,6 +840,22 @@
 			path = LiveCenter;
 			sourceTree = "<group>";
 		};
+		59B0FA7C2FF270F0007B5A27 /* CutlyScreenShareExtension */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				59B0FA9A2FF270F1007B5A27 /* Exceptions for "CutlyScreenShareExtension" folder in "CutlyScreenShareExtension" target */,
+			);
+			path = CutlyScreenShareExtension;
+			sourceTree = "<group>";
+		};
+		59B0FA882FF270F1007B5A27 /* CutlyScreenShareExtensionSetupUI */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				59B0FA982FF270F1007B5A27 /* Exceptions for "CutlyScreenShareExtensionSetupUI" folder in "CutlyScreenShareExtensionSetupUI" target */,
+			);
+			path = CutlyScreenShareExtensionSetupUI;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -627,11 +872,31 @@
 				59E7E8EA2F426A6700F095E2 /* FirebaseStorage in Frameworks */,
 				599401832F2CD997005ED7A4 /* StripePaymentSheet in Frameworks */,
 				5994017F2F2CD944005ED7A4 /* StripeApplePay in Frameworks */,
+				59FD21292FF44802007DD9E7 /* Kingfisher in Frameworks */,
 				594EA6832F427E4D004FBF11 /* FirebaseMessaging in Frameworks */,
 				59C639852F31656F00916B73 /* GoogleSignInSwift in Frameworks */,
 				59E7E8E42F426A6700F095E2 /* FirebaseCore in Frameworks */,
 				59E7E8E82F426A6700F095E2 /* FirebaseFunctions in Frameworks */,
 				59E7E8E22F426A6700F095E2 /* FirebaseAuth in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		59B0FA762FF270F0007B5A27 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				59B0FA9E2FF28B52007B5A27 /* ReplayKit in Frameworks */,
+				59B0FA7B2FF270F0007B5A27 /* ReplayKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		59B0FA812FF270F1007B5A27 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				59B0FA852FF270F1007B5A27 /* ReplayKit.framework in Frameworks */,
+				59B0FA872FF270F1007B5A27 /* UIKit.framework in Frameworks */,
+				59B0FAA02FF28B63007B5A27 /* ReplayKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -641,7 +906,8 @@
 		590903A62F24211C001E5ADD = {
 			isa = PBXGroup;
 			children = (
-				59B009ED2FD4914400F52B19 /* DeepARTest.swift */,
+				59FD21062FF41960007DD9E7 /* CutLy Marketplace */,
+				59B0FAA52FF2B125007B5A27 /* Admin Dashboard */,
 				5925C60E2FA56D3E00A05B3B /* FollowButton */,
 				5925C5F32FA56D2B00A05B3B /* LiveBadge */,
 				5925C5E42FA56D0A00A05B3B /* Sound */,
@@ -656,6 +922,8 @@
 				59BBF7142F4E7C95007D5387 /* BarberDashboardView.swift .swift */,
 				592FFEF82F2E4FFD00A52F82 /* Calendar */,
 				59EC25992F32931F003E976C /* MonApp */,
+				59B0FA7C2FF270F0007B5A27 /* CutlyScreenShareExtension */,
+				59B0FA882FF270F1007B5A27 /* CutlyScreenShareExtensionSetupUI */,
 				59AE98FB2F3FC2F7009C9A24 /* Frameworks */,
 				590903B02F24211C001E5ADD /* Products */,
 			);
@@ -665,6 +933,8 @@
 			isa = PBXGroup;
 			children = (
 				590903AF2F24211C001E5ADD /* MonApp.app */,
+				59B0FA792FF270F0007B5A27 /* CutlyScreenShareExtension.appex */,
+				59B0FA842FF270F1007B5A27 /* CutlyScreenShareExtensionSetupUI.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -680,6 +950,7 @@
 		5925C5602FA558F000A05B3B /* LiveStream */ = {
 			isa = PBXGroup;
 			children = (
+				59B009ED2FD4914400F52B19 /* DeepARTest.swift */,
 				5925C55E2FA558F000A05B3B /* LiveStreamView.swift */,
 				59B512EC2FB914B800829D52 /* LiveViewerView.swift */,
 				597156A42FB1024200F575FF /* CoinPack.swift */,
@@ -728,7 +999,6 @@
 				59BF45DC2FBA22CB0008498F /* LiveVideoTileView.swift */,
 				59BF45DE2FBB62960008498F /* AgoraViewerContainer.swift */,
 				59B009E62FD44D1F00F52B19 /* LiveVideoGridView.swift */,
-				59BF48672FE1968F0020B685 /* AdminRevenueView.swift */,
 				59BF48A32FE784690020B685 /* AgoraVideoRenderView.swift */,
 			);
 			path = LiveStream;
@@ -824,8 +1094,37 @@
 		59AE98FB2F3FC2F7009C9A24 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				59B0FA7A2FF270F0007B5A27 /* ReplayKit.framework */,
+				59B0FA862FF270F1007B5A27 /* UIKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		59B0FAA52FF2B125007B5A27 /* Admin Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				59BF48672FE1968F0020B685 /* AdminRevenueView.swift */,
+				59B0FAA62FF2B259007B5A27 /* AdminDashboardModels.swift */,
+				59B0FAA82FF2B282007B5A27 /* AdminDashboardComponents.swift */,
+				59B0FAAA2FF2B2BB007B5A27 /* AdminDashboardView.swift */,
+				59B0FAAC2FF2B68E007B5A27 /* AdminDashboardFirestore.swift */,
+				59B0FAAE2FF2C0F9007B5A27 /* AdminDashboardTheme.swift */,
+				59B0FAB02FF2C18B007B5A27 /* AdminDashboardLocalization.swift */,
+				59B0FAB22FF2C3B6007B5A27 /* AdminDashboardSidebar.swift */,
+				59B0FAB42FF2C5BC007B5A27 /* AdminDashboardHome.swift */,
+				59B0FAB62FF2C8F2007B5A27 /* AdminDashboardUsers.swift */,
+				59B0FAB82FF2C9B8007B5A27 /* AdminDashboardReports.swift */,
+				59B0FABA2FF2D136007B5A27 /* AdminDashboardBookings.swift..swift */,
+				59B0FABC2FF2D3F5007B5A27 /* AdminDashboardTransactions.swift */,
+				59B0FABE2FF2D5FE007B5A27 /* AdminDashboardAnalytics.swift */,
+				59B0FAC02FF2E17B007B5A27 /* AdminDashboardMarketplace.swift */,
+				59B0FAC22FF2E358007B5A27 /* AdminDashboardLive.swift */,
+				59B0FAC42FF2E6DB007B5A27 /* AdminDashboardAppeals.swift */,
+				59B0FAC62FF2EF16007B5A27 /* AdminDashboardLiveFirestore.swift */,
+				59FD21022FF301E8007DD9E7 /* AdminRealtimeService.swift */,
+				59FD21042FF30382007DD9E7 /* AdminAIService.swift */,
+			);
+			path = "Admin Dashboard";
 			sourceTree = "<group>";
 		};
 		59EC25952F32931F003E976C /* Managers */ = {
@@ -951,6 +1250,7 @@
 				59F61A9D2F40799F003999DD /* ClientListView .swift */,
 				59AE98FC2F3FCDF7009C9A24 /* ServiceCardView.swift */,
 				59F61A9F2F4079B9003999DD /* ClientDetailView.swift */,
+				59C54A192FE9CEC300BB0FAC /* GoogleService-Info.plist */,
 				59EC25A32F32931F003E976C /* Views */,
 				59ACE28C2F41EA4400FACD11 /* Conversation.swift */,
 			);
@@ -964,7 +1264,6 @@
 				59F61AAB2F40811E003999DD /* MesClientsView.swift */,
 				59F61AA92F407BAE003999DD /* ClientManagementView.swift */,
 				59EC252C2F3291A3003E976C /* AppDelegate.swift */,
-				59EC25852F32931F003E976C /* ClientHomeView .swift */,
 				59EC25832F32931F003E976C /* ClientAuthView.swift */,
 				59EC25492F3291A3003E976C /* BarberSlotsListView.swift */,
 				59EC25412F3291A3003E976C /* BarberRegisterView .swift */,
@@ -980,7 +1279,6 @@
 				59EC25422F3291A3003E976C /* BarberRegistrationView.swift */,
 				59EC25872F32931F003E976C /* ContentView.swift */,
 				59EC258A2F32931F003E976C /* FavoriteBarbersView.swift .swift */,
-				59ED2C2F2F46669600AD68E8 /* GoogleService-Info.plist */,
 				59EC258D2F32931F003E976C /* HomeView.swift */,
 				59EC25902F32931F003E976C /* Info.plist */,
 				59EC25942F32931F003E976C /* LoginView.swift */,
@@ -1022,6 +1320,12 @@
 				59BF489F2FE7634C0020B685 /* IncomingCallView.swift */,
 				59BF48A12FE76A740020B685 /* IncomingCallListener.swift */,
 				59BF48A52FE8004D0020B685 /* CallKitManager.swift */,
+				59C54A1B2FEA26FA00BB0FAC /* CallAgoraManager.swift */,
+				59C54A1F2FEA2D8B00BB0FAC /* CallVideoRenderView.swift */,
+				59C54A212FEAC89A00BB0FAC /* CallNavigationManager.swift */,
+				59DA123D2FEB349A007D1121 /* ReportService.swift */,
+				59DA123F2FEB51BA007D1121 /* CallRecordingsHistoryView.swift */,
+				59DA12412FEB55F5007D1121 /* CallRecordingStorageService.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1058,6 +1362,76 @@
 			path = "Availability ";
 			sourceTree = "<group>";
 		};
+		59FD21062FF41960007DD9E7 /* CutLy Marketplace */ = {
+			isa = PBXGroup;
+			children = (
+				59EC25852F32931F003E976C /* ClientHomeView .swift */,
+				59FD21072FF42A52007DD9E7 /* MarketplaceModels.swift */,
+				59FD21092FF42C37007DD9E7 /* MarketplaceOrderModels.swift */,
+				59FD210B2FF42CA7007DD9E7 /* MarketplaceWalletModels.swift */,
+				59FD210D2FF42D00007DD9E7 /* MarketplaceReviewModels.swift */,
+				59FD210F2FF42D61007DD9E7 /* MarketplaceMessageModels.swift */,
+				59FD21132FF42EF4007DD9E7 /* MarketplaceUserActionModels.swift */,
+				59FD21152FF42F59007DD9E7 /* MarketplaceNotificationModels.swift */,
+				59FD21172FF42F99007DD9E7 /* MarketplaceAIModels.swift */,
+				59FD21192FF43035007DD9E7 /* MarketplaceAnalyticsModels.swift */,
+				59FD211B2FF43135007DD9E7 /* MarketplaceUITheme.swift */,
+				59FD211D2FF43172007DD9E7 /* MarketplaceHomeView.swift */,
+				59FD211F2FF4350F007DD9E7 /* MarketplaceExploreView.swift */,
+				59FD21212FF43982007DD9E7 /* MarketplaceCategoriesView.swift */,
+				59FD21232FF43AB1007DD9E7 /* MarketplaceProductDetailView.swift */,
+				59FD21252FF444CF007DD9E7 /* MarketplaceGalleryView.swift */,
+				59FD212A2FF448AB007DD9E7 /* MarketplaceReviewsView.swift */,
+				59FD212C2FF44DD2007DD9E7 /* MarketplaceStoreView.swift */,
+				59FD212E2FF45101007DD9E7 /* MarketplaceSellView.swift */,
+				59FD21302FF455B7007DD9E7 /* MarketplaceEditProductView.swift */,
+				59FD21322FF457C0007DD9E7 /* MarketplaceOrdersView.swift */,
+				59FD21342FF45DD5007DD9E7 /* MarketplaceOrderDetailView.swift */,
+				59FD21362FF46193007DD9E7 /* MarketplaceTrackingView.swift */,
+				59FD21382FF46328007DD9E7 /* MarketplaceWalletView.swift */,
+				59FD213A2FF464C0007DD9E7 /* MarketplaceMessagesView.swift */,
+				59FD213C2FF4666B007DD9E7 /* MarketplaceFavoritesView.swift */,
+				59FD213E2FF46720007DD9E7 /* MarketplaceNotificationsView.swift */,
+				59FD21402FF4686C007DD9E7 /* MarketplaceProfileView.swift */,
+				59FD21422FF4693C007DD9E7 /* MarketplaceSettingsView.swift */,
+				59FD21442FF46AAA007DD9E7 /* MarketplaceLegalPrivacyView.swift */,
+				59FD21462FF46E5A007DD9E7 /* MarketplaceSupportView.swift */,
+				59FD21482FF46FF2007DD9E7 /* MarketplaceFirestoreService.swift */,
+				59FD214A2FF4732D007DD9E7 /* MarketplaceStorageService.swift */,
+				59FD214C2FF4741E007DD9E7 /* MarketplacePaymentService.swift */,
+				59FD214E2FF4763A007DD9E7 /* MarketplaceShippingService.swift */,
+				59FD21502FF47A26007DD9E7 /* MarketplaceAnalyticsService.swift */,
+				59FD21522FF48144007DD9E7 /* MarketplaceSearchService.swift */,
+				59FD21542FF483F4007DD9E7 /* MarketplaceRecommendationService.swift */,
+				59FD21562FF486B3007DD9E7 /* MarketplaceModerationService.swift */,
+				59FD21582FF488AD007DD9E7 /* MarketplaceReportService.swift */,
+				59FD215A2FF48A05007DD9E7 /* MarketplaceNotificationService.swift */,
+				59FD215C2FF48C30007DD9E7 /* MarketplaceSyncService.swift */,
+				59FD215E2FF5486D007DD9E7 /* MarketplaceProfileSetupView.swift */,
+				59FD21602FF54BED007DD9E7 /* MarketplaceLocationSetupView.swift */,
+				59FD21622FF54FDC007DD9E7 /* MarketplaceEntryView.swift */,
+				59FD21642FF5793C007DD9E7 /* MarketplaceCountries.swift */,
+				59FD21662FF57C91007DD9E7 /* MarketplacePaymentSetupView.swift */,
+				59FD21682FF57E9D007DD9E7 /* MarketplaceVerificationView.swift */,
+				59FD216A2FF580F2007DD9E7 /* MarketplaceSetupSummaryView.swift */,
+				59FD216C2FF58260007DD9E7 /* MarketplaceProfileService.swift .swift */,
+				59FD216E2FF5D8F9007DD9E7 /* MarketplaceAuthView.swift */,
+				59FD21702FF64C95007DD9E7 /* MarketplaceHelpCenterView.swift */,
+				59FD21722FF64FFF007DD9E7 /* MarketplaceSupportTicketView.swift */,
+				59FD21742FF65688007DD9E7 /* MarketplaceCertificationRequestView.swift */,
+				59FD21762FF6813C007DD9E7 /* MarketplaceHomeViewModel.swift */,
+				59FD21782FF69B48007DD9E7 /* MarketplaceLocationManager.swift */,
+				59FD217A2FF6C9E0007DD9E7 /* MarketplaceExploreViewModel.swift */,
+				59FD217C2FF6E9A0007DD9E7 /* MarketplaceSellerProfileView.swift */,
+				59FD217E2FF82852007DD9E7 /* MarketplaceConversationThreadView.swift */,
+				59A8788B2FFC7EDE00C411CA /* MarketplaceStripeCheckoutService.swift */,
+				59A8788D2FFC86A600C411CA /* MarketplacePaymentRouter.swift */,
+				59A8788F2FFECC9400C411CA /* MarketplaceProductCard.swift */,
+				599655393000192800CEACC6 /* MarketplaceVariantEditorView.swift */,
+			);
+			path = "CutLy Marketplace";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1069,10 +1443,13 @@
 				590903AC2F24211C001E5ADD /* Frameworks */,
 				590903AD2F24211C001E5ADD /* Resources */,
 				59B009EC2FD4908C00F52B19 /* Embed Frameworks */,
+				59B0FA922FF270F1007B5A27 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				59B0FA8D2FF270F1007B5A27 /* PBXTargetDependency */,
+				59B0FA902FF270F1007B5A27 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				598F4DFC2F526DDB004C10A2 /* Analytics */,
@@ -1096,10 +1473,57 @@
 				59E7E8E92F426A6700F095E2 /* FirebaseStorage */,
 				594EA6822F427E4D004FBF11 /* FirebaseMessaging */,
 				59BF45D82FBA1C8A0008498F /* RtcBasic */,
+				59FD21282FF44802007DD9E7 /* Kingfisher */,
 			);
 			productName = MonApp;
 			productReference = 590903AF2F24211C001E5ADD /* MonApp.app */;
 			productType = "com.apple.product-type.application";
+		};
+		59B0FA782FF270F0007B5A27 /* CutlyScreenShareExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 59B0FA992FF270F1007B5A27 /* Build configuration list for PBXNativeTarget "CutlyScreenShareExtension" */;
+			buildPhases = (
+				59B0FA752FF270F0007B5A27 /* Sources */,
+				59B0FA762FF270F0007B5A27 /* Frameworks */,
+				59B0FA772FF270F0007B5A27 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				59B0FA7C2FF270F0007B5A27 /* CutlyScreenShareExtension */,
+			);
+			name = CutlyScreenShareExtension;
+			packageProductDependencies = (
+				59B0FA9D2FF28B52007B5A27 /* ReplayKit */,
+			);
+			productName = CutlyScreenShareExtension;
+			productReference = 59B0FA792FF270F0007B5A27 /* CutlyScreenShareExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		59B0FA832FF270F1007B5A27 /* CutlyScreenShareExtensionSetupUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 59B0FA972FF270F1007B5A27 /* Build configuration list for PBXNativeTarget "CutlyScreenShareExtensionSetupUI" */;
+			buildPhases = (
+				59B0FA802FF270F1007B5A27 /* Sources */,
+				59B0FA812FF270F1007B5A27 /* Frameworks */,
+				59B0FA822FF270F1007B5A27 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				59B0FA882FF270F1007B5A27 /* CutlyScreenShareExtensionSetupUI */,
+			);
+			name = CutlyScreenShareExtensionSetupUI;
+			packageProductDependencies = (
+				59B0FA9F2FF28B63007B5A27 /* ReplayKit */,
+			);
+			productName = CutlyScreenShareExtensionSetupUI;
+			productReference = 59B0FA842FF270F1007B5A27 /* CutlyScreenShareExtensionSetupUI.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -1112,6 +1536,12 @@
 				LastUpgradeCheck = 2620;
 				TargetAttributes = {
 					590903AE2F24211C001E5ADD = {
+						CreatedOnToolsVersion = 26.2;
+					};
+					59B0FA782FF270F0007B5A27 = {
+						CreatedOnToolsVersion = 26.2;
+					};
+					59B0FA832FF270F1007B5A27 = {
 						CreatedOnToolsVersion = 26.2;
 					};
 				};
@@ -1130,6 +1560,7 @@
 				59C639812F31656F00916B73 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				59E7E8E02F426A6700F095E2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				59BF45D72FBA1C8A0008498F /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */,
+				59FD21272FF44802007DD9E7 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 590903B02F24211C001E5ADD /* Products */;
@@ -1137,6 +1568,8 @@
 			projectRoot = "";
 			targets = (
 				590903AE2F24211C001E5ADD /* MonApp */,
+				59B0FA782FF270F0007B5A27 /* CutlyScreenShareExtension */,
+				59B0FA832FF270F1007B5A27 /* CutlyScreenShareExtensionSetupUI */,
 			);
 		};
 /* End PBXProject section */
@@ -1148,7 +1581,21 @@
 			files = (
 				59EC25A42F32931F003E976C /* Media.xcassets in Resources */,
 				59EC25532F3291A3003E976C /* Assets.xcassets in Resources */,
-				59ED2C302F46669600AD68E8 /* GoogleService-Info.plist in Resources */,
+				59C54A1A2FE9CEC300BB0FAC /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		59B0FA772FF270F0007B5A27 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		59B0FA822FF270F1007B5A27 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1162,20 +1609,27 @@
 				5925C62E2FA5753D00A05B3B /* VideoViewPoint.swift in Sources */,
 				59B131D22F4903860092C62B /* BarberPayoutsView.swift in Sources */,
 				59B131CC2F48985D0092C62B /* BarberBookingsView.swift in Sources */,
+				59DA123E2FEB349A007D1121 /* ReportService.swift in Sources */,
+				59DA12422FEB55F5007D1121 /* CallRecordingStorageService.swift in Sources */,
 				594EA6852F429174004FBF11 /* ChatMessage.swift in Sources */,
 				59227FD22F3A6DEA00065C35 /* PaymentService.swift in Sources */,
+				59B0FAB72FF2C8F2007B5A27 /* AdminDashboardUsers.swift in Sources */,
 				59ACE2992F42576E00FACD11 /* Message.swift in Sources */,
 				59A223EF2F4B1F1A00D89777 /* AutoConfirmBookingViewModel.swift in Sources */,
 				599401852F2CDDC1005ED7A4 /* StripeConfig.swift in Sources */,
+				59FD21452FF46AAA007DD9E7 /* MarketplaceLegalPrivacyView.swift in Sources */,
 				59F61AA02F4079B9003999DD /* ClientDetailView.swift in Sources */,
+				59FD211A2FF43035007DD9E7 /* MarketplaceAnalyticsModels.swift in Sources */,
 				59EC25592F3291A3003E976C /* AvailabilitySlot.swift in Sources */,
 				59BF45DD2FBA22CB0008498F /* LiveVideoTileView.swift in Sources */,
 				59BBF7362F4E95C4007D5387 /* PostCardView.swift in Sources */,
 				597156842FA6526900F575FF /* CommentsView.swift in Sources */,
 				5971568B2FA654E900F575FF /* InfoRow.swift in Sources */,
+				59FD210A2FF42C37007DD9E7 /* MarketplaceOrderModels.swift in Sources */,
 				59BBF72C2F4E927E007D5387 /* PostLikeService.swift in Sources */,
 				59EC255A2F3291A3003E976C /* BarberDetailView.swift .swift in Sources */,
 				59BBF7462F4E97B8007D5387 /* PostCellView.swift in Sources */,
+				59B0FAC12FF2E17B007B5A27 /* AdminDashboardMarketplace.swift in Sources */,
 				59ED2C282F46497B00AD68E8 /* ChangePasswordView.swift in Sources */,
 				59BF48862FE68ABF0020B685 /* ImageViewerView.swift in Sources */,
 				59BF45C22FB9E2AB0008498F /* PremiumCoinShopView.swift in Sources */,
@@ -1183,56 +1637,78 @@
 				599768E12F50BBEC0020457C /* ActionButton.swift in Sources */,
 				59F61AAC2F40811E003999DD /* MesClientsView.swift in Sources */,
 				5994BA312F476EF1009CA70D /* DeviceSession.swift in Sources */,
+				59FD215B2FF48A05007DD9E7 /* MarketplaceNotificationService.swift in Sources */,
 				59BF45BE2FB9E09A0008498F /* CurrencyConverter.swift in Sources */,
+				59FD213D2FF4666B007DD9E7 /* MarketplaceFavoritesView.swift in Sources */,
 				5994BA272F4748B0009CA70D /* ClientBookingDisplay.swift in Sources */,
 				59B009E72FD44D1F00F52B19 /* LiveVideoGridView.swift in Sources */,
+				59B0FAAB2FF2B2BB007B5A27 /* AdminDashboardView.swift in Sources */,
+				59FD21672FF57C91007DD9E7 /* MarketplacePaymentSetupView.swift in Sources */,
 				59AE98FA2F3FB846009C9A24 /* FavoritesView.swift in Sources */,
 				597156852FA6528B00F575FF /* ExpertStudioView.swift in Sources */,
 				59F61AAE2F40815E003999DD /* AppUser.swift in Sources */,
 				59EC255E2F3291A3003E976C /* BarberRegisterView .swift in Sources */,
 				59AE98F62F3F44C5009C9A24 /* BusinessSheet.swift in Sources */,
 				59BF45C82FB9F1B70008498F /* LiveCoHostGridView.swift in Sources */,
+				59B0FABF2FF2D5FE007B5A27 /* AdminDashboardAnalytics.swift in Sources */,
 				5994BA2D2F4763D5009CA70D /* LoginEvent.swift in Sources */,
+				59FD211C2FF43135007DD9E7 /* MarketplaceUITheme.swift in Sources */,
 				59EC255F2F3291A3003E976C /* BarberSlotsListView.swift in Sources */,
+				59FD21432FF4693C007DD9E7 /* MarketplaceSettingsView.swift in Sources */,
 				59B131CE2F48B27F0092C62B /* PaymentsHistoryView.swift in Sources */,
 				59BBF73C2F4E9683007D5387 /* CommentButton.swift in Sources */,
 				59EC25612F3291A3003E976C /* BarberRegistrationView.swift in Sources */,
 				59EC25652F3291A3003E976C /* BarberViewModel.swift .swift in Sources */,
+				59FD21732FF64FFF007DD9E7 /* MarketplaceSupportTicketView.swift in Sources */,
 				59B131D02F48E11A0092C62B /* InvoicesView.swift in Sources */,
+				59FD214F2FF4763A007DD9E7 /* MarketplaceShippingService.swift in Sources */,
 				59BBF7442F4E978D007D5387 /* VideoPlayerView.swift in Sources */,
+				59B0FAAD2FF2B68E007B5A27 /* AdminDashboardFirestore.swift in Sources */,
 				59EC25672F3291A3003E976C /* BarberProfileView.swift in Sources */,
+				59B0FAAF2FF2C0F9007B5A27 /* AdminDashboardTheme.swift in Sources */,
 				59F61AA42F4079EC003999DD /* Client.swift in Sources */,
 				59F61AAA2F407BAE003999DD /* ClientManagementView.swift in Sources */,
 				59BBF7542F4F3E19007D5387 /* MovieTransferable.swift in Sources */,
 				59BF48A22FE76A740020B685 /* IncomingCallListener.swift in Sources */,
 				59BF48962FE6C4990020B685 /* StyleCardView.swift in Sources */,
 				59BBF71C2F4E7FA4007D5387 /* StatCard.swift in Sources */,
+				59FD21472FF46E5A007DD9E7 /* MarketplaceSupportView.swift in Sources */,
+				59FD21572FF486B3007DD9E7 /* MarketplaceModerationService.swift in Sources */,
 				59ACE2952F42458600FACD11 /* EscrowInfoView.swift in Sources */,
 				59EC256B2F3291A3003E976C /* BarberDashboardView.swift .swift in Sources */,
+				59FD215F2FF5486D007DD9E7 /* MarketplaceProfileSetupView.swift in Sources */,
 				59B569052F4A4720005345C3 /* CommissionService.swift in Sources */,
+				59FD213B2FF464C0007DD9E7 /* MarketplaceMessagesView.swift in Sources */,
+				59FD217F2FF82852007DD9E7 /* MarketplaceConversationThreadView.swift in Sources */,
+				59C54A202FEA2D8B00BB0FAC /* CallVideoRenderView.swift in Sources */,
 				5925C6262FA56D7B00A05B3B /* ViewTracker.swift in Sources */,
 				59B569132F4A582E005345C3 /* AutoReminderViewModel.swift in Sources */,
 				59A223F52F4B6DF900D89777 /* SimpleActionSheet.swift in Sources */,
 				59BBF71E2F4E8049007D5387 /* CreatorFeedView.swift in Sources */,
 				59BF487E2FE578C40020B685 /* ChatViewOnceAudioBubble.swift in Sources */,
+				59FD21182FF42F99007DD9E7 /* MarketplaceAIModels.swift in Sources */,
 				59B569152F4A5875005345C3 /* ReminderSettings.swift in Sources */,
 				59B569092F4A4B56005345C3 /* PayoutScheduleView.swift in Sources */,
 				59B569012F4A465F005345C3 /* CommissionSettingsView.swift in Sources */,
+				59FD21652FF5793C007DD9E7 /* MarketplaceCountries.swift in Sources */,
 				59BBF7112F4DCD57007D5387 /* SmartRebookingView.swift in Sources */,
 				59B569072F4A475D005345C3 /* CommissionModels.swift in Sources */,
 				59F61AA82F407A58003999DD /* ClientService.swift in Sources */,
 				5994BA372F47B176009CA70D /* FinanceMonthlyView.swift in Sources */,
 				59A223F12F4B6B5C00D89777 /* AutomationSettings.swift in Sources */,
 				59BF489C2FE7539C0020B685 /* CallScreenView.swift in Sources */,
+				59FD217B2FF6C9E0007DD9E7 /* MarketplaceExploreViewModel.swift in Sources */,
 				59BBF70B2F4DBCEE007D5387 /* StripeConnectService.swift in Sources */,
 				59F61AA62F407A20003999DD /* ClientNote.swift in Sources */,
 				597156892FA654A900F575FF /* AgeChartView.swift in Sources */,
+				59FD216B2FF580F2007DD9E7 /* MarketplaceSetupSummaryView.swift in Sources */,
 				59D4B2A42F33591200D9D2FB /* StripePayoutConfigView.swift in Sources */,
 				59A223ED2F4B1EB800D89777 /* AutoConfirmBookingView.swift in Sources */,
 				590B1C8F2F432D8B0023B554 /* ClientExporter.swift in Sources */,
 				5971569D2FB0EAEA00F575FF /* GiftCatalog.swift in Sources */,
 				59BBF7322F4E939E007D5387 /* UploadContentView.swift in Sources */,
 				59EC256D2F3291A3003E976C /* AvailabilityView.swift in Sources */,
+				59DA12402FEB51BA007D1121 /* CallRecordingsHistoryView.swift in Sources */,
 				59BF489E2FE7582D0020B685 /* CallService.swift in Sources */,
 				59EC256F2F3291A3003E976C /* Barber .swift in Sources */,
 				59BF45CE2FB9F7310008498F /* LiveHostControlPanel.swift in Sources */,
@@ -1254,15 +1730,20 @@
 				59BF48A02FE7634C0020B685 /* IncomingCallView.swift in Sources */,
 				59B569112F4A57C9005345C3 /* AutoReminderView.swift in Sources */,
 				59BF487C2FE546800020B685 /* ViewOnceMediaViewer.swift in Sources */,
+				59FD21312FF455B7007DD9E7 /* MarketplaceEditProductView.swift in Sources */,
 				59EC25CF2F32A1F4003E976C /* SplashView.swift in Sources */,
+				59B0FABB2FF2D136007B5A27 /* AdminDashboardBookings.swift..swift in Sources */,
 				59BBF7482F4E9A1D007D5387 /* FeedPlaybackManager.swift in Sources */,
 				59BBF73A2F4E9652007D5387 /* SaveButton.swift in Sources */,
+				59FD21052FF30382007DD9E7 /* AdminAIService.swift in Sources */,
 				59ED2C222F46426000AD68E8 /* LoginHistoryView.swift in Sources */,
 				5925C5E52FA56D0A00A05B3B /* TrafficRow.swift in Sources */,
+				59FD21712FF64C95007DD9E7 /* MarketplaceHelpCenterView.swift in Sources */,
 				5925C5E62FA56D0A00A05B3B /* SpectatorsAnalyticsView.swift in Sources */,
 				5925C5E72FA56D0A00A05B3B /* TrafficSourceBar.swift in Sources */,
 				5925C5E82FA56D0A00A05B3B /* VideoAnalyticsDetailView.swift in Sources */,
 				597156862FA6533A00F575FF /* CommentService.swift in Sources */,
+				59FD21032FF301E8007DD9E7 /* AdminRealtimeService.swift in Sources */,
 				5925C5E92FA56D0A00A05B3B /* Sound.swift in Sources */,
 				59BF45C62FB9F1300008498F /* LiveCoHostService.swift in Sources */,
 				5925C5EA2FA56D0A00A05B3B /* TrafficSource.swift in Sources */,
@@ -1270,24 +1751,43 @@
 				5925C5EC2FA56D0A00A05B3B /* SoundService.swift in Sources */,
 				597156A12FB0FFBA00F575FF /* StripeService.swift in Sources */,
 				5925C5ED2FA56D0A00A05B3B /* SpectatorMetricCard.swift in Sources */,
+				59B0FAB52FF2C5BC007B5A27 /* AdminDashboardHome.swift in Sources */,
 				5925C5EE2FA56D0A00A05B3B /* SpectatorDonutChart.swift in Sources */,
 				59BBF70F2F4DCD38007D5387 /* NoShowProtectionView.swift in Sources */,
 				59F61A9E2F40799F003999DD /* ClientListView .swift in Sources */,
 				59B5690B2F4A4BF6005345C3 /* PayoutScheduleViewModel.swift in Sources */,
 				59A97B782F3CF8E2003E2FFC /*  SlotStatus.swift in Sources */,
+				59FD21792FF69B48007DD9E7 /* MarketplaceLocationManager.swift in Sources */,
 				590B1C8D2F432CCA0023B554 /* ShareSheet.swift in Sources */,
 				59AE98FD2F3FCDF7009C9A24 /* ServiceCardView.swift in Sources */,
+				59FD21592FF488AD007DD9E7 /* MarketplaceReportService.swift in Sources */,
 				59B512EF2FB9165E00829D52 /* GiftAnimationView.swift in Sources */,
 				59AE98F82F3F4F00009C9A24 /* Service.swift in Sources */,
+				59C54A1C2FEA26FA00BB0FAC /* CallAgoraManager.swift in Sources */,
+				59A8788E2FFC86A600C411CA /* MarketplacePaymentRouter.swift in Sources */,
 				59ED2C2C2F46503100AD68E8 /* TwoFactorSetupView.swift in Sources */,
 				59BBF70D2F4DCC7C007D5387 /* AfterAppointmentMessageView.swift in Sources */,
 				59BF48842FE5BCF20020B685 /* ChatShareSheet.swift in Sources */,
+				59FD21752FF65688007DD9E7 /* MarketplaceCertificationRequestView.swift in Sources */,
 				5994BA292F474C1B009CA70D /* ClientBookingsView.swift in Sources */,
 				59EC25712F3291A3003E976C /* AuthService.swift in Sources */,
+				59FD216D2FF58260007DD9E7 /* MarketplaceProfileService.swift .swift in Sources */,
 				59EC25B32F32931F003E976C /* ClientRegisterView.swift in Sources */,
 				590B1C8B2F4327D80023B554 /* PaymentSheetView.swift in Sources */,
 				59BF489A2FE6F8A30020B685 /* StyleCommentsView.swift in Sources */,
 				59EC25B42F32931F003E976C /* ContentView.swift in Sources */,
+				59FD21692FF57E9D007DD9E7 /* MarketplaceVerificationView.swift in Sources */,
+				59FD21632FF54FDC007DD9E7 /* MarketplaceEntryView.swift in Sources */,
+				59FD214B2FF4732D007DD9E7 /* MarketplaceStorageService.swift in Sources */,
+				59FD21512FF47A26007DD9E7 /* MarketplaceAnalyticsService.swift in Sources */,
+				59FD212F2FF45101007DD9E7 /* MarketplaceSellView.swift in Sources */,
+				59FD211E2FF43172007DD9E7 /* MarketplaceHomeView.swift in Sources */,
+				59FD216F2FF5D8F9007DD9E7 /* MarketplaceAuthView.swift in Sources */,
+				59FD21162FF42F59007DD9E7 /* MarketplaceNotificationModels.swift in Sources */,
+				59FD21102FF42D61007DD9E7 /* MarketplaceMessageModels.swift in Sources */,
+				59FD212D2FF44DD2007DD9E7 /* MarketplaceStoreView.swift in Sources */,
+				59FD214D2FF4741E007DD9E7 /* MarketplacePaymentService.swift in Sources */,
+				59FD215D2FF48C30007DD9E7 /* MarketplaceSyncService.swift in Sources */,
 				59ED2C262F4646FF00AD68E8 /* BlockedClientsView.swift in Sources */,
 				59BF45C02FB9E1700008498F /* AfricanPaymentSheet.swift in Sources */,
 				59ACE28F2F41EB5100FACD11 /* ConversationService.swift in Sources */,
@@ -1297,8 +1797,10 @@
 				59EC25B82F32931F003E976C /* PaymentBlockedView.swift in Sources */,
 				59A223FD2F4BB61C00D89777 /* ScanClientButton.swift in Sources */,
 				590B1C912F450ED30023B554 /* BookingView.swift in Sources */,
+				59B0FAB32FF2C3B6007B5A27 /* AdminDashboardSidebar.swift in Sources */,
 				59BBF7132F4E6DE6007D5387 /* PaymentFlowManager.swift in Sources */,
 				59A223F92F4B6F3E00D89777 /* BlockDaysSheetPro.swift in Sources */,
+				59FD21392FF46328007DD9E7 /* MarketplaceWalletView.swift in Sources */,
 				59B512F32FB92EF800829D52 /* LiveJoinRequestsSheet.swift in Sources */,
 				59EC25B92F32931F003E976C /* RegisterView.swift in Sources */,
 				59EC25BB2F32931F003E976C /* ClientAuthView.swift in Sources */,
@@ -1307,19 +1809,24 @@
 				59BF48762FE4A9FC0020B685 /* ChatAudioService.swift in Sources */,
 				59EC25BD2F32931F003E976C /* ClientHomeView .swift in Sources */,
 				59BBF72A2F4E91B4007D5387 /* PostViewService.swift in Sources */,
+				59FD21332FF457C0007DD9E7 /* MarketplaceOrdersView.swift in Sources */,
 				59BBF7502F4F046F007D5387 /* Services:PostService.swift in Sources */,
+				59FD21242FF43AB1007DD9E7 /* MarketplaceProductDetailView.swift in Sources */,
 				59ED2C182F4628CE00AD68E8 /* ClientExportView.swift in Sources */,
 				59BF488A2FE69A990020B685 /* ActivityViewController.swift in Sources */,
 				59B569032F4A46DF005345C3 /* CommissionViewModel.swift in Sources */,
 				5925C56F2FA55DA400A05B3B /* CreateLiveEventView.swift in Sources */,
+				59B0FAA72FF2B259007B5A27 /* AdminDashboardModels.swift in Sources */,
 				59A223F72F4B6F1B00D89777 /* OpeningHoursSheet.swift in Sources */,
 				597156922FA656C800F575FF /* LikeButton.swift in Sources */,
 				59ACE28D2F41EA4400FACD11 /* Conversation.swift in Sources */,
 				59BF48682FE1968F0020B685 /* AdminRevenueView.swift in Sources */,
+				59FD21142FF42EF4007DD9E7 /* MarketplaceUserActionModels.swift in Sources */,
 				59EC25BF2F32931F003E976C /* LoginView.swift in Sources */,
 				59ACE29B2F425E7900FACD11 /* ChatUserService.swift in Sources */,
 				59EC25C02F32931F003E976C /* HomeView.swift in Sources */,
 				59B131D42F4909BB0092C62B /* PayoutModels.swift in Sources */,
+				59B0FAC72FF2EF17007B5A27 /* AdminDashboardLiveFirestore.swift in Sources */,
 				59EC25C22F32931F003E976C /* MonAppApp.swift in Sources */,
 				59BBF71A2F4E7F7A007D5387 /* StudioButton.swift in Sources */,
 				59ED2C1A2F463D5500AD68E8 /* ShareableFile.swift in Sources */,
@@ -1328,6 +1835,7 @@
 				59BF48742FE4A7EE0020B685 /* AudioRecorderService.swift in Sources */,
 				59BF45BA2FB9DFC80008498F /* PaymentMethodCard.swift in Sources */,
 				59EC25C32F32931F003E976C /* LocationManager.swift .swift in Sources */,
+				59FD21492FF46FF2007DD9E7 /* MarketplaceFirestoreService.swift in Sources */,
 				59BF48982FE6C5EC0020B685 /* StylesService.swift in Sources */,
 				59BF487A2FE52C290020B685 /* ChatPresenceService.swift in Sources */,
 				59A223FF2F4BB66100D89777 /* ScanPressEffect.swift in Sources */,
@@ -1336,33 +1844,46 @@
 				597156A32FB1022800F575FF /* CoinModel.swift in Sources */,
 				59BF488C2FE69B930020B685 /* ReportReason.swift in Sources */,
 				59BF45BC2FB9E03C0008498F /* MobileMoneyService.swift in Sources */,
+				59FD217D2FF6E9A0007DD9E7 /* MarketplaceSellerProfileView.swift in Sources */,
 				59ED2C2A2F464C7D00AD68E8 /* AuthSecurityService.swift in Sources */,
 				59F33DE12F3E87E600B1EA12 /* BarberAccessGateView.swift in Sources */,
+				59A878902FFECC9400C411CA /* MarketplaceProductCard.swift in Sources */,
 				59A223F32F4B6B8000D89777 /* AutomationService.swift in Sources */,
 				59BF48782FE4AA9E0020B685 /* ChatAudioPlayerView.swift in Sources */,
 				59BF45DB2FBA22260008498F /* AgoraVideoView.swift in Sources */,
+				59FD21352FF45DD5007DD9E7 /* MarketplaceOrderDetailView.swift in Sources */,
 				59ACE2932F4240FE00FACD11 /* ServiceImageUploader.swift in Sources */,
 				597156A52FB1024200F575FF /* CoinPack.swift in Sources */,
 				59B5690D2F4A4C73005345C3 /* PayoutScheduleService.swift in Sources */,
 				59BF45C42FB9F0420008498F /* LiveCoHostModel.swift in Sources */,
+				59B0FAB92FF2C9B8007B5A27 /* AdminDashboardReports.swift in Sources */,
 				597156992FABA94E00F575FF /* LiveHeartsOverlay.swift in Sources */,
 				5925C5612FA558F000A05B3B /* LiveEventsView.swift in Sources */,
 				5925C5622FA558F000A05B3B /* LiveReplaysView.swift in Sources */,
 				5925C5632FA558F000A05B3B /* LiveTab.swift in Sources */,
+				59FD21202FF4350F007DD9E7 /* MarketplaceExploreView.swift in Sources */,
 				5925C5642FA558F000A05B3B /* LiveChatView.swift in Sources */,
 				5925C5652FA558F000A05B3B /* CameraPreview.swift in Sources */,
 				59B512ED2FB914B800829D52 /* LiveViewerView.swift in Sources */,
 				5925C5662FA558F000A05B3B /* FilterOverlayView.swift in Sources */,
+				59FD212B2FF448AB007DD9E7 /* MarketplaceReviewsView.swift in Sources */,
+				59C54A222FEAC89A00BB0FAC /* CallNavigationManager.swift in Sources */,
 				5925C5672FA558F000A05B3B /* LiveChatService.swift in Sources */,
 				5925C5682FA558F000A05B3B /* LiveAction.swift in Sources */,
 				5925C56A2FA558F000A05B3B /* LiveEffect.swift .swift in Sources */,
 				59BF48722FE4A1F10020B685 /* NativeVideoPlayerView.swift in Sources */,
+				59FD21612FF54BED007DD9E7 /* MarketplaceLocationSetupView.swift in Sources */,
+				59FD21222FF43982007DD9E7 /* MarketplaceCategoriesView.swift in Sources */,
 				597156932FA772B600F575FF /* LikeService.swift in Sources */,
+				59FD21552FF483F4007DD9E7 /* MarketplaceRecommendationService.swift in Sources */,
 				5925C56B2FA558F000A05B3B /* LiveStreamView.swift in Sources */,
 				5925C56C2FA558F000A05B3B /* LiveReplayDetailView.swift in Sources */,
 				5925C56D2FA558F000A05B3B /* LiveAnalyticsViewModel.swift in Sources */,
 				59BBF7562F4F4921007D5387 /* UploadButtonUI.swift in Sources */,
 				59BF488E2FE69E100020B685 /* FavoriteMedia.swift in Sources */,
+				59FD210C2FF42CA7007DD9E7 /* MarketplaceWalletModels.swift in Sources */,
+				59FD210E2FF42D00007DD9E7 /* MarketplaceReviewModels.swift in Sources */,
+				59FD21082FF42A52007DD9E7 /* MarketplaceModels.swift in Sources */,
 				59ACE2972F424D4900FACD11 /* MessageDetailView.swift in Sources */,
 				59B5690F2F4A4CD7005345C3 /* PayoutScheduleModel.swift in Sources */,
 				5925C60F2FA56D3E00A05B3B /* FeedSoundManager.swift in Sources */,
@@ -1375,14 +1896,17 @@
 				5925C6172FA56D3E00A05B3B /* FollowersModels.swift in Sources */,
 				5925C6182FA56D3E00A05B3B /* FeedRankingEngine.swift in Sources */,
 				5925C6192FA56D3E00A05B3B /* CityFollowersView.swift in Sources */,
+				59B0FAC52FF2E6DB007B5A27 /* AdminDashboardAppeals.swift in Sources */,
 				59BF45CC2FB9F67C0008498F /* LiveSpeakingTimerView.swift in Sources */,
 				59BF48702FE484100020B685 /* ChatMediaPreviewView.swift in Sources */,
 				5925C61A2FA56D3E00A05B3B /* FollowersActivityHours.swift in Sources */,
 				5925C61C2FA56D3E00A05B3B /* FollowersAudienceSection.swift in Sources */,
 				5925C61D2FA56D3E00A05B3B /* FollowersGrowthData.swift in Sources */,
+				59FD21372FF46193007DD9E7 /* MarketplaceTrackingView.swift in Sources */,
 				59BF45DF2FBB62960008498F /* AgoraViewerContainer.swift in Sources */,
 				5925C61E2FA56D3E00A05B3B /* FollowersMetricsSection.swift in Sources */,
 				5925C61F2FA56D3E00A05B3B /* FollowersAnalyticsView.swift in Sources */,
+				59B0FAB12FF2C18B007B5A27 /* AdminDashboardLocalization.swift in Sources */,
 				5925C6202FA56D3E00A05B3B /* ForYouFeedEngine.swift in Sources */,
 				5925C6242FA56D3E00A05B3B /* FollowersActivityHeatmap.swift in Sources */,
 				5925C5F52FA56D2B00A05B3B /* LiveBadgeView.swift in Sources */,
@@ -1393,22 +1917,32 @@
 				59F61AB22F4103D4003999DD /* ChatView.swift in Sources */,
 				59A223FB2F4BB2B900D89777 /* QRScannerView.swift in Sources */,
 				5925C62C2FA5751F00A05B3B /* Services:VideoUploadService.swift in Sources */,
+				59FD21532FF48144007DD9E7 /* MarketplaceSearchService.swift in Sources */,
+				59B0FAC32FF2E358007B5A27 /* AdminDashboardLive.swift in Sources */,
+				59B0FABD2FF2D3F5007B5A27 /* AdminDashboardTransactions.swift in Sources */,
+				59B0FAA92FF2B282007B5A27 /* AdminDashboardComponents.swift in Sources */,
 				59EC25742F3291A3003E976C /* BarberAvailabilityView.swift in Sources */,
+				59A8788C2FFC7EDE00C411CA /* MarketplaceStripeCheckoutService.swift in Sources */,
 				59ED2C1C2F463F7200AD68E8 /* ClientsCSVExporter.swift in Sources */,
 				5994BA2F2F476ECC009CA70D /* ConnectedDevicesView.swift in Sources */,
+				59FD21412FF4686C007DD9E7 /* MarketplaceProfileView.swift in Sources */,
 				59B512EB2FB90FA000829D52 /* LiveDiscoveryView.swift in Sources */,
 				59ED2C202F46421B00AD68E8 /* SecurityAccessView.swift in Sources */,
+				59FD213F2FF46720007DD9E7 /* MarketplaceNotificationsView.swift in Sources */,
 				59BF45D02FB9F83A0008498F /* LiveGuestControlPanel.swift in Sources */,
 				59B131D62F4909F30092C62B /* PayoutService.swift in Sources */,
 				59B512F12FB916BC00829D52 /* LiveAdOverlay.swift in Sources */,
 				59EC25752F3291A3003E976C /* BookingService.swift in Sources */,
+				5996553A3000192800CEACC6 /* MarketplaceVariantEditorView.swift in Sources */,
 				59A223E92F4B19D500D89777 /* ReminderScheduler.swift in Sources */,
 				59ED2C2E2F46603F00AD68E8 /* PushNotificationManager.swift in Sources */,
 				59EC25762F3291A3003E976C /* AppDelegate.swift in Sources */,
+				59FD21772FF6813C007DD9E7 /* MarketplaceHomeViewModel.swift in Sources */,
 				59F61AA22F4079CF003999DD /* AddClientNoteView.swift in Sources */,
 				597156A92FB102BB00F575FF /* CoinShopView.swift in Sources */,
 				59EC25772F3291A3003E976C /* AuthView .swift in Sources */,
 				59EC25782F3291A3003E976C /* BarberService.swift  .swift in Sources */,
+				59FD21262FF444CF007DD9E7 /* MarketplaceGalleryView.swift in Sources */,
 				597156A72FB1027000F575FF /* WalletService.swift in Sources */,
 				59B568FF2F49E402005345C3 /* NextPayouteRsponse.swift in Sources */,
 				5994BA2B2F475CBE009CA70D /* SessionManager.swift in Sources */,
@@ -1416,7 +1950,34 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		59B0FA752FF270F0007B5A27 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		59B0FA802FF270F1007B5A27 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		59B0FA8D2FF270F1007B5A27 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 59B0FA832FF270F1007B5A27 /* CutlyScreenShareExtensionSetupUI */;
+			targetProxy = 59B0FA8C2FF270F1007B5A27 /* PBXContainerItemProxy */;
+		};
+		59B0FA902FF270F1007B5A27 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 59B0FA782FF270F0007B5A27 /* CutlyScreenShareExtension */;
+			targetProxy = 59B0FA8F2FF270F1007B5A27 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		590903B82F24211F001E5ADD /* Debug */ = {
@@ -1552,8 +2113,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MonApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = CutLy;
+				INFOPLIST_KEY_FirebaseAppDelegateProxyEnabled = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Permet de filmer et publier du contenu.";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Nous utilisons votre localisation pour trouver les coiffeurs proches.\nNous utilisons votre localisation pour trouver les coiffeurs proches.\n";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Cutly utilise votre position pour afficher les coiffeurs, produits, vendeurs, boutiques, offres, livraisons, points relais et services proches de vous, améliorer les résultats de recherche et faciliter le suivi des commandes.Nous utilisons votre localisation pour trouver les coiffeurs proches.\n";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Permet d'enregistrer l'audio des vidéos.";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Privacy - Photo Library Additions Usage Descripti.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Nous avons besoin d'accéder à votre galerie pour publier vos contenus.";
@@ -1595,8 +2157,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MonApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = CutLy;
+				INFOPLIST_KEY_FirebaseAppDelegateProxyEnabled = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Permet de filmer et publier du contenu.";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Nous utilisons votre localisation pour trouver les coiffeurs proches.\nNous utilisons votre localisation pour trouver les coiffeurs proches.\n";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Cutly utilise votre position pour afficher les coiffeurs, produits, vendeurs, boutiques, offres, livraisons, points relais et services proches de vous, améliorer les résultats de recherche et faciliter le suivi des commandes.Nous utilisons votre localisation pour trouver les coiffeurs proches.\n";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Permet d'enregistrer l'audio des vidéos.";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Privacy - Photo Library Additions Usage Descripti.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Nous avons besoin d'accéder à votre galerie pour publier vos contenus.";
@@ -1624,6 +2187,126 @@
 			};
 			name = Release;
 		};
+		59B0FA932FF270F1007B5A27 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = CutlyScreenShareExtension/CutlyScreenShareExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9229UT9ZQN;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CutlyScreenShareExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = CutlyScreenShareExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.monapp-.-test.MonApp.CutlyScreenShareExtension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		59B0FA942FF270F1007B5A27 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = CutlyScreenShareExtension/CutlyScreenShareExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9229UT9ZQN;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CutlyScreenShareExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = CutlyScreenShareExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.monapp-.-test.MonApp.CutlyScreenShareExtension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		59B0FA952FF270F1007B5A27 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = CutlyScreenShareExtensionSetupUI/CutlyScreenShareExtensionSetupUI.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9229UT9ZQN;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CutlyScreenShareExtensionSetupUI/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = CutlyScreenShareExtensionSetupUI;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.monapp-.-test.MonApp.CutlyScreenShareExtensionSetupUI";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		59B0FA962FF270F1007B5A27 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = CutlyScreenShareExtensionSetupUI/CutlyScreenShareExtensionSetupUI.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9229UT9ZQN;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CutlyScreenShareExtensionSetupUI/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = CutlyScreenShareExtensionSetupUI;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.monapp-.-test.MonApp.CutlyScreenShareExtensionSetupUI";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1641,6 +2324,24 @@
 			buildConfigurations = (
 				590903BB2F24211F001E5ADD /* Debug */,
 				590903BC2F24211F001E5ADD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		59B0FA972FF270F1007B5A27 /* Build configuration list for PBXNativeTarget "CutlyScreenShareExtensionSetupUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				59B0FA952FF270F1007B5A27 /* Debug */,
+				59B0FA962FF270F1007B5A27 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		59B0FA992FF270F1007B5A27 /* Build configuration list for PBXNativeTarget "CutlyScreenShareExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				59B0FA932FF270F1007B5A27 /* Debug */,
+				59B0FA942FF270F1007B5A27 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1680,6 +2381,14 @@
 				minimumVersion = 12.9.0;
 			};
 		};
+		59FD21272FF44802007DD9E7 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.10.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1707,6 +2416,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5994017B2F2CD8AB005ED7A4 /* XCRemoteSwiftPackageReference "stripe-ios" */;
 			productName = StripePaymentSheet;
+		};
+		59B0FA9D2FF28B52007B5A27 /* ReplayKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 59BF45D72FBA1C8A0008498F /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */;
+			productName = ReplayKit;
+		};
+		59B0FA9F2FF28B63007B5A27 /* ReplayKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 59BF45D72FBA1C8A0008498F /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */;
+			productName = ReplayKit;
 		};
 		59BF45D82FBA1C8A0008498F /* RtcBasic */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -1752,6 +2471,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5994017B2F2CD8AB005ED7A4 /* XCRemoteSwiftPackageReference "stripe-ios" */;
 			productName = Stripe;
+		};
+		59FD21282FF44802007DD9E7 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 59FD21272FF44802007DD9E7 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

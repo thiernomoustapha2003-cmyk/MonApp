@@ -340,24 +340,51 @@ struct LoginView: View {
     // Si l’utilisateur Apple n’existe pas encore, on le crée comme "client"
     func saveUserToFirestore(userId: String, email: String?) {
         let db = Firestore.firestore()
-        
-        let userData: [String: Any] = [
-            "email": email ?? "",
-            "role": "client",
-            "createdAt": Timestamp(),
-            // 👉 On garde la cohérence avec RegisterView
-            "isPro": false,
-            "isCertified": false,
-            "platformCommissionRate": 0.15
-        ]
-        
-        db.collection("users").document(userId).setData(userData, merge: true) { error in
+        let userRef = db.collection("users").document(userId)
+
+        userRef.getDocument { snapshot, error in
+
             if let error = error {
                 errorMessage = "Erreur Firestore: \(error.localizedDescription)"
                 return
             }
-            
-            navigateToClient = true
+
+            let existingData = snapshot?.data() ?? [:]
+            let existingRole = existingData["role"] as? String
+            let existingIsAdmin = existingData["isAdmin"] as? Bool ?? false
+            let existingIsOwner = existingData["isPlatformOwner"] as? Bool ?? false
+            let existingAdminLevel = existingData["adminLevel"] as? String ?? ""
+
+            var userData: [String: Any] = [
+                "email": email ?? existingData["email"] as? String ?? "",
+                "updatedAt": FieldValue.serverTimestamp(),
+                "isPro": existingData["isPro"] as? Bool ?? false,
+                "isCertified": existingData["isCertified"] as? Bool ?? false,
+                "platformCommissionRate": existingData["platformCommissionRate"] as? Double ?? 0.15
+            ]
+
+            if existingRole == nil {
+                userData["role"] = "client"
+            }
+
+            if snapshot?.exists != true {
+                userData["createdAt"] = FieldValue.serverTimestamp()
+                userData["role"] = "client"
+                userData["profileCompleted"] = false
+            }
+
+            userRef.setData(userData, merge: true) { error in
+                if let error = error {
+                    errorMessage = "Erreur Firestore: \(error.localizedDescription)"
+                    return
+                }
+
+                if existingRole == "admin" || existingIsAdmin || existingIsOwner || existingAdminLevel == "owner" {
+                    navigateToClient = true
+                } else {
+                    navigateToClient = true
+                }
+            }
         }
     }
     

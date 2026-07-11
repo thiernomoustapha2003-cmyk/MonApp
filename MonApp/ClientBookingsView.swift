@@ -9,50 +9,77 @@ struct ClientBookingsView: View {
 
     var body: some View {
 
-        List(bookings) { booking in
-            
-            NavigationLink {
-                ClientBookingDetailView(
-                    booking: booking,
-                    barberImageUrl: barberImages[booking.barberId] ?? ""
-                )
-            } label: {
-                HStack(spacing: 12) {
+        Group {
+            if Auth.auth().currentUser == nil {
+                VStack(spacing: 14) {
+                    Image(systemName: "lock.fill")
+                        .font(.largeTitle)
                     
-                    // Pas d'image dans ton Booking → avatar par défaut
-                    AsyncImage(url: URL(string: barberImages[booking.barberId] ?? "")) { image in
-                        image.resizable().scaledToFill()
-                    } placeholder: {
-                        Image(systemName: "person.crop.circle.fill")
-                            .resizable()
-                            .scaledToFit()
-                            .foregroundColor(.gray)
-                    }
-                    .frame(width: 60, height: 60)
-                    .clipShape(Circle())
+                    Text("Connecte-toi pour voir tes réservations")
+                        .font(.headline)
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            } else if bookings.isEmpty {
+                VStack(spacing: 14) {
+                    Image(systemName: "calendar.badge.exclamationmark")
+                        .font(.largeTitle)
+                        .foregroundColor(.purple)
                     
-                    VStack(alignment: .leading, spacing: 6) {
-                        
-                        Text(booking.barberName)
-                            .font(.headline)
-                        
-                        Text("📅 \(booking.date) à \(booking.time)")
-                            .font(.subheadline)
-                        
-                        Text(statusText(booking.status))
-                            .font(.caption2)
-                            .padding(6)
-                            .background(statusColor(booking.status).opacity(0.15))
-                            .foregroundColor(statusColor(booking.status))
-                            .cornerRadius(6)
-                        
-                        // paiement
-                        Text(paymentText(booking.paymentStatus))
-                            .font(.caption2)
-                            .foregroundColor(.purple)
+                    Text("Aucune réservation")
+                        .font(.title3.bold())
+                    
+                    Text("Tes réservations apparaîtront ici.")
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            } else {
+                List(bookings) { booking in
+                    
+                    NavigationLink {
+                        ClientBookingDetailView(
+                            booking: booking,
+                            barberImageUrl: barberImages[booking.barberId] ?? ""
+                        )
+                    } label: {
+                        HStack(spacing: 12) {
+                            
+                            // Pas d'image dans ton Booking → avatar par défaut
+                            AsyncImage(url: URL(string: barberImages[booking.barberId] ?? "")) { image in
+                                image.resizable().scaledToFill()
+                            } placeholder: {
+                                Image(systemName: "person.crop.circle.fill")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .foregroundColor(.gray)
+                            }
+                            .frame(width: 60, height: 60)
+                            .clipShape(Circle())
+                            
+                            VStack(alignment: .leading, spacing: 6) {
+                                
+                                Text(booking.barberName)
+                                    .font(.headline)
+                                
+                                Text("📅 \(booking.date) à \(booking.time)")
+                                    .font(.subheadline)
+                                
+                                Text(statusText(booking.status))
+                                    .font(.caption2)
+                                    .padding(6)
+                                    .background(statusColor(booking.status).opacity(0.15))
+                                    .foregroundColor(statusColor(booking.status))
+                                    .cornerRadius(6)
+                                
+                                // paiement
+                                Text(paymentText(booking.paymentStatus))
+                                    .font(.caption2)
+                                    .foregroundColor(.purple)
+                            }
+                        }
+                        .padding(.vertical, 8)
                     }
                 }
-                .padding(.vertical, 8)
             }
         }
         .navigationTitle("Mes réservations")
