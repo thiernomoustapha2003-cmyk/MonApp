@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "Image JPEG-4312-A934-1E-0 1.jpeg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "Image JPEG-4312-A934-1E-0.jpeg",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "Image JPEG-4312-A934-1E-0 2.jpeg",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
